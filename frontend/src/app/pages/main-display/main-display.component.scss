@@ -1,0 +1,45 @@
+.myHeader{
+    width: 100%; 
+    height:10%; 
+    background-color:#5356B6; 
+    margin:0%; 
+    border-radius: 20px 20px 0px 0px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: larger; 
+    font-weight: 700;
+    color:white;
+
+}
+.video-fluid {
+    width: 100%;
+    height: 100%;
+    margin:0%;
+    border: solid 2px #5356B6;
+    border-radius: 10px;
+}
+.video-container{
+    margin: 2% 2.5% 0% 2.5% !important; 
+    padding:0%; 
+    height:50%;
+    border-radius: 10px;
+    width:95%;
+}
+
+.monitorStyle{
+    height: 100%;  
+    margin: 0%;
+    padding: 0%; 
+    border-radius: 10px; 
+}
+.mybtn{
+    height: 12%;
+    width:95%; 
+    background-color: #EEDFF2; 
+ 
+    border-radius: 10px;
+    border:solid 1px #999BD4;
+    color:black;
+    font-size: larger;
+}
