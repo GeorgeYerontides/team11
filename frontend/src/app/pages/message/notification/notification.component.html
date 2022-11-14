@@ -1,48 +1,46 @@
 <div class="pic-cont container " style="padding: 0% !important;">
-    <div class="row" [ngSwitch]="messageType">
+    <div class="row zeroSpace" >
 
-      <!--call-->
-        <div class="col-3 d-flex " style="padding-right: 0%;"  *ngSwitchCase="1" >
-            <div class="dot d-flex justify-content-center  d-none d-lg-block d-xl-block" >
-                <i class="fas fa-user navIcon"></i>
-                <!--<fa-icon [icon]="faPhone" class="disp-icon " style="    font-size: 1.3vw;   " ></fa-icon>-->
+  
+        <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 zeroSpace" [ngSwitch]="messageType "  >
+
+        <!--call-->
+            <div class="zeroSpace" style=" height: 100%;"  *ngSwitchCase="1" >
+                <div class="dot " >
+                    <i class="fa-solid fa-phone d-none d-lg-block d-xl-block" style="font-size: 1.3vw; margin: 0%; padding: 0%;color:white;"></i>
+                    <i class="fa-solid fa-phone d-none d-md-block d-lg-none"  style="font-size: 2vw;   margin: 0%; padding: 0%; color:white;"></i>
+                    <!--<fa-icon [icon]="faPhone" class="disp-icon " style="    font-size: 1.3vw;   " ></fa-icon>-->
+                </div>
+
+            
             </div>
+            <!--video-->
+            <div class=" zeroSpace"  style=" height: 100%;" *ngSwitchCase="2" >
+                <div class="dot   d-none d-lg-block d-xl-block" >
+                    <i class="fa-solid fa-video d-none d-lg-block d-xl-block" style="font-size: 1.3vw; margin: 0%; padding: 0%;color:white;"></i>
+                    <i class="fa-solid fa-video d-none d-md-block d-lg-none"  style="font-size: 2vw;   margin: 0%; padding: 0%; color:white;"></i>
+                    <!-- <fa-icon [icon]="faVideoCamera" class="disp-icon " style="    font-size: 1.3vw;   " ></fa-icon>-->
+                </div>
 
-            <div class="dot d-flex justify-content-center d-none d-md-block d-lg-none">
-                <i class="fas fa-user navIcon"></i>
-                <!-- <fa-icon [icon]="faPhone"  class="disp-icon " style="    font-size: 2vw;   " ></fa-icon>-->
+
+            
             </div>
+              <!--message-->
+            <div class="zeroSpace "  style=" height: 100%;"  *ngSwitchCase="3" >
+                <div class="dot   d-none d-lg-block d-xl-block" >
+                    <i class="fa-solid fa-message d-none d-lg-block d-xl-block" style="font-size: 1.3vw; margin: 0%; padding: 0%;color:white;"></i>
+                    <i class="fa-solid fa-message d-none d-md-block d-lg-none"  style="font-size: 2vw;   margin: 0%; padding: 0%; color:white;"></i>
+                    <!--<fa-icon [icon]="faMessage" class="disp-icon " style="    font-size: 1.3vw;   " ></fa-icon>-->
+                </div>
 
-          
+              
+
+            
+            </div>
+        <div *ngSwitchDefault></div>
+            
         </div>
-        <div class="col-3 d-flex " style="padding-right: 0%;"  *ngSwitchCase="2" >
-            <div class="dot d-flex justify-content-center  d-none d-lg-block d-xl-block" >
-                <i class="fas fa-user navIcon"></i>
-                <!-- <fa-icon [icon]="faVideoCamera" class="disp-icon " style="    font-size: 1.3vw;   " ></fa-icon>-->
-            </div>
-
-            <div class="dot d-flex justify-content-center d-none d-md-block d-lg-none">
-               <!-- <fa-icon [icon]="faVideoCamera"  class="disp-icon " style="    font-size: 2vw;   " ></fa-icon>--> 
-                <i class="fas fa-user navIcon"></i>
-            </div>
-
-           
-        </div>
-        <div class="col-3 d-flex " style="padding-right: 0%;"  *ngSwitchCase="3" >
-            <div class="dot d-flex justify-content-center  d-none d-lg-block d-xl-block" >
-                <i class="fas fa-user navIcon"></i>
-                <!--<fa-icon [icon]="faMessage" class="disp-icon " style="    font-size: 1.3vw;   " ></fa-icon>-->
-            </div>
-
-            <div class="dot d-flex justify-content-center d-none d-md-block d-lg-none">
-                <i class="fas fa-user navIcon"></i>
-                <!--<fa-icon [icon]="faMessage"  class="disp-icon " style="    font-size:2vw;   " ></fa-icon>-->
-            </div>
-
-          
-        </div>
-       
-        <div class="col-7 d-none d-lg-block d-xl-block" >
+        <div class="col-7 	d-none d-xl-block d-xxl-block" >
             <div class="row text-cont" >  
                 <p class="text-style msg-title" style="font-size: 1.1vw; font-weight: 500;">{{name}}</p>
             </div>
@@ -53,10 +51,9 @@
                 </div>
             </div>
 
-          
         </div>
 
-        <div class="col-7 d-none d-md-block d-lg-none" >
+        <div class="col-7 d-none d-md-block d-lg-block d-xl-none d-xxl-none" >
             <div class="row text-cont" >  
                 <p class="text-style msg-title"  style="font-size: 1.7vw; font-weight: 500;">{{name}}</p>
             </div>
@@ -67,9 +64,7 @@
                 </div>
             </div>
 
-          
-        </div>
         
+        </div>
     </div>
-   
 </div>

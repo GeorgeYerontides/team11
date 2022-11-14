@@ -43,7 +43,8 @@ img{
     width: 100%;
     background-color: #5356B6;
     border-radius: 50%;
-    display: flex;
+    display: flex !important;
+    align-items: center;
     justify-content: center;
     
   }
@@ -53,11 +54,8 @@ img{
     color:white; 
   }
 
-fa-icon{
-    padding-top: 0.8vh;
-    justify-content: center;
-    display: inline-block;
-    width: 100%;
-    text-align:center;
-}
 
+.zeroSpace{
+  padding: 0%; 
+  margin: 0%;
+}
