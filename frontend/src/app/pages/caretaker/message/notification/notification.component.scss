@@ -1,9 +1,10 @@
 .pic-cont{
     background-color: #EEDFF2;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-    border-radius: 30px 10px 10px 30px;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    border-radius: 100px 10px 10px 100px;
     border: 1px solid #999BD4;
+  
 }
 img{
     
@@ -12,8 +13,8 @@ img{
 }
 
 .image-cropper {
-    width: 6vh;
-    height: 6vh;
+    width: 6vw;
+    height: 6vw;
     position: relative;
     overflow: hidden;
     border-radius: 50%;
@@ -23,7 +24,7 @@ img{
   img {
     display: inline;
     margin: 0 ;
-    height: 6vh;
+    height: 6vw;
     width: auto;
   }
 
@@ -46,6 +47,8 @@ img{
     display: flex !important;
     align-items: center;
     justify-content: center;
+    margin: 0%;
+    padding: 0%;
     
   }
 

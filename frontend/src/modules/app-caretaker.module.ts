@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 
 import { MainDisplayComponent } from '../app/pages/caretaker/main-display/main-display.component';
 import { MonitorDisplayComponent } from '../app/pages/caretaker/monitor-display/monitor-display.component';
-import { SidebarComponent } from '../app/pages/sidebar/sidebar.component';
-import { NotificationComponent } from '../app/pages/message/notification/notification.component';
+import { SidebarComponent } from '../app/pages/caretaker/sidebar/sidebar.component';
+import { NotificationComponent } from '../app/pages/caretaker/message/notification/notification.component';
 
 import { PatientDashboardComponent } from 'src/app/pages/caretaker/main-display/patient-dashboard/patient-dashboard.component';
 import { CaretakerRoutingModule } from './app-caretaker-routing.module';

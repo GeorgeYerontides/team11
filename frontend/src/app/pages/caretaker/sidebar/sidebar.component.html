@@ -1,0 +1,82 @@
+<div style="height: 90vh; background-color: #DFE0F2;">
+    <div class="row col-12 d-flex justify-content-center sidebar-header">
+        <h5 class="sidebar-text">Emergency numbers</h5>
+     </div>
+    
+     
+     <div class="row btnCont d-flex d-none d-xl-block d-xxl-block justify-content-center " style="background-color: #DFE0F2; margin:0%; padding: 0%;" >
+        <button type="button" class="btn btn-primary my-style " style="    font-size: 1.2vw; padding: 0%; text-align: center;">Alert Doctor</button>
+        <button type="button" class="btn btn-primary my-style " style="    font-size: 1.2vw; padding: 0%; text-align: center;">Call Ambulance</button>
+
+    </div>
+    <div class="row btnCont d-flex d-none d-lg-block d-xl-none justify-content-center " style="background-color: #DFE0F2; margin:0%; padding: 0%;" >
+        <button type="button" class="btn btn-primary my-style " style="    font-size: 1.6vw; padding: 0%; text-align: center;">Alert Doctor</button>
+        <button type="button" class="btn btn-primary my-style " style="    font-size: 1.6vw; padding: 0%; text-align: center;">Call Ambulance</button>
+
+    </div>
+        
+    <div class="row  btnCont d-flex d-lg-none d-xl-none justify-content-center" style="background-color: #DFE0F2; margin:0% !important; padding: 0%;" >
+        <button type="button" class="btn btn-primary my-style " style="    font-size: 2vw;padding: 0%; text-align: center;">Alert Doctor</button>
+        <button type="button" class="btn btn-primary my-style " style="    font-size: 2vw;padding: 0%; text-align: center;">Call Ambulance</button>
+
+    </div>
+
+    <div class="row col-12 sidebar-header">
+       <h5 class="sidebar-text">Notifications</h5>
+    </div>
+    
+    <!--Use ng if to dynamicaly display an array of notifications-->
+    <!--  <button (click)="addMessage()"> Demo</button> -->
+    <div class="col-12" style="height: 25vh; padding: 0%; margin:0%; display: flex; justify-content: center;">
+      
+
+
+        <div class="col-12" *ngIf="notifications.length>0 && this.route.includes(this.subroute)" style = "height: 55vh; overflow-y:auto; padding:0%; width: 80%;">
+            
+            <app-notification *ngFor="let notification of notifications; index as i;" 
+            [name] = "notification.title" 
+            [messageType] = "notification.type"
+            [time] = "notification.timestamp"
+            class="messageContainer" ></app-notification>
+          
+        </div>
+
+        <div class="col-12" *ngIf="notifications.length>0 && !this.route.includes(this.subroute)" style = "height: 25vh; overflow-y:auto; padding:0%; width: 80%;">
+            
+            <app-notification *ngFor="let notification of notifications; index as i;" 
+            [name] = "notification.title" 
+            [messageType] = "notification.type"
+            [time] = "notification.timestamp"
+            class="messageContainer" ></app-notification>
+          
+        </div>
+        
+    </div>
+    
+    
+    <div class="row col-12 d-flex justify-content-center sidebar-content" *ngIf="notifications.length ==0">
+    
+        <h4 style="text-align: center; padding:1.5vw !important;">No messages.</h4>
+    </div>
+    <div class="row col-12 d-flex justify-content-center sidebar-header" style="top:2vh;" *ngIf = "!this.route.includes(this.subroute)">
+        <h5 class="sidebar-text">Patients</h5>
+     </div>
+
+     <div class="" *ngIf="!this.route.includes(this.subroute)" style = " height: 25vh; overflow-y:auto; padding:0%; margin:5% 10% 0% 10% ; width: 80%;">
+            
+        <app-notification *ngFor="let patient of patients; index as i;" 
+        [name] = "patient.Name" 
+        [messageType] = "4"
+        [time] = ""
+        (click) = "navigateToUser(patient.Name)"></app-notification>
+      
+    </div>
+
+   
+    
+</div>
+<div class="chatCont" (click)="chatOpen()">
+    <div class="chat">
+        <h5 style="color:white; padding: 0%; margin: 0%;">Chat</h5>
+    </div>
+</div>
