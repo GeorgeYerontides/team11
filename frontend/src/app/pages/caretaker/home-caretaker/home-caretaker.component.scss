@@ -5,6 +5,7 @@
 .my-nav-container{
     padding-right:20px;
     align-items: center;
+
     
 }
 
@@ -12,15 +13,32 @@
     text-align:right;
     color:white;
     margin:0;
-    font-size:1.5vw;
+    padding: 0%;
+    font-size:2vw;
 }
 
 .navIcon{
-    padding-left:  0.5vw;
+    padding-left:  1vw;
     font-size:2vw;
     text-align: center;
     vertical-align: middle;
     color:white;
 
 }
+.mylink:hover{
+    text-decoration: underline;
+    font-weight: 500;
+}
 
+.alertcont{
+    height: 10%; 
+    width:100%
+}
+
+.alertmsg{
+
+    position:fixed; 
+    margin-bottom: 10%; 
+    top:8%;   
+    z-index:100;
+}
