@@ -20,6 +20,7 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     TasksComponent,
     ItemShopComponent,
     ItemPreviewComponent,
+   
   
   ],
   imports: [
@@ -27,7 +28,7 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CaretakerModule
+    CaretakerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
