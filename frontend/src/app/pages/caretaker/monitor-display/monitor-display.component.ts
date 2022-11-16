@@ -8,10 +8,7 @@ import { Component, Input,OnInit } from '@angular/core';
 export class MonitorDisplayComponent implements OnInit {
   @Input() typeMon: any;
   constructor() { }
-  test: string = "aa";
   ngOnInit(): void {
-    console.log(this.typeMon);
-    this.test = this.typeMon;
   }
 
 }

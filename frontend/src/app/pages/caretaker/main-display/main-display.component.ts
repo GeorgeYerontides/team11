@@ -1,4 +1,5 @@
 import { Component, Input,OnInit } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { MonitorDisplayComponent } from '../monitor-display/monitor-display.component';
 
 @Component({
@@ -8,9 +9,14 @@ import { MonitorDisplayComponent } from '../monitor-display/monitor-display.comp
 })
 export class MainDisplayComponent implements OnInit {
   @Input() patientName: string | undefined;
-  constructor() { }
+  constructor(private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
   }
 
+  navigateToPatient(){
+    var path= this.patientName;
+    console.log(path);
+    this.router.navigate([path], {relativeTo: this.route});
+  }
 }

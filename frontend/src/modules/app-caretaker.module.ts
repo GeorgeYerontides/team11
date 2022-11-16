@@ -2,25 +2,25 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { MainDisplayComponent } from '../app/pages/main-display/main-display.component';
-import { MonitorDisplayComponent } from '../app/pages/monitor-display/monitor-display.component';
-import { PatientComponent } from '../app/pages/patient/patient.component';
+import { MainDisplayComponent } from '../app/pages/caretaker/main-display/main-display.component';
+import { MonitorDisplayComponent } from '../app/pages/caretaker/monitor-display/monitor-display.component';
 import { SidebarComponent } from '../app/pages/sidebar/sidebar.component';
 import { NotificationComponent } from '../app/pages/message/notification/notification.component';
 
-import { PatientDashboardComponent } from 'src/app/pages/main-display/patient-dashboard/patient-dashboard.component';
+import { PatientDashboardComponent } from 'src/app/pages/caretaker/main-display/patient-dashboard/patient-dashboard.component';
 import { CaretakerRoutingModule } from './app-caretaker-routing.module';
-import { HomeCaretakerComponent } from 'src/app/pages/home-caretaker/home-caretaker/home-caretaker.component';
+import { HomeCaretakerComponent } from 'src/app/pages/caretaker/home-caretaker/home-caretaker.component';
+import { PatientObserveScreenComponent } from 'src/app/pages/caretaker/patient-observe-screen/patient-observe-screen.component';
 
 @NgModule({
     declarations: [
         HomeCaretakerComponent,
         MainDisplayComponent,
         MonitorDisplayComponent,
-        PatientComponent,
         SidebarComponent,
         NotificationComponent,
         PatientDashboardComponent,
+        PatientObserveScreenComponent,
     ],
     imports: [
         RouterModule,
@@ -30,10 +30,11 @@ import { HomeCaretakerComponent } from 'src/app/pages/home-caretaker/home-careta
         HomeCaretakerComponent,
         MainDisplayComponent,
         MonitorDisplayComponent,
-        PatientComponent,
+    
         SidebarComponent,
         NotificationComponent,
-        PatientDashboardComponent
+        PatientDashboardComponent,
+        PatientObserveScreenComponent,
     ]
   })
 
