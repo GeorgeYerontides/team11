@@ -1,2 +1,107 @@
-<p>patient-dashboard works!</p>
-{{this.currUser.Name}}
+<div class="myheader">
+    <h2>
+        Patient Information for {{currUser.Name}}
+    </h2>
+</div>
+<div  style="display:flex;  margin: 0% 0% 0% 0% ; width: 100%; height:90%;">
+    <div class="col-4 zero left-col">
+        <div class="elderProf" >
+            <div class="monitor_cont embed-responsive embed-responsive-1by1">
+                <iframe class="embed-responsive-item video-fluid" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" style="height: 100 !important; width: 100%; border-radius: 10px;" ></iframe>
+            </div>
+            <div style="width:100%; height:15%; display:flex">
+                <div style=" margin:0%; padding: 0%; width: 50%; display: flex;     align-items: center; justify-content: center;  margin-top: 5%;">
+                    <i class="fas fa-video navIcon" style="font-size: 2vw;"></i>
+                    <p style="margin-bottom: 0%; margin-left:2%; font-size: 1.5vw;">Video Call</p>
+                </div>
+                <div style=" margin:0%; padding: 0%; width: 50%; display: flex;     align-items: center; justify-content: center; margin-top: 5%;">
+                    <i class="fas fa-comment navIcon" style="font-size: 2vw;"></i>
+                    <p style="margin-bottom: 0%; margin-left:2%; font-size: 1.5vw;;">Open Chat</p>
+                </div>
+            </div>
+        </div>
+        <!--physique-->
+        <div class="vitalProf" style="   margin: 5% 0% 5% 0%;" >
+            <div class="componentHeader" >
+                <h4 class="componentHeaderTitle">Vitals Information</h4>
+            </div>
+            <div class="currInfo" style="border: 1px solid #5356B6; border-radius:25px;">
+                <div class ="vitalContentL" style="align-items: flex-start;">
+                    <p class="infoTextL">Age:</p>
+                    <p class="infoTextL">Weight:</p>
+                    <p class="infoTextL">Height:</p>
+                   
+
+                </div>
+                <div class ="vitalContentR" style="align-items: flex-end;">
+                    <p class="infoTextR">{{Age}} yr</p>
+                    <p class="infoTextR">{{Weight}} kg</p>
+                    <p class="infoTextR">{{Height}} m</p>
+                   
+
+                </div>
+            </div>
+
+        </div>
+        <div class="vitalProf"  >
+            <div class="componentHeader" >
+                <h4 class="componentHeaderTitle">Emergency contact</h4>
+            </div>
+            <div class="currInfo" style="border: 1px solid #5356B6; border-radius:25px;">
+                <div class ="vitalContent" style="align-items: flex-start;">
+                    <p class="infoTextL">{{emergencyName}}</p>
+                    <div style="display:flex;    margin: 2% 0% 2% 5%; align-items: center">
+                        <i class="fas fa-phone " style="font-size: 2.5vw; "></i>
+                        <p class="infoText">{{emergencyPhone}}</p>
+        
+                    </div>
+                    <div style="display:flex;    margin-left: 5%; align-items: center">
+                        <i class="fas fa-envelope " style="font-size: 2.5vw;  "></i>
+                        <p class="infoText">{{emergencyMail}}</p>
+        
+                    </div>
+                    
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-4 zero left-col">
+        <div class="vitalProf" >
+            <div class="componentHeader" >
+                <h4 class="componentHeaderTitle">Physique</h4>
+            </div>
+            <div class="currInfo embed-responsive embed-responsive-1by1" style="border: 1px solid #5356B6; border-radius:25px;">
+                <div class ="vitalContentL" style="align-items: flex-start;">
+                    <p class="infoTextL">Heart rate:</p>
+                    <p class="infoTextL">SpO2:</p>
+                    <p class="infoTextL">Stress:</p>
+                    <p class="infoTextL">Location:</p>
+
+                </div>
+                <div class ="vitalContentR" style="align-items: flex-end;">
+                    <p class="infoTextR">{{heartRate}} bpm</p>
+                    <p class="infoTextR">{{SpO2}}%</p>
+                    <p class="infoTextR">{{stress}}</p>
+                    <p class="infoTextR">{{location}}</p>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="physique" >
+            <div class="componentHeader" >
+                <h4 class="componentHeaderTitle">Physique</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-4 zero left-col">
+        <div class="vitalProf" >
+            <div style="width:100%; height:15%; background-color: #5356B6; border-radius: 10px 10px 0px 0px;" ></div>
+            <div class="currInfo embed-responsive embed-responsive-1by1">
+            </div>
+
+        </div>
+    </div>
+</div>

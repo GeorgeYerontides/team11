@@ -1,0 +1,143 @@
+.myheader{
+    height:7vh; 
+    width:100%; 
+    background-color:#DFE0F2; 
+    margin-bottom: 1%; 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+}
+.zero{
+ 
+    margin: 0% 0% 0% 0% ;
+    width: 100%;
+    height: 100%;
+}
+
+.left-col{
+    display:flex; 
+    flex-direction: column;
+}
+
+.elderProf{
+    width:100%; 
+    height:33%; 
+    background-color: #DFE0F2; 
+ 
+    border-radius: 10px;
+    padding:2%;
+    border: 1px solid #999BD4;;
+}
+
+
+
+.physique{
+    width:100%; 
+    height:70%; 
+    background-color: gold;
+    margin: 5% 0% 0% 0%;
+    border-radius: 10px;
+}
+
+.information{
+    width:100%; 
+    height:33%; 
+    background-color: palevioletred;
+}
+.monitor_cont{
+    width:100%; 
+    height:75%;
+    margin-bottom: 1%; 
+    background-color: aliceblue;
+}
+
+.currInfo{
+    width:95%; 
+    height:70%;
+    margin:2.5%;
+    background-color: aliceblue;
+    display: flex;
+}
+
+.vitalProf{
+    width:100%; 
+    height:33%; 
+    background-color: #DFE0F2; 
+ 
+    border-radius: 10px;
+    padding:0%;
+    border: 1px solid #999BD4;;
+}
+
+.vitalContentL{
+    width:50%; 
+    height:100%; 
+    margin:0%; 
+
+    display:flex; 
+    flex-direction: column;
+    padding:2%;
+    justify-content: space-between;
+    
+}
+
+.infoTextL{
+    font-size: 1.5vw;
+    margin-bottom: 0%;
+    margin-left: 5%;
+    font-weight: 700;
+}
+
+
+
+.vitalContentR{
+    width:50%; 
+    height:100%; 
+    margin:0%; 
+    display:flex; 
+    flex-direction: column;
+    padding:2%;
+    justify-content: space-between;
+
+  
+}
+
+.infoTextR{
+    font-size: 1.5vw;
+    margin-bottom: 0%;
+    margin-right: 5%;
+}
+
+.componentHeader{
+    width:100%; 
+    height:5vh; 
+    background-color: #5356B6; 
+    border-radius: 10px 10px 0px 0px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.componentHeaderTitle{
+    margin-bottom: 0%;
+    color:white;
+}
+
+.vitalContent{
+    width:100%; 
+    height:100%; 
+    margin:0%; 
+
+    display:flex; 
+    flex-direction: column;
+    padding:2%;
+    justify-content: space-between;
+
+}
+
+
+.infoText{
+    font-size: 1.5vw;
+    margin-bottom: 0%;
+    margin-left: 1vw;
+}
