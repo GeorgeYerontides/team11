@@ -22,9 +22,6 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     TasksComponent,
     ItemShopComponent,
     ItemPreviewComponent,
-    
-   
-    
    
   
   ],
