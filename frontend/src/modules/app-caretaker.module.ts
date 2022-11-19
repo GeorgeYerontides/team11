@@ -11,6 +11,10 @@ import { PatientDashboardComponent } from 'src/app/pages/caretaker/main-display/
 import { CaretakerRoutingModule } from './app-caretaker-routing.module';
 import { HomeCaretakerComponent } from 'src/app/pages/caretaker/home-caretaker/home-caretaker.component';
 import { PatientObserveScreenComponent } from 'src/app/pages/caretaker/patient-observe-screen/patient-observe-screen.component';
+import { MedicalBoxComponent } from 'src/app/pages/caretaker/main-display/medical-box/medical-box.component';
+import { RoutineBoxComponent } from 'src/app/pages/caretaker/main-display/routine-box/routine-box.component';
+
+
 
 @NgModule({
     declarations: [
@@ -21,6 +25,8 @@ import { PatientObserveScreenComponent } from 'src/app/pages/caretaker/patient-o
         NotificationComponent,
         PatientDashboardComponent,
         PatientObserveScreenComponent,
+        MedicalBoxComponent,
+        RoutineBoxComponent
     ],
     imports: [
         RouterModule,
@@ -35,6 +41,8 @@ import { PatientObserveScreenComponent } from 'src/app/pages/caretaker/patient-o
         NotificationComponent,
         PatientDashboardComponent,
         PatientObserveScreenComponent,
+        MedicalBoxComponent,
+        RoutineBoxComponent
     ]
   })
 

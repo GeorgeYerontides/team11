@@ -14,6 +14,7 @@ import { CaretakerModule } from '../modules/app-caretaker.module';
 
 
 
+
 const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     TasksComponent,
     ItemShopComponent,
     ItemPreviewComponent,
+    
+   
     
    
   

@@ -31,12 +31,13 @@
 
 
 
-.physique{
+.medicalHistory{
     width:100%; 
     height:70%; 
-    background-color: gold;
+    background-color: white;
     margin: 5% 0% 0% 0%;
     border-radius: 10px;
+    border: 1px solid #999BD4;;
 }
 
 .information{
@@ -140,4 +141,30 @@
     font-size: 1.5vw;
     margin-bottom: 0%;
     margin-left: 1vw;
+}
+
+.medButton{
+    width:100%; 
+    height: 5vh; 
+    background-color: #EEDFF2; 
+    font-size: 1.5vw; 
+    display:flex; 
+    padding: 0%;
+    justify-content: center;
+    align-content: normal;
+    border-radius: 0px !important;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
