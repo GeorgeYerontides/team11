@@ -11,7 +11,7 @@ import { PatientService } from 'src/app/global/services/patient/patients.service
 })
 export class SidebarComponent implements OnInit {
   public subroute:string = "";
-  public route: string = "/observe/"
+  public route: string = "/observe/users"
   public patients: User[] = [];
 
   public notifications:Message[] = [
