@@ -6,9 +6,14 @@ import { PatientDashboardComponent } from "src/app/pages/caretaker/main-display/
 // :id allows us to pass a variable to our route without the : the route is
 // would be navigating to literaly /patient/id
 const routes: Routes = [
-    { path: '', redirectTo: '/observe', pathMatch: 'full' },
-    { path: 'observe', component: PatientObserveScreenComponent},
-    { path: 'observe/:name', component: PatientDashboardComponent}
+    { path: '', redirectTo: '/observe/users', pathMatch: 'full' },
+    { path: 'observe', component: HomeCaretakerComponent,children:
+        [
+            { path: 'users', component: PatientObserveScreenComponent},
+            { path: ':name', component: PatientDashboardComponent}
+        ]
+    },
+    
 ];
 
 @NgModule({

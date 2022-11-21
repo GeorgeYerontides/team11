@@ -15,7 +15,7 @@ export class MainDisplayComponent implements OnInit {
   }
 
   navigateToPatient(){
-    var path= this.patientName;
+    var path= "../"+ this.patientName;
     console.log(path);
     this.router.navigate([path], {relativeTo: this.route});
   }
