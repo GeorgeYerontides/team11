@@ -9,10 +9,8 @@ import { environment } from 'src/environments/environment';
 import { ItemShopComponent } from './pages/item-shop/item-shop.component';
 import { ItemPreviewComponent } from './pages/item-shop/item-preview/item-preview.component';
 import { CaretakerModule } from '../modules/app-caretaker.module';
-
-
-
-
+import { CaretakerPhoneModule } from 'src/modules/app-caretaker-phone.module';
+import { HomephoneComponent } from './pages/caretaker_phone/homephone/homephone.component';
 
 
 const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
@@ -23,7 +21,7 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     ItemShopComponent,
     ItemPreviewComponent,
    
-  
+
   ],
   imports: [
     SocketIoModule.forRoot(socketIoConfig),
@@ -31,6 +29,7 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     AppRoutingModule,
     HttpClientModule,
     CaretakerModule,
+    CaretakerPhoneModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

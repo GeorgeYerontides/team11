@@ -1,0 +1,316 @@
+<div class="container top_bar text-center">
+    <a id="elder_name" name="elder_name" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Kostas Lamprou
+    </a>
+</div><br><br><br><br>
+
+<!-- Alert types for caretaker -->
+
+<div class="alert alert-danger" role="alert" id="new_alert_medium" style="display:none;">
+    <p id="alert_type"> New Alert : Kostas Lamprou require assistant</p>
+</div>
+
+<div class="alert alert-danger" role="alert" id="new_alert_high" style="display:none;">
+    <p id="alert_type"> Danger : Kostas Lamprou medical emergency</p>
+</div>
+
+<div class="container emergency_contacts" style="display:none;">
+    <div id="title_for_emergency">
+        <p id="emergency_numbers_title">Emergency Numbers</p>
+        <button id="emergency_numbers_exit">X</button>
+    </div><br><br>
+    <button id="alert_doctor">Alert Doctor</button><br><br>
+    <button id="call_ambulance">Call Ambulance</button><br><br>
+    <button id="call_childs">Call Childs</button>
+</div>
+
+
+<!-- Vital Status and Location -->
+
+<div class="container location vital_status">
+    <p>Vital Status : Normal</p>
+    <p> Location : Living Room</p>
+</div><br>
+
+<!-- Detailed Information Menu Button -->
+
+<div class="container title_information_div">
+<button id="title_information"> Detailed Information</button>
+</div><br>
+
+<!-- Menu Buttons List Div -->
+
+<div class="container expand_detailed_information" style="display:none;">
+    <button id="title_information_in_expand"> Detailed Information</button><br><br>
+    <button class="buttons_detailed_information">Detailed Vitals</button><br><br>
+    <button class="buttons_detailed_information">Patient Information</button><br><br>
+    <button class="buttons_detailed_information">Medication</button><br><br>
+    <button class="buttons_detailed_information">Back</button><br><br>
+</div>
+
+<!-- Details for Elder List Div -->
+
+<div class="container detailed_vitals" style="display:none;">
+    <button id="title_information_in_expand"> Detailed Vitals</button><br><br>
+    <div class="container sub-box"><br>
+        
+        <div class="row">
+            <div class="column detailed_vitals_left_side">
+                <p>Heart Rate :</p>
+            </div>
+            <div class="column detailed_vitals_left_side">
+                <p>81 ❤️</p>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="column detailed_vitals_left_side">
+                <p>SpO2 :</p>
+            </div>
+            <div class="column detailed_vitals_left_side">
+                <p>96 %</p>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="column detailed_vitals_left_side">
+                <p>Stress :</p>
+            </div>
+            <div class="column detailed_vitals_left_side">
+                <p>Normal</p>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="column detailed_vitals_left_side">
+                <p>Location :</p>
+            </div>
+            <div class="column detailed_vitals_left_side">
+                <p>Living Room</p>
+            </div>
+        </div>
+    </div><br>
+    <button class="buttons_detailed_information">Back</button><br><br>
+</div>
+
+
+<!-- Personal Information List Div -->
+
+<div class="container detailed_vitals" id="patient_information" style="display:none;">
+    <button id="title_information_in_expand"> Patient information</button><br><br>
+    <div class="container sub_box"><br>
+        
+        <div class="row">
+            <div class="column detailed_vitals_left_side">
+                <p>Age :</p>
+            </div>
+            <div class="column detailed_vitals_left_side">
+                <p>75 yo</p>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="column detailed_vitals_left_side">
+                <p>Weight :</p>
+            </div>
+            <div class="column detailed_vitals_left_side">
+                <p> 68 kg</p>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="column detailed_vitals_left_side">
+                <p>Height :</p>
+            </div>
+            <div class="column detailed_vitals_left_side">
+                <p>163 cm</p>
+            </div>
+        </div>
+        
+    </div><br>
+    <button class="buttons_detailed_information">Back</button><br><br>
+</div>
+
+<!-- Medication List Div -->
+
+<div class="container events_list" id="medication_events" style="display:none;">
+    <button id="title_medication_in_expand">Medication</button><br><br>
+    <div class="container event_box">
+        <div class="container title_of_event">
+            <label id="event_name">Dibetes</label>
+            <input id="event_checkbox" type="checkbox">
+        </div>
+        <p id="event_desc">Insulin shot every morning</p>
+    </div>
+
+    <br>
+    <div class="container event_box">
+        <div class="container title_of_event">
+            <label id="event_name">Heard Disease</label>
+            <input id="event_checkbox" type="checkbox">
+        </div>
+        <p id="event_desc">Tambocor pills 100mg 1 each day after lunch</p>
+    </div>
+
+    <br>
+    <div class="container event_box">
+        <div class="container title_of_event">
+            <label id="event_name">Arthritis</label>
+            <input id="event_checkbox" type="checkbox">
+        </div>
+        <p id="event_desc">Diclofenac pills 200mg 1 each day</p>
+    </div>
+</div>
+
+
+<!-- Missed Notifications Screen -->
+
+<div class="container notifactions_top_bar" style="display:none;">
+    <br>
+    <button id="exit_from_notifications">X</button>
+    <p id="Notifications_p">Notifications</p>
+</div>
+
+<div class="container notifications_list" style="display:none;">
+    <div class="alert alert-danger" role="alert" id="New_notification">
+        <img id="elder_picture" src="lala.jpg" alt="Elder Picture">
+        <p id="notification_from">Kostas Lamprou</p><br>
+        <p id="type_of_notification">New message</p>
+        <p id="notification_time">  9:10 AM</p>
+    </div>
+
+    <div class="alert alert-danger" role="alert" id="New_notification">
+        <img id="elder_picture" src="lala.jpg" alt="Elder Picture">
+        <p id="notification_from">Kostas Lamprou</p><br>
+        <p id="type_of_notification">New Missed Call</p>
+        <p id="notification_time">  9:18 AM</p>
+    </div>
+</div>
+
+
+<!-- Missed Messages Screen -->
+
+<div class="container messages_top_bar" style="display:none;">
+    <br>
+    <button id="exit_from_messages">X</button>
+    <p id="messages_p">Messages</p>
+</div>
+
+<div class="container Messages_list" style="display:none;">
+    <div class="alert alert-danger New_Message" role="alert">
+        <img id="elder_picture" src="lala.jpg" alt="Elder Picture">
+        <p id="message_from">Kostas Lamprou</p>
+        <p id="message_time">  9:18 AM</p>
+        <p id="message_content">I would like to go for a walk</p>
+    </div>
+</div>
+
+<div class="container input_text_area" style="display:none;">
+    <input type="text" class="form-control" id="write_message" placeholder="Write here...">
+    <button id="send_message_btn">Send</button>
+</div>
+
+
+<!--  Income Call Div -->
+
+<div class="container incoming_call" style="display:none;">
+    <p id="type_of_call">Incoming Call</p>
+    <img id="elder_call_picture" src="lala.jpg" alt="Elder Picture">
+    <p id="call_from">Kostas Lamprou</p>
+    <button id="decline_call_btn">Decline</button>&nbsp;&nbsp;&nbsp;
+    <button id="answer_call_btn">Answer</button>
+</div>
+
+
+<!-- Live Video call -->
+
+<img id="live_call_elder" src="video_call_resized.jpg" alt="Elder Picture" style="display:none;">
+<button id="done_call_btn" style="display:none;">📞</button>
+<img id="live_call_caretaker" src="caretaker_image_resized.jpg" alt="Carataker Picture" style="display:none;">
+
+
+
+
+<!-- List of Routine Events -->
+
+<br>
+<div class="container events_list">
+    <p id="title_routine">Routine</p>
+    <p id="completed_events">Routine Completed : 0/8</p>
+
+    <br>
+    <div class="container event_box">
+        <div class="container title_of_event">
+            <label id="event_name">Morning Walk</label>
+            <input id="event_checkbox" type="checkbox">
+        </div>
+        <p id="event_time">7:00 AM - 8:00 AM</p>
+        <p id="event_help">No help required</p>
+    </div>
+
+    <br>
+    <div class="container event_box">
+        <div class="container title_of_event">
+            <label id="event_name">Take Insuline Shot</label>
+            <input id="event_checkbox" type="checkbox">
+        </div>
+        <p id="event_time">9:00 AM</p>
+        <p id="event_help">Help required</p>
+    </div>
+
+    <br>
+    <div class="container event_box">
+        <div class="container title_of_event">
+            <label id="event_name">Eat Breakfast</label>
+            <input id="event_checkbox" type="checkbox">
+        </div>
+        <p id="event_time">9:15 AM - 9:45 AM</p>
+        <p id="event_help">No help required</p>
+    </div>
+
+    <br>
+    <div class="container event_box">
+        <div class="container title_of_event">
+            <label id="event_name">Check Blood Pressure</label>
+            <input id="event_checkbox" type="checkbox">
+        </div>
+        <p id="event_time">10:00 AM</p>
+        <p id="event_help">No help required</p>
+    </div>
+
+    <br>
+    <div class="container event_box">
+        <div class="container title_of_event">
+            <label id="event_name">Watch TV</label>
+            <input id="event_checkbox" type="checkbox">
+        </div>
+        <p id="event_time">10:00 AM - 12:00 AM</p>
+        <p id="event_help">No help required</p>
+    </div>
+
+    <br>
+    <div class="container event_box">
+        <div class="container title_of_event">
+            <label id="event_name">Call Children</label>
+            <input id="event_checkbox" type="checkbox">
+        </div>
+        <p id="event_time">12:30 AM 1:15 PM</p>
+        <p id="event_help">No help required</p>
+    </div>
+
+    <br>
+    <div class="container event_box">
+        <div class="container title_of_event">
+            <label id="event_name">Rest Sleep</label>
+            <input id="event_checkbox" type="checkbox">
+        </div>
+        <p id="event_time">13:30 PM - 15:30 PM</p>
+        <p id="event_help">No help required</p>
+    </div>
+</div>
+<br><br><br>
+
+
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid"  id="navbar-menu">
+      <a class="navbar-brand" id="Messages_page" href="#">💬</a>
+      <a class="navbar-brand" id="Notifications_page" href="#">🔔</a>
+      <a class="navbar-brand" id="Alerts_page" href="#">⚠️</a>
+      <a class="navbar-brand" id="Video_Call_page" href="#">🎥</a>
+    </div>
+  </nav>
