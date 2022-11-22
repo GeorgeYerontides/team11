@@ -1,5 +1,7 @@
+
+
 <div class="container top_bar text-center">
-    <a id="elder_name" name="elder_name" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <a class="elder_name" name="elder_name" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Kostas Lamprou
     </a>
 </div><br><br><br><br>
@@ -34,14 +36,14 @@
 
 <!-- Detailed Information Menu Button -->
 
-<div class="container title_information_div">
-<button id="title_information"> Detailed Information</button>
+<div class="container title_information_div" *ngIf="information_div_btn">
+<button id="title_information" (click)="Information_btn()"> Detailed Information</button>
 </div><br>
 
 <!-- Menu Buttons List Div -->
 
-<div class="container expand_detailed_information" style="display:none;">
-    <button id="title_information_in_expand"> Detailed Information</button><br><br>
+<div class="container expand_detailed_information" *ngIf="expand_details_div">
+    <button id="title_information_in_expand" (click)="Detailed_menu_information()"> Detailed Information</button><br><br>
     <button class="buttons_detailed_information">Detailed Vitals</button><br><br>
     <button class="buttons_detailed_information">Patient Information</button><br><br>
     <button class="buttons_detailed_information">Medication</button><br><br>
@@ -52,7 +54,7 @@
 
 <div class="container detailed_vitals" style="display:none;">
     <button id="title_information_in_expand"> Detailed Vitals</button><br><br>
-    <div class="container sub-box"><br>
+    <div class="container sub_box"><br>
         
         <div class="row">
             <div class="column detailed_vitals_left_side">
@@ -225,7 +227,6 @@
 
 
 
-
 <!-- List of Routine Events -->
 
 <br>
@@ -301,7 +302,7 @@
         </div>
         <p id="event_time">13:30 PM - 15:30 PM</p>
         <p id="event_help">No help required</p>
-    </div>
+    </div><br>
 </div>
 <br><br><br>
 

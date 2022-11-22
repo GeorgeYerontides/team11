@@ -12,4 +12,18 @@ export class HomephoneComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  information_div_btn:boolean = true;
+  expand_details_div:boolean = false;
+
+    Information_btn(){
+        this.information_div_btn = false;
+        this.expand_details_div = true; 
+        
+    }
+    Detailed_menu_information(){
+      this.information_div_btn = true;
+      this.expand_details_div = false; 
+      
+  }
+
 }

@@ -21,15 +21,20 @@
         border-bottom-right-radius: 20px;
     }
 
-    #elder_name{
-        position: relative;
+    .elder_name{
         color:black;
         background-color: white;
-        top: 10px;
+        top: 70px;
+        font-size: 20px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     /* Vital Status and location divs */
     .location,.vital_status{
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
         height:70px;
         color:black;
         background-color: #5356b6;
@@ -41,6 +46,9 @@
     }
 
     .title_information_div{
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
         text-align: center;
         width: 85%;
     }
@@ -76,6 +84,9 @@
     }
 
     .expand_detailed_information{
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
         background-color: white;
         text-align: center;
         border: 1px solid #5356B6;
@@ -96,6 +107,9 @@
 
 
     .detailed_vitals{
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
         background-color: #bcbff5;
         text-align: center;
         border: 1px solid #5356B6;
@@ -104,17 +118,20 @@
     }
 
     .sub_box{
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
         background-color: white;
         text-align: left;
         border: 1px solid #5356B6;
         border-radius: 10px;
+        width:90%;
     }
 
 
     .detailed_vitals_left_side{
-        float: left;
         width: 50%;
-        text-align: left;
+        text-align: center;
         color: black;
         margin-top: -5%;
     }
@@ -138,7 +155,6 @@
         margin-left:10px;
     }
 
-
     
     /* Events div with boxes */
 
@@ -155,9 +171,9 @@
     }
     
     #title_routine{
-        border: 2px solid black;
+        border-bottom:solid rgb(1, 1, 1) 2px;
         background-color: #5356B6;
-        border-radius: 10px;
+        border-radius: 5px;
         color:white;
         font-size: 17px;
         text-align:center;
@@ -169,26 +185,20 @@
     }
 
 
-    .completed_events_title {
-        float: left;
-        width: 50%;
-        text-align: center;
-        background-color: #bcbff5;
-        color: black;
-        margin-top: -5%;
-    }
-
     #completed_events{
         background-color: #5356B6;
         color:black;
         text-align: center;
         width:100%;
         height:40px;
-        margin-top:-15px;
+        margin-top:-1px;
     }
       
 
     .event_box{
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
         width: 90%;
         height: 100px;
         border: 2px solid #5356B6;
@@ -204,20 +214,26 @@
         font-size: 18px;
     }
 
+    #event_name{
+        position: relative;
+        margin-left:15px;
+    }
+
     #event_checkbox{
         float:right;
         margin-top: 5px;
+        margin-right: 15px;
         width:22px;
         height:22px;
     }
 
     #event_time{
-        margin-top:5px;
+        margin-top:10px;
         margin-left:20px;
     }
 
     #event_help{
-        margin-top:-10px;
+        margin-top:0px;
         margin-left:20px;
         float:left;
     }
@@ -236,6 +252,7 @@
     #navbar-menu{
         background-color: #5356B6;
         width:100%;
+        height:3.5rem;
     }
 
     .notifactions_top_bar{
