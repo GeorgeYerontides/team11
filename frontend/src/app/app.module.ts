@@ -10,6 +10,7 @@ import { ItemShopComponent } from './pages/item-shop/item-shop.component';
 import { ItemPreviewComponent } from './pages/item-shop/item-preview/item-preview.component';
 import { CaretakerModule } from '../modules/app-caretaker.module';
 import { CaretakerPhoneModule } from 'src/modules/app-caretaker-phone.module';
+import { MagicalControllerComponent } from './pages/magical-controller/magical-controller.component';
 
 
 
@@ -20,7 +21,8 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     TasksComponent,
     ItemShopComponent,
     ItemPreviewComponent,
-
+    MagicalControllerComponent,
+   
    
 
   ],

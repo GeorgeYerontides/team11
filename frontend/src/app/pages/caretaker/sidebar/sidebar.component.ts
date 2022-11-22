@@ -47,9 +47,11 @@ export class SidebarComponent implements OnInit {
     });
 
     this.patients = patientService.getUsers();
+    
   }
 
   ngOnInit(): void {
+ 
   }
 
   addMessage(){
@@ -65,7 +67,7 @@ export class SidebarComponent implements OnInit {
   // this way values are not updated. With this if i navigate to an empty path and imediately to the path i originaly wanted
   // thus triggereing the an initialization of the component with a "hack"
   navigateToUser(username:string){
-    let path:string = "/observe/" + username;
+    let path:string = "/observe/" + username + "/main";
   
     this.router.navigateByUrl("/", { skipLocationChange: true }).then(() => {
       this.router.navigate([path]);

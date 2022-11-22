@@ -14,6 +14,8 @@ import { PatientObserveScreenComponent } from 'src/app/pages/caretaker/patient-o
 import { MedicalBoxComponent } from 'src/app/pages/caretaker/main-display/medical-box/medical-box.component';
 import { RoutineBoxComponent } from 'src/app/pages/caretaker/main-display/routine-box/routine-box.component';
 import { DashboardDisplayComponent } from 'src/app/pages/caretaker/main-display/dashboard-display/dashboard-display.component';
+import { EventOverviewComponent } from 'src/app/pages/caretaker/main-display/event-overview/event-overview.component';
+import { MedicalHistoryComponent } from 'src/app/pages/caretaker/main-display/medical-history/medical-history.component';
 
 
 
@@ -28,7 +30,10 @@ import { DashboardDisplayComponent } from 'src/app/pages/caretaker/main-display/
         PatientObserveScreenComponent,
         MedicalBoxComponent,
         RoutineBoxComponent,
-        DashboardDisplayComponent
+        DashboardDisplayComponent,
+        MedicalHistoryComponent,
+        EventOverviewComponent,
+    
     ],
     imports: [
         RouterModule,
@@ -45,7 +50,10 @@ import { DashboardDisplayComponent } from 'src/app/pages/caretaker/main-display/
         PatientObserveScreenComponent,
         MedicalBoxComponent,
         RoutineBoxComponent,
-        DashboardDisplayComponent
+        DashboardDisplayComponent,
+        MedicalHistoryComponent,
+        EventOverviewComponent,
+    
     ]
   })
 

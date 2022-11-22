@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { alertService } from 'src/app/global/services/patient/alert.service';
 
 
 @Component({
@@ -11,9 +12,9 @@ export class HomeCaretakerComponent implements OnInit {
   public subroute:string = "";  
   public route: string = "/observe/"
   
-  public alert:boolean = false; //toggle alert
+  public alert:boolean = true; //toggle alert
 
-  constructor(private router: Router) { 
+  constructor(private router: Router, private alertService:alertService) { 
     this.subroute = this.router.url; 
     this.router.events.subscribe((event:Event) =>
     {
@@ -32,8 +33,13 @@ export class HomeCaretakerComponent implements OnInit {
       
     })
    
+
   }
   ngOnInit(): void {
+    this.alertService.getValue().subscribe((value) => {
+      this.alert = value;
+      console.log('caretaker comp' + this.alert);
+    });
     
   }
 
