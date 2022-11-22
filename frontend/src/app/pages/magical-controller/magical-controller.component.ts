@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { alertService } from 'src/app/global/services/patient/alert.service';
+import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 
 @Component({
   selector: 'app-magical-controller',
@@ -8,12 +9,13 @@ import { alertService } from 'src/app/global/services/patient/alert.service';
 })
 export class MagicalControllerComponent implements OnInit {
 
-  constructor(private alert:alertService) { }
+  constructor(private alert:alertService, private socketService: SocketsService) { }
 
   ngOnInit(): void {
   }
   createAlert(){
-    this.alert.setValue(true);
+    // this.alert.setValue(true);
+    this.socketService.publish("alert_event", {name: "john", level: "yellow"});
   }
 
 }

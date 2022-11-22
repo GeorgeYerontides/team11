@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/global/models/patient/patient.model';
 import { PatientService } from 'src/app/global/services/patient/patients.service';
 
@@ -23,7 +23,7 @@ export class PatientDashboardComponent implements OnInit {
   maxEvents:number = 10;
   completedEvents:number = 3;
   public currUser:User ;
-  constructor(private patientService: PatientService, private route:ActivatedRoute) { 
+  constructor(private patientService: PatientService, private route:ActivatedRoute,private router:Router) { 
     let snapshot = this.route.snapshot;
     console.log("child ",snapshot.parent?.params['name']);
     console.log( snapshot.params['name']);
@@ -37,5 +37,8 @@ export class PatientDashboardComponent implements OnInit {
     this.currUser = this.patientService.getUser(name);
   }
 
+  navigateMed(){
+    this.router.navigate(["../medical_history"],);
+  }
 
 }
