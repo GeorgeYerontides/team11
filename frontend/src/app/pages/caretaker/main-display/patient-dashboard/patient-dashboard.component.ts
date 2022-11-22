@@ -20,15 +20,20 @@ export class PatientDashboardComponent implements OnInit {
   emergencyName:string ='Giorgos Lamprou';
   emergencyPhone:string ='6982841943';
   emergencyMail:string ='glamprou@gmail.com';
-  
+  maxEvents:number = 10;
+  completedEvents:number = 3;
   public currUser:User ;
   constructor(private patientService: PatientService, private route:ActivatedRoute) { 
-    let name = this.route.snapshot.params['name']
+    let snapshot = this.route.snapshot;
+    console.log("child ",snapshot.parent?.params['name']);
+    console.log( snapshot.params['name']);
+    let name = snapshot.parent?.params['name'];
     this.currUser = this.patientService.getUser(name);
   }
 
   ngOnInit(): void {
-    let name = this.route.snapshot.params['name']
+    let snapshot = this.route.snapshot;
+    let name = snapshot.parent?.params['name'];
     this.currUser = this.patientService.getUser(name);
   }
 
