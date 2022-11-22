@@ -19,18 +19,15 @@ export class HomeCaretakerComponent implements OnInit {
     {
       if (event instanceof NavigationStart) {
       
-        console.log('start');
+  
         this.subroute = this.router.url; 
-        console.log(this.router.url);
-        console.log(this.route.includes(this.subroute));
+    
       }
       if (event instanceof NavigationEnd) {
       
-        console.log('end');
+
         this.subroute = this.router.url; 
-        console.log(this.router.url);
-        console.log(this.route);
-        console.log(this.route.includes(this.subroute));
+      
       }
       
     })
@@ -41,7 +38,7 @@ export class HomeCaretakerComponent implements OnInit {
   }
 
   navigateHome(){
-    this.router.navigate(["/observe"],);
+    this.router.navigate(["/observe/users"],);
   }
 
 }

@@ -168,3 +168,35 @@
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
+
+.routineList{
+    width:100%; 
+    height:85vh; 
+    background-color: white; 
+ 
+    border-radius: 10px;
+    padding:0%;
+    border: 1px solid #999BD4;;
+}
+
+.routineContent{
+    height:100%;
+    width: 90%;
+    margin: 5% 5% 5% 5%;
+    overflow-y: auto;
+    max-height: 66vh;
+    background-color: white;
+}
+
+.eventButton{
+    width:50%; 
+    height: 5vh; 
+    background-color: #EEDFF2; 
+    font-size: 1.5vw; 
+    display:flex; 
+    padding: 0%;
+    justify-content: center;
+    align-content: normal;
+    margin: 0%;
+    border-radius: 0px !important;
+}

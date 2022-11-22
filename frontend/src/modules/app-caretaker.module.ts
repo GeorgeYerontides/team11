@@ -13,6 +13,7 @@ import { HomeCaretakerComponent } from 'src/app/pages/caretaker/home-caretaker/h
 import { PatientObserveScreenComponent } from 'src/app/pages/caretaker/patient-observe-screen/patient-observe-screen.component';
 import { MedicalBoxComponent } from 'src/app/pages/caretaker/main-display/medical-box/medical-box.component';
 import { RoutineBoxComponent } from 'src/app/pages/caretaker/main-display/routine-box/routine-box.component';
+import { DashboardDisplayComponent } from 'src/app/pages/caretaker/main-display/dashboard-display/dashboard-display.component';
 
 
 
@@ -26,7 +27,8 @@ import { RoutineBoxComponent } from 'src/app/pages/caretaker/main-display/routin
         PatientDashboardComponent,
         PatientObserveScreenComponent,
         MedicalBoxComponent,
-        RoutineBoxComponent
+        RoutineBoxComponent,
+        DashboardDisplayComponent
     ],
     imports: [
         RouterModule,
@@ -42,7 +44,8 @@ import { RoutineBoxComponent } from 'src/app/pages/caretaker/main-display/routin
         PatientDashboardComponent,
         PatientObserveScreenComponent,
         MedicalBoxComponent,
-        RoutineBoxComponent
+        RoutineBoxComponent,
+        DashboardDisplayComponent
     ]
   })
 
