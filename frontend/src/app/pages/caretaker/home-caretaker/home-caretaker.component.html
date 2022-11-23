@@ -21,8 +21,12 @@
     <app-sidebar></app-sidebar>
   </div>
   <div class="col-lg-9  col-xl-10 col-md-9  d-none	d-sm-none d-md-block" style=" padding:0% ; margin: 0%;  height: 95vh;  overflow-y: auto; ">
-    <div  class = "alertcont"  *ngIf="alert"  style="height: 5vh; width:100%;    margin-bottom: 2vh; " ><br>
-      <div class ="alertcont alertmsg"></div>
+    <div  class = "alertcont" *ngIf="alert"   [ngStyle]="{background: alertDecoration }" >
+      <div class ="alertcont alertmsg">
+        <div class="msgContainer" (click) = "navigateToUser(alertPatientName)">
+          <h5 style ="margin-bottom: 0%;">{{alertMessage}}</h5>
+        </div>
+      </div>
     </div>
     
     <router-outlet></router-outlet>

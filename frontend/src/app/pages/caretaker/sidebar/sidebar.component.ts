@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Message } from 'src/app/global/models/messages/message.model';
 import { User } from 'src/app/global/models/patient/patient.model';
+import { NotificationService } from 'src/app/global/services/notifications/notification.service';
 import { PatientService } from 'src/app/global/services/patient/patients.service';
+import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,20 +15,15 @@ export class SidebarComponent implements OnInit {
   public subroute:string = "";
   public route: string = "/observe/users"
   public patients: User[] = [];
+  public notifications:Message[] =[];
 
-  public notifications:Message[] = [
-    new Message( 'Kostas', 'test', 'test',1,'09:15'),
-    new Message( 'Kostas', 'test', 'test', 2,'09:00'),
-    new Message( 'Kostas', 'test', 'test', 2,'09:00'),
-
-    new Message( 'Kostas', 'test', 'test', 2,'09:00'),
-    new Message( 'Kostas', 'test', 'test', 2,'09:00')
-
-  ];
 
   
-  constructor(private router: Router, patientService: PatientService) { 
-
+  constructor(private router: Router, patientService: PatientService,private notificationService:NotificationService, private socketService:SocketsService) { 
+    this.socketService.subscribe('newNotification',(data:any) => {
+      this.notifications = this.notificationService.getNotifications();
+    })
+    this.notifications = this.notificationService.getNotifications();
     this.subroute = this.router.url; 
     this.router.events.subscribe((event:Event) =>
     {
@@ -54,9 +51,7 @@ export class SidebarComponent implements OnInit {
  
   }
 
-  addMessage(){
-    this.notifications.push(new Message('test', 'test', 'test',3,'test'));
-  }
+
 
   chatOpen(){
       console.log("chat open");
