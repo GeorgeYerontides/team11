@@ -27,8 +27,12 @@ export class NotificationService {
       }
 
       public addNewNotification(name:string, desc: string, type:number){
-        this.notifications.unshift(new Message(name, desc,type,'test'));
-        console.log('testing');
+        let now = new Date();
+        let hours = now.getHours().toString().padStart(2, '0');
+        let min = now.getMinutes().toString().padStart(2, '0');
+        let currTime = hours+':'+min;
+        this.notifications.unshift(new Message(name, desc,type,currTime));
+        console.log(hours, ' ', min);
         this.socketService.publish("newNotification",{});
 
       }

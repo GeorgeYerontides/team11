@@ -19,7 +19,7 @@ export class HomeCaretakerComponent implements OnInit {
   public alertMessage:string="";
   public alert:boolean = true; //toggle alert
   public alertPatientName:string = '';
-  public isClicked:boolean = false;
+  public isClicked:boolean = true;
 
   constructor(private router: Router, private alertService:alertService, private socketService: SocketsService,private notificationService:NotificationService) { 
     this.subroute = this.router.url; 
@@ -58,7 +58,8 @@ export class HomeCaretakerComponent implements OnInit {
 
       if (this.isClicked === false)
       {
-        this.notificationService.addNewNotification(this.alertPatientName,"test",3);
+        let firstName = this.alertPatientName.split(" ",2)[0];
+        this.notificationService.addNewNotification(firstName,"test",4);
       }
       console.log("Event arrived");
       this.alert = true;
@@ -66,7 +67,7 @@ export class HomeCaretakerComponent implements OnInit {
 
       if (data.level === "yellow")
       {
-        this.alertMessage = "New Alert: " +  data.message + " for "+ data.patient + data.time;
+        this.alertMessage = "New Alert: " +  data.message + " for "+ data.patient +" "+ data.time;
       }
       if (data.level === "red")
       {
@@ -78,6 +79,7 @@ export class HomeCaretakerComponent implements OnInit {
       }
       this.alertPatientName = data.patient;
       this.alertDecoration = data.level;
+      this.isClicked = false;
     });
   }
 
