@@ -29,7 +29,12 @@
       </div>
     </div>
     
-    <router-outlet></router-outlet>
+
+    
+    <router-outlet style="z-index: 0;">
+     
+    </router-outlet>
+     <app-modals *ngIf="modal"></app-modals>  
   </div>
 </div>
   

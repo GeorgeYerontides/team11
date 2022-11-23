@@ -308,7 +308,9 @@
 
 
     #New_notification{
-        height:120px;
+        margin-left: 5%;
+        width:80%;
+        height:auto;
     }
 
 
@@ -341,12 +343,16 @@
 
     .Messages_list{
         position: absolute;
-        top:100px;
+        top:80px;
         background-color: white;
+        height:800px;
     }
 
-    #New_Message{
+    .New_Message{
         height:auto;
+        width: auto;
+        background-color: #e8d2ef;
+        border-radius: 10px;
     }
 
     #elder_picture,#message_from,#message_time{
@@ -584,4 +590,5 @@
     #Notifications_page:focus,#Messages_page:focus,#Alerts_page:focus,#Video_Call_page:focus{
         background-color: #e8d2ef;
     }
+
 }

@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Alert } from 'src/app/global/models/alert/alert.model';
 import { Message } from 'src/app/global/models/messages/message.model';
+import { ModalService } from 'src/app/global/services/modals/notification-modal.service';
 import { NotificationService } from 'src/app/global/services/notifications/notification.service';
 import { alertService } from 'src/app/global/services/patient/alert.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
@@ -20,8 +21,12 @@ export class HomeCaretakerComponent implements OnInit {
   public alert:boolean = true; //toggle alert
   public alertPatientName:string = '';
   public isClicked:boolean = true;
-
-  constructor(private router: Router, private alertService:alertService, private socketService: SocketsService,private notificationService:NotificationService) { 
+  public modal:boolean = false;
+  
+  constructor(private router: Router, private alertService:alertService, 
+    private socketService: SocketsService,private notificationService:NotificationService,
+    private modalService:ModalService) { 
+  
     this.subroute = this.router.url; 
     this.router.events.subscribe((event:Event) =>
     {
@@ -43,6 +48,11 @@ export class HomeCaretakerComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    this.socketService.subscribe('modalEvent',() =>{
+      console.log('socket ',this.modalService.showDialog);
+      this.modal = this.modalService.showDialog;
+    })
+
     this.alertService.getValue().subscribe((value) => {
       this.alert = value;
       console.log('caretaker comp' + this.alert);
@@ -98,5 +108,7 @@ export class HomeCaretakerComponent implements OnInit {
   navigateHome(){
     this.router.navigate(["/observe/users"],);
   }
+
+
 
 }

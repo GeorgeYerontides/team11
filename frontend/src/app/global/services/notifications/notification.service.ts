@@ -36,5 +36,11 @@ export class NotificationService {
         this.socketService.publish("newNotification",{});
 
       }
+
+      public deleteNotification(index:number){
+        this.notifications.splice(index,1)
+        this.socketService.publish("newNotification",{});
+        console.log(this.notifications);
+      }
  
 }

@@ -35,7 +35,6 @@ import { ModalsComponent } from 'src/app/pages/caretaker/modals/modals.component
         MedicalHistoryComponent,
         EventOverviewComponent,
         ModalsComponent,
-
     
     ],
     imports: [
@@ -57,7 +56,6 @@ import { ModalsComponent } from 'src/app/pages/caretaker/modals/modals.component
         MedicalHistoryComponent,
         EventOverviewComponent,
         ModalsComponent,
-
     
     ]
   })

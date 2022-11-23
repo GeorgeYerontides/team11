@@ -29,7 +29,7 @@
 
 <!-- Vital Status and Location -->
 
-<div class="container location vital_status">
+<div class="container location vital_status" *ngIf="vital_status_div">
     <p>Vital Status : Normal</p>
     <p> Location : Living Room</p>
 </div><br>
@@ -38,21 +38,20 @@
 
 <div class="container title_information_div" *ngIf="information_div_btn">
 <button id="title_information" (click)="Information_btn()"> Detailed Information</button>
-</div><br>
+</div>
 
 <!-- Menu Buttons List Div -->
 
 <div class="container expand_detailed_information" *ngIf="expand_details_div">
     <button id="title_information_in_expand" (click)="Detailed_menu_information()"> Detailed Information</button><br><br>
-    <button class="buttons_detailed_information">Detailed Vitals</button><br><br>
-    <button class="buttons_detailed_information">Patient Information</button><br><br>
-    <button class="buttons_detailed_information">Medication</button><br><br>
-    <button class="buttons_detailed_information">Back</button><br><br>
+    <button class="buttons_detailed_information" (click)="Detailed_vitals_information()">Detailed Vitals</button><br><br>
+    <button class="buttons_detailed_information" (click)="Personal_information()">Patient Information</button><br><br>
+    <button class="buttons_detailed_information" (click)="Medical_information()">Medication</button><br><br>
 </div>
 
 <!-- Details for Elder List Div -->
 
-<div class="container detailed_vitals" style="display:none;">
+<div class="container detailed_vitals" *ngIf="detailed_vitals_div">
     <button id="title_information_in_expand"> Detailed Vitals</button><br><br>
     <div class="container sub_box"><br>
         
@@ -89,13 +88,13 @@
             </div>
         </div>
     </div><br>
-    <button class="buttons_detailed_information">Back</button><br><br>
+    <button class="buttons_detailed_information" *ngIf="back_to_menu_btn" (click)="Back_to_Menu()">Back</button><br><br>
 </div>
 
 
 <!-- Personal Information List Div -->
 
-<div class="container detailed_vitals" id="patient_information" style="display:none;">
+<div class="container detailed_vitals" id="patient_information" *ngIf="elder_personal_information_div">
     <button id="title_information_in_expand"> Patient information</button><br><br>
     <div class="container sub_box"><br>
         
@@ -125,13 +124,14 @@
         </div>
         
     </div><br>
-    <button class="buttons_detailed_information">Back</button><br><br>
+    <button class="buttons_detailed_information" *ngIf="back_to_menu_btn" (click)="Back_to_Menu()">Back</button><br><br>
 </div>
 
 <!-- Medication List Div -->
 
-<div class="container events_list" id="medication_events" style="display:none;">
+<div class="container events_list" id="medication_events" *ngIf="medication_div">
     <button id="title_medication_in_expand">Medication</button><br><br>
+    <div>
     <div class="container event_box">
         <div class="container title_of_event">
             <label id="event_name">Dibetes</label>
@@ -156,28 +156,30 @@
             <input id="event_checkbox" type="checkbox">
         </div>
         <p id="event_desc">Diclofenac pills 200mg 1 each day</p>
+    </div><br>
     </div>
+    <button class="buttons_detailed_information" *ngIf="back_to_menu_btn" (click)="Back_to_Menu()">Back</button><br><br>
 </div>
 
 
 <!-- Missed Notifications Screen -->
 
-<div class="container notifactions_top_bar" style="display:none;">
+<div class="container notifactions_top_bar" *ngIf="top_bar_of_notifications">
     <br>
-    <button id="exit_from_notifications">X</button>
+    <button id="exit_from_notifications" (click)="back_to_HS()">X</button>
     <p id="Notifications_p">Notifications</p>
 </div>
 
-<div class="container notifications_list" style="display:none;">
+<div class="container notifications_list" *ngIf="notifications_div">
     <div class="alert alert-danger" role="alert" id="New_notification">
-        <img id="elder_picture" src="lala.jpg" alt="Elder Picture">
+        <img id="elder_picture" src="../assets/lala.jpg" alt="Elder Picture">
         <p id="notification_from">Kostas Lamprou</p><br>
         <p id="type_of_notification">New message</p>
         <p id="notification_time">  9:10 AM</p>
-    </div>
+    </div><br><br>
 
     <div class="alert alert-danger" role="alert" id="New_notification">
-        <img id="elder_picture" src="lala.jpg" alt="Elder Picture">
+        <img id="elder_picture" src="../homephone/assets/lala.jpg" alt="Elder Picture">
         <p id="notification_from">Kostas Lamprou</p><br>
         <p id="type_of_notification">New Missed Call</p>
         <p id="notification_time">  9:18 AM</p>
@@ -187,15 +189,15 @@
 
 <!-- Missed Messages Screen -->
 
-<div class="container messages_top_bar" style="display:none;">
+<div class="container messages_top_bar" *ngIf="top_bar_of_messages">
     <br>
-    <button id="exit_from_messages">X</button>
+    <button id="exit_from_messages" (click)="back_to_HS()">X</button>
     <p id="messages_p">Messages</p>
 </div>
 
-<div class="container Messages_list" style="display:none;">
-    <div class="alert alert-danger New_Message" role="alert">
-        <img id="elder_picture" src="lala.jpg" alt="Elder Picture">
+<div class="container Messages_list" *ngIf="message_div">
+    <div class="container New_Message">
+        <img id="elder_picture" src="../assets/lala.jpg" alt="Elder Picture">
         <p id="message_from">Kostas Lamprou</p>
         <p id="message_time">  9:18 AM</p>
         <p id="message_content">I would like to go for a walk</p>
@@ -212,7 +214,7 @@
 
 <div class="container incoming_call" style="display:none;">
     <p id="type_of_call">Incoming Call</p>
-    <img id="elder_call_picture" src="lala.jpg" alt="Elder Picture">
+    <img id="elder_call_picture" src="../assets/lala.jpg" alt="Elder Picture">
     <p id="call_from">Kostas Lamprou</p>
     <button id="decline_call_btn">Decline</button>&nbsp;&nbsp;&nbsp;
     <button id="answer_call_btn">Answer</button>
@@ -221,16 +223,16 @@
 
 <!-- Live Video call -->
 
-<img id="live_call_elder" src="video_call_resized.jpg" alt="Elder Picture" style="display:none;">
+<img id="live_call_elder" src="../assets/video_call_resized.jpg" alt="Elder Picture" style="display:none;">
 <button id="done_call_btn" style="display:none;">📞</button>
-<img id="live_call_caretaker" src="caretaker_image_resized.jpg" alt="Carataker Picture" style="display:none;">
+<img id="live_call_caretaker" src="../assets/caretaker_image_resized.jpg" alt="Carataker Picture" style="display:none;">
 
 
 
 <!-- List of Routine Events -->
 
 <br>
-<div class="container events_list">
+<div class="container events_list" *ngIf="events_div">
     <p id="title_routine">Routine</p>
     <p id="completed_events">Routine Completed : 0/8</p>
 
@@ -309,8 +311,8 @@
 
 <nav class="navbar navbar-light bg-light">
     <div class="container-fluid"  id="navbar-menu">
-      <a class="navbar-brand" id="Messages_page" href="#">💬</a>
-      <a class="navbar-brand" id="Notifications_page" href="#">🔔</a>
+      <a class="navbar-brand" id="Messages_page" (click)="show_message_section()">💬</a>
+      <a class="navbar-brand" id="Notifications_page" (click)="show_notification_section()">🔔</a>
       <a class="navbar-brand" id="Alerts_page" href="#">⚠️</a>
       <a class="navbar-brand" id="Video_Call_page" href="#">🎥</a>
     </div>

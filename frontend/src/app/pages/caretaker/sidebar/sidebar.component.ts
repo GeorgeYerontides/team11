@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Message } from 'src/app/global/models/messages/message.model';
 import { User } from 'src/app/global/models/patient/patient.model';
+import { ModalService } from 'src/app/global/services/modals/notification-modal.service';
 import { NotificationService } from 'src/app/global/services/notifications/notification.service';
 import { PatientService } from 'src/app/global/services/patient/patients.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
@@ -67,5 +68,37 @@ export class SidebarComponent implements OnInit {
     this.router.navigateByUrl("/", { skipLocationChange: true }).then(() => {
       this.router.navigate([path]);
   }); 
+  }
+
+  openNotification(name:string,type:number,timestamp:string,index:number){
+    let desc:string = '';
+    let title:string ='';
+    if (type === 3)
+    {
+      //todo implement open chat.
+      return;
+    }
+    // call
+    if(type === 1)
+    {
+      title = 'Missed call'
+      desc = 'You have a missed call from ' + name +' at ' +timestamp+ '.'  
+    }
+    // video call
+    if(type === 2)
+    {
+      title = 'Missed video call'
+      desc = 'You have a missed video call from ' + name +' at ' +timestamp+ '.'  
+    }
+    if (type === 4)
+    {
+      title = 'Missed notification'
+      desc = 'You have a missed notification from ' + name +' at ' +timestamp+ '.'  
+    }
+    // message do nothing we 
+    this.modalService.openDialog(title,desc,type); 
+    this.notificationService.deleteNotification(index);
+    console.log('testing');
+
   }
 }
