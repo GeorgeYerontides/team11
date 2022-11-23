@@ -32,12 +32,29 @@
 
 .alertcont{
     height: 7vh; 
-    width:100%
+    width:100%;
+    display:flex;
+    text-align: center;
+    justify-content: center;
 }
 
 .alertmsg{
-    background-color: red;
+    height: 7vh; 
+    width:100%;   
     position:fixed; 
     top:5%;   
-    z-index:100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.msgContainer{
+    height:80%; 
+    width:auto; 
+    padding: 0% 2vw 0% 2vw; 
+    display:flex; justify-content:center; 
+    align-items:center; 
+    background-color: white; 
+    border: 1px solid black; 
+    border-radius: 10px;
 }

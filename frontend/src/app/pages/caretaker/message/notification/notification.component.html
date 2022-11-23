@@ -1,11 +1,11 @@
-<div class="pic-cont container " style="padding: 0% !important; width: 100%;">
+<div class="pic-cont container " style="padding: 0% !important; width: 100%; height:4vw;">
     <div class="row zeroSpace"  >
  
   
-        <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 zeroSpace" [ngSwitch]="messageType "   >
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 zeroSpace" [ngSwitch]="messageType "   >
 
         <!--call-->
-            <div class="zeroSpace" style=" height: 100%;"  *ngSwitchCase="1" >
+            <div class="zeroSpace" style=" height: 4vw;"  *ngSwitchCase="1" >
                 <div class="dot " >
                     <i class="fa-solid fa-phone d-none d-lg-block d-xl-block" style="font-size: 1.3vw; margin: 0%; padding: 0%;color:white;"></i>
                     <i class="fa-solid fa-phone d-none d-md-block d-lg-none"  style="font-size: 2vw;   margin: 0%; padding: 0%; color:white;"></i>
@@ -15,7 +15,7 @@
             
             </div>
             <!--video-->
-            <div class=" zeroSpace"  style=" height: 100%;" *ngSwitchCase="2" >
+            <div class=" zeroSpace"  style=" height: 4vw" *ngSwitchCase="2" >
                 <div class="dot   d-none d-lg-block d-xl-block" >
                     <i class="fa-solid fa-video d-none d-lg-block d-xl-block" style="font-size: 1.3vw; margin: 0%; padding: 0%;color:white;"></i>
                     <i class="fa-solid fa-video d-none d-md-block d-lg-none"  style="font-size: 2vw;   margin: 0%; padding: 0%; color:white;"></i>
@@ -26,7 +26,7 @@
             
             </div>
               <!--message-->
-            <div class="zeroSpace "  style=" height: 100%;"  *ngSwitchCase="3" >
+            <div class="zeroSpace "  style=" height: 4vw"  *ngSwitchCase="3" >
                 <div class="dot   d-none d-lg-block d-xl-block" >
                     <i class="fa-solid fa-message d-none d-lg-block d-xl-block" style="font-size: 1.3vw; margin: 0%; padding: 0%;color:white;"></i>
                     <i class="fa-solid fa-message d-none d-md-block d-lg-none"  style="font-size: 2vw;   margin: 0%; padding: 0%; color:white;"></i>
@@ -37,7 +37,7 @@
 
             
             </div>
-            <div class="zeroSpace "  style=" height: 100%;"  *ngSwitchCase="4" >
+            <div class="zeroSpace "  style=" height: 4vw"  *ngSwitchCase="4" >
                 <div class="dot   d-none d-lg-block d-xl-block"  >
                     <i class="fa-solid fa-user d-none d-lg-block d-xl-block" style="font-size: 1.3vw; margin: 0%; padding: 0%;color:white;"></i>
                     <i class="fa-solid fa-user d-none d-md-block d-lg-none"  style="font-size: 2vw;   margin: 0%; padding: 0%; color:white;"></i>
@@ -71,7 +71,7 @@
             <div class="row text-cont" >  
                 
                 <div class="col-4" style="padding-right: 0px;">
-                    <p class="text-style msg-cont" style="font-size: 1.5vw;">{{time}}</p>
+                    <p class="text-style msg-cont" style="font-size: 1.3vw;">{{time}}</p>
                 </div>
             </div>
 

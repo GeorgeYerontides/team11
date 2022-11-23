@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Message } from 'src/app/global/models/messages/message.model';
 import { User } from 'src/app/global/models/patient/patient.model';
+import { ModalService } from 'src/app/global/services/modals/notification-modal.service';
+import { NotificationService } from 'src/app/global/services/notifications/notification.service';
 import { PatientService } from 'src/app/global/services/patient/patients.service';
+import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,20 +16,16 @@ export class SidebarComponent implements OnInit {
   public subroute:string = "";
   public route: string = "/observe/users"
   public patients: User[] = [];
+  public notifications:Message[] =[];
 
-  public notifications:Message[] = [
-    new Message( 'Kostas', 'test', 'test',1,'09:15'),
-    new Message( 'Kostas', 'test', 'test', 2,'09:00'),
-    new Message( 'Kostas', 'test', 'test', 2,'09:00'),
-
-    new Message( 'Kostas', 'test', 'test', 2,'09:00'),
-    new Message( 'Kostas', 'test', 'test', 2,'09:00')
-
-  ];
 
   
-  constructor(private router: Router, patientService: PatientService) { 
-
+  constructor(private router: Router, patientService: PatientService,private notificationService:NotificationService, 
+    private socketService:SocketsService, public modalService:ModalService) { 
+    this.socketService.subscribe('newNotification',(data:any) => {
+      this.notifications = this.notificationService.getNotifications();
+    })
+    this.notifications = this.notificationService.getNotifications();
     this.subroute = this.router.url; 
     this.router.events.subscribe((event:Event) =>
     {
@@ -54,9 +53,7 @@ export class SidebarComponent implements OnInit {
  
   }
 
-  addMessage(){
-    this.notifications.push(new Message('test', 'test', 'test',3,'test'));
-  }
+
 
   chatOpen(){
       console.log("chat open");
@@ -72,5 +69,37 @@ export class SidebarComponent implements OnInit {
     this.router.navigateByUrl("/", { skipLocationChange: true }).then(() => {
       this.router.navigate([path]);
   }); 
+  }
+
+  openNotification(name:string,type:number,timestamp:string,index:number){
+    let desc:string = '';
+    let title:string ='';
+    if (type === 3)
+    {
+      //todo implement open chat.
+      return;
+    }
+    // call
+    if(type === 1)
+    {
+      title = 'Missed call'
+      desc = 'You have a missed call from ' + name +' at ' +timestamp+ '.'  
+    }
+    // video call
+    if(type === 2)
+    {
+      title = 'Missed video call'
+      desc = 'You have a missed video call from ' + name +' at ' +timestamp+ '.'  
+    }
+    if (type === 4)
+    {
+      title = 'Missed notification'
+      desc = 'You have a missed notification from ' + name +' at ' +timestamp+ '.'  
+    }
+    // message do nothing we 
+    this.modalService.openDialog(title,desc,type); 
+    this.notificationService.deleteNotification(index);
+    console.log('testing');
+
   }
 }

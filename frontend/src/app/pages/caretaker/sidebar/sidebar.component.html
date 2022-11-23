@@ -40,7 +40,7 @@
             [name] = "notification.title" 
             [messageType] = "notification.type"
             [time] = "notification.timestamp"
-            class="messageContainer" ></app-notification>
+            class="messageContainer" (click) = "openNotification(notification.title,notification.type,notification.timestamp, i)"></app-notification>
           
         </div>
 
@@ -50,7 +50,7 @@
             [name] = "notification.title" 
             [messageType] = "notification.type"
             [time] = "notification.timestamp"
-            class="messageContainer" ></app-notification>
+            class="messageContainer" (click) = "openNotification(notification.title,notification.type,notification.timestamp, i)" ></app-notification>
           
         </div>
         
@@ -71,7 +71,7 @@
         [name] = "patient.Name" 
         [messageType] = "4"
         [time] = ""
-        (click) = "navigateToUser(patient.Name)"></app-notification>
+        (click) = "navigateToUser(patient.Name)" style="height:10vh;"></app-notification>
       
     </div>
 
