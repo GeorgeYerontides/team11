@@ -16,6 +16,7 @@ import { RoutineBoxComponent } from 'src/app/pages/caretaker/main-display/routin
 import { DashboardDisplayComponent } from 'src/app/pages/caretaker/main-display/dashboard-display/dashboard-display.component';
 import { EventOverviewComponent } from 'src/app/pages/caretaker/main-display/event-overview/event-overview.component';
 import { MedicalHistoryComponent } from 'src/app/pages/caretaker/main-display/medical-history/medical-history.component';
+import { ModalsComponent } from 'src/app/pages/caretaker/modals/modals.component';
 
 
 
@@ -33,6 +34,8 @@ import { MedicalHistoryComponent } from 'src/app/pages/caretaker/main-display/me
         DashboardDisplayComponent,
         MedicalHistoryComponent,
         EventOverviewComponent,
+        ModalsComponent,
+
     
     ],
     imports: [
@@ -53,6 +56,8 @@ import { MedicalHistoryComponent } from 'src/app/pages/caretaker/main-display/me
         DashboardDisplayComponent,
         MedicalHistoryComponent,
         EventOverviewComponent,
+        ModalsComponent,
+
     
     ]
   })

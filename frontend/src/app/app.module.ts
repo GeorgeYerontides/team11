@@ -13,7 +13,6 @@ import { CaretakerPhoneModule } from 'src/modules/app-caretaker-phone.module';
 import { MagicalControllerComponent } from './pages/magical-controller/magical-controller.component';
 
 
-
 const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
 @NgModule({
   declarations: [
