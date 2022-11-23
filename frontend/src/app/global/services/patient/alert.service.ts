@@ -9,6 +9,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 export class alertService {
  
     private alertStatus: BehaviorSubject<boolean>;
+    private currentLevel!:number;
     constructor() {
       this.alertStatus = new BehaviorSubject<boolean>(false);
     }

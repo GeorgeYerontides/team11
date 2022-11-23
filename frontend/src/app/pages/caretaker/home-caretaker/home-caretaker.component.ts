@@ -22,7 +22,7 @@ export class HomeCaretakerComponent implements OnInit {
   public alertPatientName:string = '';
   public isClicked:boolean = true;
   public modal:boolean = false;
-  
+  public currentAlert:number = -1;
   constructor(private router: Router, private alertService:alertService, 
     private socketService: SocketsService,private notificationService:NotificationService,
     private modalService:ModalService) { 
@@ -65,6 +65,16 @@ export class HomeCaretakerComponent implements OnInit {
     * 
     */
     this.socketService.subscribe("alert_event", (data: Alert) => {
+      
+      if(this.currentAlert === 1)
+      {
+        console.log('thret is 1')
+        let firstName = this.alertPatientName.split(" ",2)[0];
+        this.notificationService.addNewNotification(firstName,"test",4);
+      
+        this.isClicked = false;
+        return;
+      }
 
       if (this.isClicked === false)
       {
@@ -75,16 +85,21 @@ export class HomeCaretakerComponent implements OnInit {
       this.alert = true;
       console.log(data, data.level);
 
+
+
       if (data.level === "yellow")
       {
+        this.currentAlert = 0;
         this.alertMessage = "New Alert: " +  data.message + " for "+ data.patient +" "+ data.time;
       }
       if (data.level === "red")
       {
+        this.currentAlert = 1;
         this.alertMessage = "Danger: " +   data.patient  + " has medical emergency!";
       }
       if (data.level === "orange")
       {
+        this.currentAlert = 0;
         this.alertMessage = "New Alert: Patient " +   data.patient  + " requires assistant.";
       }
       this.alertPatientName = data.patient;

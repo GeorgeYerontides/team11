@@ -19,8 +19,9 @@ export class SidebarComponent implements OnInit {
   public notifications:Message[] =[];
 
 
-  
-  constructor(private router: Router, patientService: PatientService,private notificationService:NotificationService, private socketService:SocketsService) { 
+
+  constructor(private router: Router, patientService: PatientService,private notificationService:NotificationService, 
+    private socketService:SocketsService, public modalService:ModalService) { 
     this.socketService.subscribe('newNotification',(data:any) => {
       this.notifications = this.notificationService.getNotifications();
     })
@@ -29,23 +30,23 @@ export class SidebarComponent implements OnInit {
     this.router.events.subscribe((event:Event) =>
     {
       if (event instanceof NavigationStart) {
-      
+
         console.log('start');
         this.subroute = this.router.url; 
-  
+
       }
       if (event instanceof NavigationEnd) {
-      
+
         console.log('end');
         this.subroute = this.router.url; 
         console.log(this.router.url);
 
       }
-      
+
     });
 
     this.patients = patientService.getUsers();
-    
+
   }
 
   ngOnInit(): void {
