@@ -5,6 +5,7 @@ import { DefaultSchemaOptions } from '../../../models/shared';
 // ------------------------------------------
 // Interface declaration
 export interface IRoutine extends Document {
+  patient: string;
   title: string;
   startTime: Date;
   endTime?: Date;
@@ -18,6 +19,7 @@ export interface IRoutine extends Document {
 // Schema definition
 const routineSchema = new Schema(
   {
+    patient: { type: String, required: true },
     title: { type: String, required: true },
     startTime: { type: Date, required: true },
     endTime: { type: Date, required: false },

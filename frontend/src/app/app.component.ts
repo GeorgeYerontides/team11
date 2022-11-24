@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-
-import { User } from './global/models/patient/patient.model';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

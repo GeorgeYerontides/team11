@@ -74,6 +74,24 @@ export class ResourceController<T extends Document> {
     }
   }
 
+  public async getOneName(name: string,surname:string, req: Request, res: Response, next?: NextFunction): Promise<any | undefined> {
+    try {
+      const modelName: any = name || req.params.name;
+      const modelSurname: any = surname || req.params.surname;
+      const queryOptions = this.parseQueryParameters(req);
+
+      const resource = await this.modelSchema
+        .find({ name: modelName, surname:modelSurname })
+        .select(queryOptions.options.select)
+        .populate(queryOptions.options.populate as any)
+        .orFail(new NotFound())
+        .exec();
+      return resource;
+    } catch (e) {
+      next ? next(e) : res.status(StatusCodes.BAD_REQUEST).json(e);
+    }
+  }
+
   /**
    * Update one resource model by Id
    *

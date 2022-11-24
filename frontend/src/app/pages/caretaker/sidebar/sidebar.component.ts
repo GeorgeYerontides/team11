@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Message } from 'src/app/global/models/messages/message.model';
-import { User } from 'src/app/global/models/patient/patient.model';
+import { PatientModel } from 'src/app/global/models/patient/patient.model';
 import { ModalService } from 'src/app/global/services/modals/notification-modal.service';
 import { NotificationService } from 'src/app/global/services/notifications/notification.service';
 import { PatientService } from 'src/app/global/services/patient/patients.service';
@@ -15,12 +15,12 @@ import { SocketsService } from 'src/app/global/services/sockets/sockets.service'
 export class SidebarComponent implements OnInit {
   public subroute:string = "";
   public route: string = "/observe/users"
-  public patients: User[] = [];
+  public patients: PatientModel[] = [];
   public notifications:Message[] =[];
 
 
 
-  constructor(private router: Router, patientService: PatientService,private notificationService:NotificationService, 
+  constructor(private router: Router, private patientService: PatientService,private notificationService:NotificationService, 
     private socketService:SocketsService, public modalService:ModalService) { 
     this.socketService.subscribe('newNotification',(data:any) => {
       this.notifications = this.notificationService.getNotifications();
@@ -45,7 +45,10 @@ export class SidebarComponent implements OnInit {
 
     });
 
-    this.patients = patientService.getUsers();
+    this.patientService.getUsers().subscribe((result) => {
+      this.patients = result;
+      console.log(this.patients);
+    });
 
   }
 

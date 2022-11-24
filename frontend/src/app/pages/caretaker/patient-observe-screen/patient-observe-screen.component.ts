@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/global/models/patient/patient.model';
+import { PatientModel } from 'src/app/global/models/patient/patient.model';
 import { PatientService } from 'src/app/global/services/patient/patients.service';
 
 @Component({
@@ -8,12 +8,19 @@ import { PatientService } from 'src/app/global/services/patient/patients.service
   styleUrls: ['./patient-observe-screen.component.scss']
 })
 export class PatientObserveScreenComponent implements OnInit {
-  users: User[] = [  ]
-  constructor(patientService:PatientService) {
-      this.users = patientService.getUsers();
+  protected users: PatientModel[] = [  ]
+  constructor(private patientService:PatientService) {
+      
    }
 
-  ngOnInit(): void {
+
+  
+  async ngOnInit() {
+    this.patientService.getUsers().subscribe((result) => {
+      this.users = result;
+      console.log("these are the users"+this.users);
+    });
+
   }
 
 }

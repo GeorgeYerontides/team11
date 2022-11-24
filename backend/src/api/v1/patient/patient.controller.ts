@@ -2,11 +2,12 @@ import { Request, Response, NextFunction, Router } from 'express';
 import { ResourceController } from '../../shared';
 import { StatusCodes } from 'http-status-codes';
 import { Logger } from '../../shared/utils/logger';
-import { IRoutine, RoutineModel } from './routine.model';
-export class routineController extends ResourceController<IRoutine>{
+
+import { IPatient, PatientModel } from './patient.model';
+export class PatientController extends ResourceController<IPatient>{
     private logger: Logger = new Logger();
     constructor() {
-        super(RoutineModel);
+        super(PatientModel);
     }
     /**
      * Apply all routes for tasks
@@ -17,8 +18,8 @@ export class routineController extends ResourceController<IRoutine>{
         const router = Router();
         router
             .get('/', this.getRoutine)
-            .get('/initialize', this.initializeRoutine)
-  //          .get('/:id', this.getRoutine)
+            .get('/initialize', this.initializePatients)
+            .get('/:name/:surname', this.getTaskByName)
 //            .post('/', this.postTask)
             .put('/:id', this.updateEvent)
             .delete('/:id', this.deleteTask);
@@ -47,6 +48,17 @@ export class routineController extends ResourceController<IRoutine>{
             .json(allRoutine);
     }
 
+    getTaskByName = async (req: Request, res: Response) => {
+        this.logger.debug('getTaskById request');
+        // you can pre-process the request here before passing it to the super class method
+        const task = await this.getOneName(req.params.name,req.params.surname, req, res);
+
+        // you can process the data retrieved here before returning it to the client
+        return res
+            .status(StatusCodes.OK)
+            .json(task);
+    }
+
     updateEvent = async (req: Request, res: Response) => {
         this.logger.debug('updateEvent request');
         // you can pre-process the request here before passing it to the super class method
@@ -68,56 +80,60 @@ export class routineController extends ResourceController<IRoutine>{
 
     }
 
-    initializeRoutine = async (req: Request, res: Response) => {
+    initializePatients = async (req: Request, res: Response) => {
         this.logger.debug('initialize items request');
         let items: any[] = [
 
             {
-                patient: "Kostas Lamprou",
-                title: "Take insulin shot",
-                startTime: new Date("2022-11-24T06:00:09.989+00:00"),
-                endTime: null,
-                reqiresCaretaker: false,
-                type: 'Entertainment',
-                description: 'The patient goes on a morning walk in the gardens and socializes with other elders. Morning walk is supervised by nurses.',
-                completed: true
+                name: "Andreas",
+                surname: "Mixahl",
+                age: 69,
+                weight: 75,
+                height: 1.62,
+                emergencyName: "Giannhs Mixahl",
+                emergencyPhone: "6945873645",
+                emergencyEmail: "gmixahl@gmail.com",
+                cameraUrl: "https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+            },
+           
+            {
+                name: "Giorgos",
+                surname: "Trifonos",
+                age: 82,
+                weight: 55,
+                height: 1.64,
+                emergencyName: "Kostas Trigonos",
+                emergencyPhone: "6945615645",
+                emergencyEmail: "gmixahl@gmail.com",
+                cameraUrl: "https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
             },
             {
-                patient: "Kostas Lamprou",
-                title: "Morning Walk",
-                startTime:  new Date("2022-11-24T05:00:09.989+00:00"),
-                endTime:  new Date("2022-11-24T05:00:09.989+00:00"),
-                reqiresCaretaker: false,
-                type: 'Entertainment',
-                description: 'The patient goes on a morning walk in the gardens and socializes with other elders. Morning walk is supervised by nurses.',
-                completed: true
+                name: "Dimitra",
+                surname: "Papa",
+                age: 47,
+                weight: 75,
+                height: 1.92,
+                emergencyName: "Manos Papa",
+                emergencyPhone: "6945943545",
+                emergencyEmail: "mpapa@gmail.com",
+                cameraUrl: "https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
             },
             {
-                patient: "Kostas Lamprou",
-                title: "Take insulin shot",
-                startTime: new Date("2022-11-24T06:00:09.989+00:00"),
-                endTime: null,
-                reqiresCaretaker: false,
-                type: 'Entertainment',
-                description: 'The patient goes on a morning walk in the gardens and socializes with other elders. Morning walk is supervised by nurses.',
-                completed: true
+                name: "Giorgos",
+                surname: "Lamprou",
+                age: 82,
+                weight: 67,
+                height: 1.66,
+                emergencyName: "Lampros Lamprou",
+                emergencyPhone: "6945945687",
+                emergencyEmail: "llamprou@gmail.com",
+                cameraUrl: "https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
             },
-            {
-                patient: "Andreas Mixahl",
-                title: "Morning Walk",
-                startTime:  new Date("2022-11-24T05:00:09.989+00:00"),
-                endTime:  new Date("2022-11-24T05:00:09.989+00:00"),
-                reqiresCaretaker: false,
-                type: 'Entertainment',
-                description: 'The patient goes on a morning walk in the gardens and socializes with other elders. Morning walk is supervised by nurses.',
-                completed: true
-            },
-
 
            
         ]
 
-        await RoutineModel.insertMany(items)
+        await PatientModel.insertMany(items)
             .then(function (docs) {
                 res.json(docs);
             })
