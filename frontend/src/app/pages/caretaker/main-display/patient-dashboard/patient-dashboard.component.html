@@ -119,15 +119,13 @@
             <div style="width:100%; height: 5vh; margin:0%; padding:0%; background-color: #DFE0F2; border-top: 1px solid #999BD4; border-bottom: 1px solid #999BD4; display: flex; align-items: center; justify-content: center;">
                 <span>Routine Completed {{completedEvents }}/{{maxEvents}}</span>
             </div>
-            <div class="routineContent">
-                <app-routine-box style="width: 100%;" [requiresCaretaker] = 'true'></app-routine-box> 
-                <app-routine-box style="width: 100%;" [requiresCaretaker] = 'false'></app-routine-box> 
-                <app-routine-box style="width: 100%;" [requiresCaretaker] = 'false'></app-routine-box> 
-                <app-routine-box style="width: 100%;" [requiresCaretaker] = 'false'></app-routine-box> 
-                <app-routine-box style="width: 100%;" [requiresCaretaker] = 'false'></app-routine-box> 
-                <app-routine-box style="width: 100%;" [requiresCaretaker] = 'false'></app-routine-box> 
-                <app-routine-box style="width: 100%;" [requiresCaretaker] = 'false'></app-routine-box> 
-                <app-routine-box style="width: 100%;" [requiresCaretaker] = 'false'></app-routine-box> 
+            <div class="routineContent" *ngIf="routineEvents.length!=0">
+
+                <app-routine-box  style="width: 100%;" 
+                *ngFor ="let routine of routineEvents"
+                [self] = 'routine'
+                ></app-routine-box> 
+                
 
 
             </div>
