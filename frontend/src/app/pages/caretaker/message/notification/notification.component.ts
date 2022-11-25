@@ -6,9 +6,10 @@ import { Component,Input, OnInit } from '@angular/core';
   styleUrls: ['./notification.component.scss']
 })
 export class NotificationComponent implements OnInit {
+  
   @Input() name: string | undefined;
   @Input() messageType: number | undefined;
-  @Input() time: string | undefined;
+  @Input() time!: Date | null;
   constructor() { }
 
   ngOnInit(): void {

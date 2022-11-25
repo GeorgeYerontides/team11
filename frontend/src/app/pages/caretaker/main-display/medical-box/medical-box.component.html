@@ -1,14 +1,20 @@
 <div class="medCont" >
     <div class="componentHeader" >
         <div style="display:flex; width: 50%;">
-            <h4 class="componentHeaderTitle">Medical </h4>
+            <h4 class="componentHeaderTitle">{{self.title}} </h4>
         </div>
         <div style=" width: 50%; ">
             <div class="form-check" style="height: 100%; width:100%; display:flex; justify-content: flex-end;">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="height:3vh; width:3vh; margin:0;">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="height:3vh; width:3vh; margin:0;"  [checked]="self.completed" (click)="changeCompleted()">
       
               </div>
         </div>
+       
+    </div>
+    <div class="contentRoutine">
+        <h6 style="margin-bottom:0%" > {{ self.description}}</h6>
+
+        
     </div>
 </div>
 

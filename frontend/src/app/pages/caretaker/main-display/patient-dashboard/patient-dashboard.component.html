@@ -7,7 +7,7 @@
     <div class="col-4 zero left-col">
         <div class="elderProf" >
             <div class="monitor_cont embed-responsive embed-responsive-1by1">
-                <iframe class="embed-responsive-item video-fluid" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" style="height: 100 !important; width: 100%; border-radius: 10px;" ></iframe>
+                <iframe class="embed-responsive-item video-fluid" [src]="urlSafe" style="height: 100 !important; width: 100%; border-radius: 10px;" ></iframe>
             </div>
             <div style="width:100%; height:15%; display:flex">
                 <div style=" margin:0%; padding: 0%; width: 50%; display: flex;     align-items: center; justify-content: center;  margin-top: 5%;">
@@ -34,9 +34,9 @@
 
                 </div>
                 <div class ="vitalContentR" style="align-items: flex-end;">
-                    <p class="infoTextR">{{Age}} yr</p>
-                    <p class="infoTextR">{{Weight}} kg</p>
-                    <p class="infoTextR">{{Height}} m</p>
+                    <p class="infoTextR">{{age}} yr</p>
+                    <p class="infoTextR">{{weight}} kg</p>
+                    <p class="infoTextR">{{height}} m</p>
                    
 
                 </div>
@@ -96,11 +96,11 @@
             </div>
             <button class="btn medButton" (click)="navigateMed()">View medical history</button>
             <div style="display: flex; flex-direction: column; margin-top: 5%; overflow-y:auto; max-height: 42vh; ">
-                <app-medical-box style="width: 90%; margin-left:5%;"></app-medical-box> 
-                <app-medical-box style="width: 90%; margin-left:5%;"></app-medical-box> 
-                <app-medical-box style="width: 90%; margin-left:5%;"></app-medical-box> 
-                <app-medical-box style="width: 90%; margin-left:5%;"></app-medical-box> 
-                <app-medical-box style="width: 90%; margin-left:5%;"></app-medical-box> 
+                <app-medical-box style="width: 90%; margin-left:5%;"  
+                *ngFor = "let medicine of medicalEvents"
+                [self]="medicine"
+                ></app-medical-box> 
+                
 
 
             </div>

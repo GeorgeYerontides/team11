@@ -1,4 +1,5 @@
 import { Component, Input,OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { PatientModel } from 'src/app/global/models/patient/patient.model';
 import { MonitorDisplayComponent } from '../monitor-display/monitor-display.component';
@@ -10,11 +11,17 @@ import { MonitorDisplayComponent } from '../monitor-display/monitor-display.comp
 })
 export class MainDisplayComponent implements OnInit {
   @Input() patient!: PatientModel;
-  constructor(private router:Router, private route:ActivatedRoute) { }
+
+  urlSafe!: SafeResourceUrl;
+
+  constructor(private router:Router, private route:ActivatedRoute,
+    public sanitzer:DomSanitizer
+    ) { }
 
   ngOnInit(): void {
 
     console.log(this.patient);
+    this.urlSafe = this.sanitzer.bypassSecurityTrustResourceUrl(this.patient.cameraUrl);
   }
 
   navigateToPatient(){

@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Alert } from 'src/app/global/models/alert/alert.model';
 import { Message } from 'src/app/global/models/messages/message.model';
+import { NotificationModel } from 'src/app/global/models/messages/notification.model';
 import { ModalService } from 'src/app/global/services/modals/notification-modal.service';
 import { NotificationService } from 'src/app/global/services/notifications/notification.service';
 import { alertService } from 'src/app/global/services/patient/alert.service';
@@ -49,13 +50,11 @@ export class HomeCaretakerComponent implements OnInit {
   }
   ngOnInit(): void {
     this.socketService.subscribe('modalEvent',() =>{
-      console.log('socket ',this.modalService.showDialog);
       this.modal = this.modalService.showDialog;
     })
 
     this.alertService.getValue().subscribe((value) => {
       this.alert = value;
-      console.log('caretaker comp' + this.alert);
     });
     /*
     * Event Hierarchy
@@ -68,7 +67,6 @@ export class HomeCaretakerComponent implements OnInit {
       
       if(this.currentAlert === 1)
       {
-        console.log('thret is 1')
         let firstName = this.alertPatientName.split(" ",2)[0];
         this.notificationService.addNewNotification(firstName,"test",4);
       
@@ -81,9 +79,7 @@ export class HomeCaretakerComponent implements OnInit {
         let firstName = this.alertPatientName.split(" ",2)[0];
         this.notificationService.addNewNotification(firstName,"test",4);
       }
-      console.log("Event arrived");
       this.alert = true;
-      console.log(data, data.level);
 
 
 
@@ -102,9 +98,25 @@ export class HomeCaretakerComponent implements OnInit {
         this.currentAlert = 0;
         this.alertMessage = "New Alert: Patient " +   data.patient  + " requires assistant.";
       }
+
+      
+      const newNotification = new NotificationModel();
+      newNotification.senderName = data.patient.split(' ',2)[0];
+      newNotification.senderSurname = data.patient.split(' ',2)[1];
+      newNotification.timeSent = new Date();
+      newNotification.typeNotification = 4;
+      newNotification.title = "Missed Notification";
+      this.notificationService.create(newNotification).subscribe((result) => {
+       
+        this.socketService.publish("notificationUpdate", newNotification);
+      });
+     
+
       this.alertPatientName = data.patient;
       this.alertDecoration = data.level;
       this.isClicked = false;
+
+
     });
   }
 

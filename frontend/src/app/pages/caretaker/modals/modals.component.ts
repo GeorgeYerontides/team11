@@ -7,18 +7,20 @@ import { SocketsService } from 'src/app/global/services/sockets/sockets.service'
   styleUrls: ['./modals.component.scss']
 })
 export class ModalsComponent implements OnInit {
-  name!:string;
+  title!:string;
   desc!:string;
   type!:number;
-  constructor(private modalService:ModalService,private socketService:SocketsService) {
+  timeSent!:Date;
+  constructor(private modalService:ModalService) {
     
    }
 
   ngOnInit(): void {
-    console.log('in the jungle');
-    this.name = this.modalService.name;
+
+    this.title = this.modalService.name;
     this.desc = this.modalService.desc;
     this.type = this.modalService.type;
+    this.timeSent = this.modalService.timeSent;
   }
 
   close(){

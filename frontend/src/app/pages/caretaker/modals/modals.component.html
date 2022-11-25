@@ -1,10 +1,10 @@
 <div class="myModal">
     <div class="header">
-        <h3 style="margin-bottom: 0%;">{{name}}</h3>
+        <h3 style="margin-bottom: 0%;">{{title}}</h3>
         <button id = "closeBtn"type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
     </div>
     <div class="content">
-        <h5> {{desc}}</h5>
+        <h5> {{desc}}  {{ timeSent | date: 'shortTime'}}</h5>
     </div>
     <div class="buttonArea">
         <button class="btn btn-primary my-style" style="margin-right:5%;" *ngIf="type === 1" >Call back</button>

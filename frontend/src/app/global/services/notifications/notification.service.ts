@@ -1,7 +1,11 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Message } from "../../models/messages/message.model";
+import * as _ from "lodash";
+import { Observable, map } from "rxjs";
+import { environment } from "src/environments/environment";
+import { NotificationModel } from "../../models/messages/notification.model";
+import { PatientModel } from "../../models/patient/patient.model";
 import { SocketsService } from "../sockets/sockets.service";
-
 
 
 
@@ -9,38 +13,38 @@ import { SocketsService } from "../sockets/sockets.service";
     providedIn: 'root'
   })
 export class NotificationService {
-
-    constructor(private socketService:SocketsService){
-
+  private hostURl: string;
+  constructor(private http: HttpClient,private socketService:SocketsService) {
+      this.hostURl = environment.host;
+      // remove comment to delete all items
+      // this.deleteAll();
     }
-    private notifications:Message[] = [
-        new Message( 'Kostas',  'test',1,'09:15'),
-        new Message( 'Kostas',  'test', 2,'09:00'),
-        new Message( 'Kostas',  'test', 2,'09:00'),
-        new Message( 'Kostas',  'test', 2,'09:00'),
-        new Message( 'Kostas',  'test', 2,'09:00'),
+  
 
-      ];
 
-      public getNotifications(){
-        return this.notifications.slice(0,this.notifications.length);
-      }
+      public getNotifications(): Observable<NotificationModel[]> {
+        console.log('get notification called');
+        return this.http
+          .get<NotificationModel[]>(`${this.hostURl}/api/notification/`)
+          .pipe(map(result => _.map(result, (t) => new NotificationModel(t))));
+    }
+
+  
 
       public addNewNotification(name:string, desc: string, type:number){
-        let now = new Date();
-        let hours = now.getHours().toString().padStart(2, '0');
-        let min = now.getMinutes().toString().padStart(2, '0');
-        let currTime = hours+':'+min;
-        this.notifications.unshift(new Message(name, desc,type,currTime));
-        console.log(hours, ' ', min);
-        this.socketService.publish("newNotification",{});
+    
 
       }
 
-      public deleteNotification(index:number){
-        this.notifications.splice(index,1)
-        this.socketService.publish("newNotification",{});
-        console.log(this.notifications);
+      public create(resource: NotificationModel): Observable<NotificationModel> {
+        return this.http
+          .post<NotificationModel>(`${this.hostURl}/api/notification`, resource)
+          .pipe(map(result => new NotificationModel(result)));
+      }
+
+      public delete(id: string): Observable<void> {
+        console.log("delete ",id);
+        return this.http.delete<void>(`${this.hostURl}/api/notification/${id}`);
       }
  
 }

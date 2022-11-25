@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PatientModel } from 'src/app/global/models/patient/patient.model';
 
@@ -20,20 +21,22 @@ export class PatientDashboardComponent implements OnInit {
   SpO2:string = '98';
   stress:string ='Normal';
   location:string = 'Living Room';
-  Age: string = '75';
-  Weight: string = '68';
-  Height: string = '1.63';
-  emergencyName:string ='Giorgos Lamprou';
-  emergencyPhone:string ='6982841943';
-  emergencyMail:string ='glamprou@gmail.com';
+  public age: string = '';
+  public weight: string = '';
+  public height: string = '';
+  public emergencyName:string ='';
+  public emergencyPhone:string ='';
+  public emergencyMail:string ='';
   public maxEvents:number = 10;
   public completedEvents:number = 3;
 
   public currUser!:PatientModel;
   protected routineEvents:RoutineModel[]=[];
-
+  protected medicalEvents:RoutineModel[]=[];
+  urlSafe!: SafeResourceUrl;
   constructor(private patientService: PatientService, private route:ActivatedRoute,
-    private router:Router, private routineService:RoutineService,private socketService:SocketsService) { 
+    private router:Router, private routineService:RoutineService,private socketService:SocketsService,
+    private sanitizer:DomSanitizer) { 
     //let snapshot = this.route.snapshot;
     //console.log("child ",snapshot.parent?.params['name']);
     //console.log( snapshot.params['name']);
@@ -80,11 +83,20 @@ export class PatientDashboardComponent implements OnInit {
         return 0;
       }
       )
-       let username = this.currUser.name + " "+ this.currUser.surname;
-       this.routineEvents = result.filter(data => data.patient === username);
-       console.log( this.routineEvents);
-       this.completedEvents = this.routineEvents .filter(data => data.completed === true).length;
-       this.maxEvents = this.routineEvents .length;
+      let username = this.currUser.name + " "+ this.currUser.surname;
+      this.routineEvents = result.filter(data => data.patient === username);
+      console.log( this.routineEvents);
+      this.completedEvents = this.routineEvents .filter(data => data.completed === true).length;
+      this.maxEvents = this.routineEvents .length;
+      this.age = this.currUser.age.toString();
+      this.weight = this.currUser.weight.toString();
+      this.height = this.currUser.height.toString();
+      this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.currUser.cameraUrl);
+      this.emergencyName = this.currUser.emergencyName;
+      this.emergencyPhone = this.currUser.emergencyPhone;
+      this.emergencyMail = this.currUser.emergencyEmail;
+      this.medicalEvents = this.routineEvents .filter(data => data.type === "Medical");
+
      });
 
     

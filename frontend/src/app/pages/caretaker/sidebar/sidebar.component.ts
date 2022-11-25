@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { Message } from 'src/app/global/models/messages/message.model';
+import { NotificationModel } from 'src/app/global/models/messages/notification.model';
 import { PatientModel } from 'src/app/global/models/patient/patient.model';
 import { ModalService } from 'src/app/global/services/modals/notification-modal.service';
 import { NotificationService } from 'src/app/global/services/notifications/notification.service';
@@ -16,30 +16,27 @@ export class SidebarComponent implements OnInit {
   public subroute:string = "";
   public route: string = "/observe/users"
   public patients: PatientModel[] = [];
-  public notifications:Message[] =[];
+  public notifications:NotificationModel[] =[];
 
 
 
   constructor(private router: Router, private patientService: PatientService,private notificationService:NotificationService, 
     private socketService:SocketsService, public modalService:ModalService) { 
-    this.socketService.subscribe('newNotification',(data:any) => {
+/*    this.socketService.subscribe('newNotification',(data:any) => {
       this.notifications = this.notificationService.getNotifications();
     })
     this.notifications = this.notificationService.getNotifications();
-    this.subroute = this.router.url; 
+  */ this.subroute = this.router.url; 
     this.router.events.subscribe((event:Event) =>
     {
       if (event instanceof NavigationStart) {
 
-        console.log('start');
         this.subroute = this.router.url; 
 
       }
       if (event instanceof NavigationEnd) {
 
-        console.log('end');
         this.subroute = this.router.url; 
-        console.log(this.router.url);
 
       }
 
@@ -47,15 +44,37 @@ export class SidebarComponent implements OnInit {
 
     this.patientService.getUsers().subscribe((result) => {
       this.patients = result;
-      console.log(this.patients);
     });
 
   }
 
   ngOnInit(): void {
- 
+    this.getNotifications()
+    this.socketService.subscribe("notificationUpdate", (data:any) => {
+      this.getNotifications()
+  
+    });
+  
+
   }
 
+  private getNotifications(): void {
+    this.notificationService.getNotifications().subscribe((result) => {
+      result.sort((objA,objB) => { 
+        if (objA.timeSent < objB.timeSent)
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        return 0;
+      }
+      )
+      this.notifications = result;
+    });
+  }
 
 
   chatOpen(){
@@ -74,7 +93,8 @@ export class SidebarComponent implements OnInit {
   }); 
   }
 
-  openNotification(name:string,type:number,timestamp:string,index:number){
+  openNotification(name:string,type:number,timestamp:Date,id:string,notificationData:NotificationModel){
+    
     let desc:string = '';
     let title:string ='';
     if (type === 3)
@@ -86,23 +106,33 @@ export class SidebarComponent implements OnInit {
     if(type === 1)
     {
       title = 'Missed call'
-      desc = 'You have a missed call from ' + name +' at ' +timestamp+ '.'  
+      desc = 'You have a missed call from ' + name +' at ';
     }
     // video call
     if(type === 2)
     {
       title = 'Missed video call'
-      desc = 'You have a missed video call from ' + name +' at ' +timestamp+ '.'  
+      desc = 'You have a missed video call from ' + name +' at ' ;
     }
     if (type === 4)
     {
       title = 'Missed notification'
-      desc = 'You have a missed notification from ' + name +' at ' +timestamp+ '.'  
+      desc = 'You have a missed notification from ' + name +' at ' ;
     }
     // message do nothing we 
-    this.modalService.openDialog(title,desc,type); 
-    this.notificationService.deleteNotification(index);
-    console.log('testing');
+    this.modalService.openDialog(title,desc,type,timestamp); 
+
+    
+    this.deleteNotification(notificationData);
 
   }
+
+  public deleteNotification(notification: NotificationModel): void {
+       
+    this.notificationService.delete(notification._id).subscribe(() => {
+      this.getNotifications();
+      this.socketService.publish("notificationUpdate", {});
+    });
+  
+}
 }
