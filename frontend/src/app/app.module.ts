@@ -11,6 +11,9 @@ import { ItemPreviewComponent } from './pages/item-shop/item-preview/item-previe
 import { CaretakerModule } from '../modules/app-caretaker.module';
 import { CaretakerPhoneModule } from 'src/modules/app-caretaker-phone.module';
 import { MagicalControllerComponent } from './pages/magical-controller/magical-controller.component';
+import { HomeDisplayComponent } from './pages/caretaker_phone/home-display/home-display.component';
+import { ElderPhoneComponent } from './pages/elder-phone/elder-phone.component';
+import { ElderModule } from 'src/modules/app-elder.module';
 
 
 const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
@@ -21,6 +24,9 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     ItemShopComponent,
     ItemPreviewComponent,
     MagicalControllerComponent,
+    HomeDisplayComponent,
+  
+    
    
    
 
@@ -32,6 +38,7 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     HttpClientModule,
     CaretakerModule,
     CaretakerPhoneModule,
+    ElderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
