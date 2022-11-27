@@ -69,7 +69,6 @@ export class routineController extends ResourceController<IRoutine>{
 
     }
 
-    initializeRoutine = async (req: Request, res: Response) => {
     initializeRoutineKostas = async (req: Request, res: Response) => {
         this.logger.debug('initialize items request');
         let items: any[] = [
