@@ -130,7 +130,7 @@ export class routineController extends ResourceController<IRoutine>{
                 endTime: undefined,
                 reqiresCaretaker: true,
                 type: 'Medical',
-                description: 'The caretaker takes the blood pressure of the patient and records for monitoring.',
+                description: 'The caretaker takes the blood pressure of the patient and records it for monitoring.',
                 completed: false
             },
     
