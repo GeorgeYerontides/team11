@@ -120,7 +120,7 @@ export class routineController extends ResourceController<IRoutine>{
                 endTime: undefined,
                 reqiresCaretaker: false,
                 type: 'Medical',
-                description: 'The patient goes on a morning walk in the gardens and socializes with other elders. Morning walk is supervised by nurses.',
+                description: 'Insulin dosage is 95 mg/dL for the patient.',
                 completed: true
             },
             {
