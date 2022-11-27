@@ -103,7 +103,12 @@ export class PatientDashboardComponent implements OnInit {
   }
 
   navigateMed(){
-    this.router.navigate(["../medical_history"],);
+    this.router.navigate(["../medical_history"], {relativeTo: this.route});
+  }
+
+  navigateToRoutine(){
+    console.log("test");
+    this.router.navigate(["../routine_planner"] , {relativeTo: this.route});
   }
 
 }

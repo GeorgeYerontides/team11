@@ -14,6 +14,7 @@ import { MagicalControllerComponent } from './pages/magical-controller/magical-c
 import { HomeDisplayComponent } from './pages/caretaker_phone/home-display/home-display.component';
 import { ElderPhoneComponent } from './pages/elder-phone/elder-phone.component';
 import { ElderModule } from 'src/modules/app-elder.module';
+import { EventBoxComponent } from './pages/caretaker/main-display/event-overview/event-box/event-box.component';
 
 
 const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
@@ -25,10 +26,7 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     ItemPreviewComponent,
     MagicalControllerComponent,
     HomeDisplayComponent,
-  
-    
-   
-   
+
 
   ],
   imports: [

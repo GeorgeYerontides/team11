@@ -17,6 +17,7 @@ export class routineController extends ResourceController<IRoutine>{
         const router = Router();
         router
             .get('/', this.getRoutine)
+            .get('/initializeKostas', this.initializeRoutineKostas)
             .get('/initialize', this.initializeRoutine)
   //          .get('/:id', this.getRoutine)
 //            .post('/', this.postTask)
@@ -69,14 +70,106 @@ export class routineController extends ResourceController<IRoutine>{
     }
 
     initializeRoutine = async (req: Request, res: Response) => {
+    initializeRoutineKostas = async (req: Request, res: Response) => {
         this.logger.debug('initialize items request');
         let items: any[] = [
 
             {
                 patient: "Kostas Lamprou",
+                title: "Watch Tv",
+                startTime: new Date("2022-11-24T08:00:09.989+00:00"),
+                endTime: new Date("2022-11-24T11:00:09.989+00:00"),
+                reqiresCaretaker: false,
+                type: 'Entertainment',
+                description: 'The patient watches his favorite TV shows',
+                completed: false
+            },
+            {
+                patient: "Kostas Lamprou",
+                title: "Call Children",
+                startTime: new Date("2022-11-24T11:00:09.989+00:00"),
+                endTime: new Date("2022-11-24T13:00:09.989+00:00"),
+                reqiresCaretaker: false,
+                type: 'Entertainment',
+                description: 'Scheduled call with family member.',
+                completed: false
+            },
+            {
+                patient: "Kostas Lamprou",
+                title: "Afternoon Nap",
+                startTime: new Date("2022-11-24T13:00:09.989+00:00"),
+                endTime: new Date("2022-11-24T15:00:09.989+00:00"),
+                reqiresCaretaker: false,
+                type: 'Relaxation',
+                description: 'The patient goes on a morning walk in the gardens and socializes with other elders. Morning walk is supervised by nurses.',
+                completed: false
+            },
+            {
+                patient: "Kostas Lamprou",
+                title: "Morning Walk",
+                startTime:  new Date("2022-11-24T05:00:09.989+00:00"),
+                endTime:  new Date("2022-11-24T05:00:09.989+00:00"),
+                reqiresCaretaker: false,
+                type: 'Entertainment',
+                description: 'The patient goes on a morning walk in the gardens and socializes with other elders. Morning walk is supervised by nurses.',
+                completed: true
+            },
+            {
+                patient: "Kostas Lamprou",
                 title: "Take insulin shot",
                 startTime: new Date("2022-11-24T06:00:09.989+00:00"),
-                endTime: null,
+                endTime: undefined,
+                reqiresCaretaker: false,
+                type: 'Medical',
+                description: 'The patient goes on a morning walk in the gardens and socializes with other elders. Morning walk is supervised by nurses.',
+                completed: true
+            },
+            {
+                patient: "Kostas Lamprou",
+                title: "Check Blood Pressure",
+                startTime: new Date("2022-11-24T07:30:09.989+00:00"),
+                endTime: undefined,
+                reqiresCaretaker: true,
+                type: 'Medical',
+                description: 'The caretaker takes the blood pressure of the patient and records for monitoring.',
+                completed: false
+            },
+    
+
+
+           
+        ]
+
+        await RoutineModel.insertMany(items)
+            .then(function (docs) {
+                res.json(docs);
+            })
+            .catch(function (err) {
+                res.status(500);
+            });
+        return res
+            .status(StatusCodes.OK);
+    }
+
+    initializeRoutine = async (req: Request, res: Response) => {
+        this.logger.debug('initialize items request');
+        let items: any[] = [
+
+            {
+                patient: "Kostas Lamprou",
+                title: "Watch Tv",
+                startTime: new Date("2022-11-24T11:00:09.989+00:00"),
+                endTime: new Date("2022-11-24T13:00:09.989+00:00"),
+                reqiresCaretaker: false,
+                type: 'Entertainment',
+                description: 'The patient goes on a morning walk in the gardens and socializes with other elders. Morning walk is supervised by nurses.',
+                completed: true
+            },
+            {
+                patient: "Call Children",
+                title: "Watch Tv",
+                startTime: new Date("2022-11-24T11:00:09.989+00:00"),
+                endTime: new Date("2022-11-24T13:00:09.989+00:00"),
                 reqiresCaretaker: false,
                 type: 'Entertainment',
                 description: 'The patient goes on a morning walk in the gardens and socializes with other elders. Morning walk is supervised by nurses.',
@@ -96,22 +189,13 @@ export class routineController extends ResourceController<IRoutine>{
                 patient: "Kostas Lamprou",
                 title: "Take insulin shot",
                 startTime: new Date("2022-11-24T06:00:09.989+00:00"),
-                endTime: null,
+                endTime: undefined,
                 reqiresCaretaker: false,
                 type: 'Entertainment',
                 description: 'The patient goes on a morning walk in the gardens and socializes with other elders. Morning walk is supervised by nurses.',
                 completed: true
             },
-            {
-                patient: "Andreas Mixahl",
-                title: "Morning Walk",
-                startTime:  new Date("2022-11-24T05:00:09.989+00:00"),
-                endTime:  new Date("2022-11-24T05:00:09.989+00:00"),
-                reqiresCaretaker: false,
-                type: 'Entertainment',
-                description: 'The patient goes on a morning walk in the gardens and socializes with other elders. Morning walk is supervised by nurses.',
-                completed: true
-            },
+    
 
 
            

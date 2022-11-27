@@ -1,7 +1,7 @@
 <div class="myheader">
-    <h2>
+    <h3>
         Patient Information for {{name}} {{surname}}
-    </h2>
+    </h3>
 </div>
 <div  style="display:flex;  margin: 0% 0% 0% 0% ; width: 100%; height:90%;">
     <div class="col-4 zero left-col">
@@ -114,7 +114,7 @@
             </div>
             <div style="height:5vh; width:100%; margin:0%; padding:0%; display: flex; justify-content: center; align-items: center;">
                 <button class="btn eventButton" style="border-right: 1px solid #999BD4;">Add Event</button>
-                <button class="btn eventButton" >Edit Routine</button>
+                <button class="btn eventButton" (click)="navigateToRoutine()" >Edit Routine</button>
             </div>
             <div style="width:100%; height: 5vh; margin:0%; padding:0%; background-color: #DFE0F2; border-top: 1px solid #999BD4; border-bottom: 1px solid #999BD4; display: flex; align-items: center; justify-content: center;">
                 <span>Routine Completed {{completedEvents }}/{{maxEvents}}</span>

@@ -27,4 +27,8 @@ import { environment } from 'src/environments/environment';
           .put<RoutineModel>(`${this.hostURl}/api/routine/${resource._id}`, resource)
           .pipe(map(result => new RoutineModel(result)));
       }
+
+      public delete(id: string): Observable<void> {
+        return this.http.delete<void>(`${this.hostURl}/api/routine/${id}`);
+      }
 }
