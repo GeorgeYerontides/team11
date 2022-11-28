@@ -169,6 +169,8 @@ export class EventOverviewComponent implements OnInit {
     form.controls['fromTime'].setValue('--:--');
     form.controls['toTime'].setValue('--:--');
     form.controls['exampleRadios'].setValue('');
+
+    this.getAllTasks();
   }
 
 
