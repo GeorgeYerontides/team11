@@ -1,4 +1,6 @@
-<div class="top_bar text-center">
+
+
+<div class="top_bar text-center"*ngIf="welcome_message_div">
     <p id="Welcome_message">Hello Kostas<br>Everything is good!</p>
 </div><br><br><br><br><br><br>
 
@@ -19,29 +21,27 @@
 
 
 
-
 <!-- Detailed Information Menu Button -->
 
-<div class="container title_information_div">
-<button id="title_information">Activity Suggestions</button>
+<div class="container title_information_div" *ngIf="activity_suggestions">
+<button id="title_information" (click)="open_suggest_activities()">Activity Suggestions</button>
 </div><br>
-
 
 
 <!-- Menu Buttons List Div -->
 
-<div class="container expand_detailed_information" style="display:none;">
-    <button id="title_information_in_expand">Activity Suggestions</button><br><br>
-    <button class="buttons_detailed_information">Visit Neighboor</button><br><br>
-    <button class="buttons_detailed_information">Go for a Walk</button><br><br>
-    <button class="buttons_detailed_information">Other Activity</button><br><br>
-    <button class="buttons_detailed_information">Back</button><br><br>
+<div class="container expand_detailed_information" *ngIf="expand_activity_suggestions">
+    <button id="title_information_in_expand" (click)="back_to_main()">Activity Suggestions</button><br><br>
+    <button class="buttons_detailed_information" (click)="visit_neighboor_func()">Visit Neighboor</button><br><br>
+    <button class="buttons_detailed_information" (click)="go_for_walk_func()">Go for a Walk</button><br><br>
+    <button class="buttons_detailed_information" (click)="other_activity_func()">Other Activity</button><br><br>
+    <button class="buttons_detailed_information" (click)="back_to_main()">Back</button><br><br>
 </div>
 
 
 <!-- Visit neighboor suggestion div -->
 
-<div class="container visit_neighboor_event" style="display:none;">
+<div class="container visit_neighboor_event" *ngIf="visit_neighboor_div">
     <button class="container visit_information_btn text-center">Visit Neighboor</button><br><br>
     <label id="date_label">Date</label><br>
     <input type="date" id="event_date" name="event_date"value="2022-11-29" min="2022-11-20" max="2023-01-31"><br>
@@ -64,14 +64,14 @@
         <option value="6_option">17:00 PM</option>
     </select><br><br><br>
     <div class="btn-group action_event_buttons">
-      <button class="cancel_event_btn">Cancel</button>&nbsp;&nbsp;&nbsp;
+      <button class="cancel_event_btn" (click)="back_to_main()">Cancel</button>&nbsp;&nbsp;&nbsp;
       <button class="save_event_btn">Save</button>
     </div>
 </div>
 
 <!-- Go for a walk suggestion div -->
 
-<div class="container visit_neighboor_event" style="display:none;">
+<div class="container visit_neighboor_event" *ngIf="go_for_walk_div">
     <button class="container visit_information_btn text-center">Go for a Walk</button><br><br>
     <label id="date_label">Date</label><br>
     <input type="date" id="event_date" name="event_date"value="2022-11-29" min="2022-11-20" max="2023-01-31"><br>
@@ -94,19 +94,19 @@
         <option value="6_option">17:00 PM</option>
     </select><br><br><br>
     <div class="btn-group action_event_buttons">
-      <button class="cancel_event_btn">Cancel</button>&nbsp;&nbsp;&nbsp;
+      <button class="cancel_event_btn" (click)="back_to_main()">Cancel</button>&nbsp;&nbsp;&nbsp;
       <button class="save_event_btn">Save</button>
     </div>
 </div>
 
 <!--  Expand menu for other activity-->
 
-<div class="container expand_detailed_information" style="display:none;">
+<div class="container expand_detailed_information" *ngIf="other_activity_div">
     <button id="title_information_in_expand">Other Activity</button><br><br>
     <label id="text_activty_suggestions">Discuss this with your caretaker</label><br><br>
     <button class="buttons_detailed_information">Call</button><br><br>
     <button class="buttons_detailed_information">Video Chat</button><br><br>
-    <button class="buttons_detailed_information">Back</button><br><br>
+    <button class="buttons_detailed_information" (click)="back_to_main()">Back</button><br><br>
 </div>
 
 
@@ -117,14 +117,14 @@
     <p id="completed_events"> Daily Routine  : 3/8</p>
     <br>
     <div class="btn-group events_buttons">
-        <button id="to_do_btn">TO DO</button>
-        <button id="done_btn">DONE</button>
+        <button id="to_do_btn" (click)="to_do_events_func()">TO DO</button>
+        <button id="done_btn" (click)="done_events_func()">DONE</button>
     </div>
     <br>
 
     <!-- To do Events Div -->
 
-    <div class="to_do">
+    <div class="to_do" *ngIf="to_do_events_div">
         <div class="container event_box">
             <div class="container title_of_event">
                 <label id="event_name">Blood pressure check</label>
@@ -190,12 +190,12 @@
 
     <!-- Done Events Div -->
 
-    <div class="container done_events" style="display:none;">
+    <div class="container done_events" *ngIf="done_events_div">
         <div class="container event_box">
             <div class="container title_of_event">
                 <label id="event_name">Blood pressure check</label>
             </div>
-            <input id="event_checkbox" type="checkbox">
+            <input id="event_checkbox" type="checkbox" value="" [checked]="done_events" disabled>
             <p id="event_time">7:00 AM - 8:00 AM</p>
         </div>
 
@@ -204,7 +204,7 @@
             <div class="container title_of_event">
                 <label id="event_name">Take Insuline Shot</label>
             </div>
-            <input id="event_checkbox" type="checkbox">
+            <input id="event_checkbox" type="checkbox" [checked]="done_events" disabled>
             <p id="event_time">9:00 AM</p>
         </div>
 
@@ -213,7 +213,7 @@
             <div class="container title_of_event">
                 <label id="event_name">Eat Breakfast</label>
             </div>
-            <input id="event_checkbox" type="checkbox">
+            <input id="event_checkbox" type="checkbox" [checked]="done_events" disabled>
             <p id="event_time">9:15 AM - 9:45 AM</p>
         </div>
 
@@ -222,7 +222,7 @@
             <div class="container title_of_event">
                 <label id="event_name">Check Blood Pressure</label>
             </div>
-            <input id="event_checkbox" type="checkbox">
+            <input id="event_checkbox" type="checkbox" [checked]="done_events" disabled>
             <p id="event_time">10:00 AM</p>
         </div>
     </div>
@@ -233,14 +233,14 @@
 
 <!--  Messages Screen -->
 
-<div class="container messages_top_bar" style="display:none;">
+<div class="container messages_top_bar" *ngIf="messages_top_bar_div">
     <br>
-    <button id="exit_from_messages">X</button>
+    <button id="exit_from_messages" (click)="back_to_main()">X</button>
     <p id="messages_p">Messages</p>
 </div>
 
-<div class="container Messages_list" style="display:none;"><br><br>
-    <div class="New_Message">
+<div class="container Messages_list" *ngIf="messages_div"><br><br>
+    <div class="New_Message"><br>
         <p id="message_content">I would like to go for a walk</p>
         <p id="message_time">  9:18 AM</p>
     </div>
@@ -253,7 +253,7 @@
 
 <nav class="navbar navbar-light bg-light">
     <div class="container-fluid"  id="navbar-menu">
-      <a class="navbar-brand" id="Messages_page" href="#">💬</a>
+      <a class="navbar-brand" id="Messages_page" (click)="open_messages_func()">💬</a>
       <a class="navbar-brand" id="Notifications_page" href="#">🔔</a>
       <a class="navbar-brand" id="Video_Call_page" href="#">🎥</a>
     </div>

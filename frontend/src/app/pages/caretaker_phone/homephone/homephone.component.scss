@@ -12,6 +12,7 @@
     
     /* Top Bar with elder Name */
     .top_bar{
+        z-index:1;
         top: 0;
         overflow-y: hidden;
         position: fixed;
