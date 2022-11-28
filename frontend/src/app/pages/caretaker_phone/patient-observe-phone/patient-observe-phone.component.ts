@@ -3,11 +3,11 @@ import { PatientModel } from 'src/app/global/models/patient/patient.model';
 import { PatientService } from 'src/app/global/services/patient/patients.service';
 
 @Component({
-  selector: 'app-home-display',
-  templateUrl: './home-display.component.html',
-  styleUrls: ['./home-display.component.scss']
+  selector: 'app-patient-observe-phone',
+  templateUrl: './patient-observe-phone.component.html',
+  styleUrls: ['./patient-observe-phone.component.scss']
 })
-export class HomeDisplayComponent implements OnInit {
+export class PatientObservePhoneComponent implements OnInit {
 
   protected users: PatientModel[] = [  ]
   constructor(private patientService:PatientService) {
@@ -22,10 +22,6 @@ export class HomeDisplayComponent implements OnInit {
       console.log("these are the users"+this.users);
     });
 
-  }
-
-  navigateUser(){
-    
   }
 
 }
