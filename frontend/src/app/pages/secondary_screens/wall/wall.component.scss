@@ -1,0 +1,13 @@
+.myContainer{
+    margin: 0%;
+    display: flex;
+    background-color: red; 
+    width:100%;
+    height: 100vh;
+    background-image: url('../../../../assets/wall/relaxing.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+}

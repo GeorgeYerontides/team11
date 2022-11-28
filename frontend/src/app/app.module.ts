@@ -15,6 +15,8 @@ import { HomeDisplayComponent } from './pages/caretaker_phone/home-display/home-
 import { ElderPhoneComponent } from './pages/elder-phone/elder-phone.component';
 import { ElderModule } from 'src/modules/app-elder.module';
 import { EventBoxComponent } from './pages/caretaker/main-display/event-overview/event-box/event-box.component';
+import { WallComponent } from './pages/secondary_screens/wall/wall.component';
+import { TvComponent } from './pages/secondary_screens/tv/tv.component';
 
 
 const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
@@ -26,6 +28,8 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     ItemPreviewComponent,
     MagicalControllerComponent,
     HomeDisplayComponent,
+    WallComponent,
+    TvComponent,
 
 
   ],

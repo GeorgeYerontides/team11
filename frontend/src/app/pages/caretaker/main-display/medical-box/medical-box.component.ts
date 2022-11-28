@@ -12,7 +12,7 @@ export class MedicalBoxComponent implements OnInit {
   @Input() self!:RoutineModel;
   constructor(private routineService:RoutineService,private socketService:SocketsService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     console.log(this.self);
   }
   changeCompleted(){

@@ -1,7 +1,7 @@
-<div class="medCont" >
+<div class="medCont" [ngStyle]="{'opacity': self.completed === true? 0.7 : 1.0}" >
     <div class="componentHeader" >
         <div style="display:flex; width: 90%;">
-            <h4 class="componentHeaderTitle">{{self.title}} </h4>
+            <h5 class="componentHeaderTitle">{{self.title}} </h5>
         </div>
         <div style=" width: 10%; ">
             <div class="form-check" style="height: 100%; width:100%; display:flex; justify-content: flex-end;">
