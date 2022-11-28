@@ -6,6 +6,7 @@ import { CaretakerPhoneRoutingModule } from './app-caretaker-phone-routing.modul
 import { HomephoneComponent } from 'src/app/pages/caretaker_phone/homephone/homephone.component';
 import { PatientObservePhoneComponent } from 'src/app/pages/caretaker_phone/patient-observe-phone/patient-observe-phone.component';
 import { MainDisplayPhoneComponent } from 'src/app/pages/caretaker_phone/main-display-phone/main-display-phone.component';
+import { HomeDisplayPhoneComponent } from 'src/app/pages/caretaker_phone/home-display-phone/home-display-phone.component';
 
 
 
@@ -13,7 +14,8 @@ import { MainDisplayPhoneComponent } from 'src/app/pages/caretaker_phone/main-di
     declarations: [
         HomephoneComponent,
         PatientObservePhoneComponent,
-        MainDisplayPhoneComponent
+        MainDisplayPhoneComponent,
+        HomeDisplayPhoneComponent,
     ],
     imports: [
         RouterModule,
@@ -22,7 +24,8 @@ import { MainDisplayPhoneComponent } from 'src/app/pages/caretaker_phone/main-di
     exports: [
         HomephoneComponent,
         PatientObservePhoneComponent,
-        MainDisplayPhoneComponent
+        MainDisplayPhoneComponent,
+        HomeDisplayPhoneComponent,
     ]
   })
 
