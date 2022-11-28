@@ -28,7 +28,7 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     ItemPreviewComponent,
     MagicalControllerComponent,
     HomeDisplayComponent,
-    WallComponent,
+    WallComponent, 
     TvComponent,
 
 
