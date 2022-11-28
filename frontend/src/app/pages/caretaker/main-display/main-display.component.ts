@@ -13,18 +13,15 @@ export class MainDisplayComponent implements OnInit {
   @Input() patient!: PatientModel;
 
   urlSafe!: SafeResourceUrl;
-  users!: PatientModel[];
-  patientService: any;
 
-  constructor(private router:Router, private route:ActivatedRoute,) { 
+  constructor(private router:Router, private route:ActivatedRoute,
+    public sanitzer:DomSanitizer
+    ) { }
 
-  }
+  ngOnInit(): void {
 
-  async ngOnInit() {
-    this.patientService.getUsers().subscribe((result: PatientModel[]) => {
-      this.users = result;
-      console.log("these are the users"+this.users);
-    });
+    console.log(this.patient);
+    this.urlSafe = this.sanitzer.bypassSecurityTrustResourceUrl(this.patient.cameraUrl);
   }
 
   navigateToPatient(){

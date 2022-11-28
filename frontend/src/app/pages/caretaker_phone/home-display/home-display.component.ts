@@ -3,11 +3,12 @@ import { PatientModel } from 'src/app/global/models/patient/patient.model';
 import { PatientService } from 'src/app/global/services/patient/patients.service';
 
 @Component({
-  selector: 'app-main-dipslay-phone',
-  templateUrl: './main-dipslay-phone.component.html',
-  styleUrls: ['./main-dipslay-phone.component.scss']
+  selector: 'app-home-display',
+  templateUrl: './home-display.component.html',
+  styleUrls: ['./home-display.component.scss']
 })
-export class MainDipslayPhoneComponent implements OnInit {
+export class HomeDisplayComponent implements OnInit {
+
   protected users: PatientModel[] = [  ]
   constructor(private patientService:PatientService) {
       
@@ -23,5 +24,8 @@ export class MainDipslayPhoneComponent implements OnInit {
 
   }
 
+  navigateUser(){
+    
+  }
 
 }
