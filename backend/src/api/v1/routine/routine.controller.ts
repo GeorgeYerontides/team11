@@ -75,7 +75,7 @@ export class routineController extends ResourceController<IRoutine>{
 
             {
                 patient: "Kostas Lamprou",
-                title: "Watch Tv",
+                title: "Watch TV",
                 startTime: new Date("2022-11-24T08:00:09.989+00:00"),
                 endTime: new Date("2022-11-24T11:00:09.989+00:00"),
                 reqiresCaretaker: false,
@@ -117,7 +117,7 @@ export class routineController extends ResourceController<IRoutine>{
                 patient: "Kostas Lamprou",
                 title: "Take insulin shot",
                 startTime: new Date("2022-11-24T06:00:09.989+00:00"),
-                endTime: undefined,
+                endTime: new Date("2022-11-24T06:00:09.989+00:00"),
                 reqiresCaretaker: false,
                 type: 'Medical',
                 description: 'Insulin dosage is 95 mg/dL for the patient.',
@@ -127,7 +127,7 @@ export class routineController extends ResourceController<IRoutine>{
                 patient: "Kostas Lamprou",
                 title: "Check Blood Pressure",
                 startTime: new Date("2022-11-24T07:30:09.989+00:00"),
-                endTime: undefined,
+                endTime: new Date("2022-11-24T07:30:09.989+00:00"),
                 reqiresCaretaker: true,
                 type: 'Medical',
                 description: 'The caretaker takes the blood pressure of the patient and records it for monitoring.',
@@ -154,28 +154,19 @@ export class routineController extends ResourceController<IRoutine>{
         this.logger.debug('initialize items request');
         let items: any[] = [
 
+            
             {
-                patient: "Kostas Lamprou",
-                title: "Watch Tv",
-                startTime: new Date("2022-11-24T11:00:09.989+00:00"),
-                endTime: new Date("2022-11-24T13:00:09.989+00:00"),
+                patient: "Andreas Mixahl",
+                title: "Afternoon Nap",
+                startTime: new Date("2022-11-24T13:00:09.989+00:00"),
+                endTime: new Date("2022-11-24T15:00:09.989+00:00"),
                 reqiresCaretaker: false,
-                type: 'Entertainment',
+                type: 'Relaxation',
                 description: 'The patient goes on a morning walk in the gardens and socializes with other elders. Morning walk is supervised by nurses.',
-                completed: true
+                completed: false
             },
             {
-                patient: "Call Children",
-                title: "Watch Tv",
-                startTime: new Date("2022-11-24T11:00:09.989+00:00"),
-                endTime: new Date("2022-11-24T13:00:09.989+00:00"),
-                reqiresCaretaker: false,
-                type: 'Entertainment',
-                description: 'The patient goes on a morning walk in the gardens and socializes with other elders. Morning walk is supervised by nurses.',
-                completed: true
-            },
-            {
-                patient: "Kostas Lamprou",
+                patient: "Andreas Mixahl",
                 title: "Morning Walk",
                 startTime:  new Date("2022-11-24T05:00:09.989+00:00"),
                 endTime:  new Date("2022-11-24T05:00:09.989+00:00"),
@@ -185,17 +176,67 @@ export class routineController extends ResourceController<IRoutine>{
                 completed: true
             },
             {
-                patient: "Kostas Lamprou",
+                patient: "Andreas Mixahl",
                 title: "Take insulin shot",
                 startTime: new Date("2022-11-24T06:00:09.989+00:00"),
-                endTime: undefined,
+                endTime: new Date("2022-11-24T06:00:09.989+00:00"),
+                reqiresCaretaker: false,
+                type: 'Medical',
+                description: 'Insulin dosage is 95 mg/dL for the patient.',
+                completed: true
+            },
+            {
+                patient: "Andreas Mixahl",
+                title: "Check Blood Pressure",
+                startTime: new Date("2022-11-24T07:30:09.989+00:00"),
+                endTime: new Date("2022-11-24T07:30:09.989+00:00"),
+                reqiresCaretaker: true,
+                type: 'Medical',
+                description: 'The caretaker takes the blood pressure of the patient and records it for monitoring.',
+                completed: false
+            },
+    
+            {
+                patient: "Giorgos Trifonos",
+                title: "Afternoon Nap",
+                startTime: new Date("2022-11-24T13:00:09.989+00:00"),
+                endTime: new Date("2022-11-24T15:00:09.989+00:00"),
+                reqiresCaretaker: false,
+                type: 'Relaxation',
+                description: 'The patient goes on a morning walk in the gardens and socializes with other elders. Morning walk is supervised by nurses.',
+                completed: false
+            },
+            {
+                patient: "Giorgos Trifonos",
+                title: "Morning Walk",
+                startTime:  new Date("2022-11-24T05:00:09.989+00:00"),
+                endTime:  new Date("2022-11-24T05:00:09.989+00:00"),
                 reqiresCaretaker: false,
                 type: 'Entertainment',
                 description: 'The patient goes on a morning walk in the gardens and socializes with other elders. Morning walk is supervised by nurses.',
                 completed: true
             },
+            {
+                patient: "Giorgos Trifonos",
+                title: "Take insulin shot",
+                startTime: new Date("2022-11-24T06:00:09.989+00:00"),
+                endTime: new Date("2022-11-24T06:00:09.989+00:00"),
+                reqiresCaretaker: false,
+                type: 'Medical',
+                description: 'Insulin dosage is 95 mg/dL for the patient.',
+                completed: true
+            },
+            {
+                patient: "Giorgos Trifonos",
+                title: "Check Blood Pressure",
+                startTime: new Date("2022-11-24T07:30:09.989+00:00"),
+                endTime: new Date("2022-11-24T07:30:09.989+00:00"),
+                reqiresCaretaker: true,
+                type: 'Medical',
+                description: 'The caretaker takes the blood pressure of the patient and records it for monitoring.',
+                completed: false
+            },
     
-
 
            
         ]
