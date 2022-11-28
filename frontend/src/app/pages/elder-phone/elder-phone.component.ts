@@ -33,14 +33,21 @@ export class ElderPhoneComponent implements OnInit {
   }
 
   back_to_main(){
-    this.activity_suggestions = true;
-    this.expand_activity_suggestions = false;
+    this.activity_suggestions = false;
+    this.expand_activity_suggestions = true;
     this.visit_neighboor_div = false;
     this.go_for_walk_div = false;
     this.other_activity_div = false;
     this.messages_div = false;
     this.messages_top_bar_div = false;
     this.welcome_message_div = true;
+    this.to_do_events_div = true;
+    this.done_events_div = false;
+  }
+
+  back_to_home(){
+    this.activity_suggestions = true;
+    this.expand_activity_suggestions = false;
   }
 
   visit_neighboor_func(){
@@ -62,6 +69,8 @@ export class ElderPhoneComponent implements OnInit {
     this.messages_div = true;
     this.messages_top_bar_div = true;
     this.welcome_message_div = false;
+    this.to_do_events_div = false;
+    this.done_events_div = false;
   }
 
   to_do_events_func(){

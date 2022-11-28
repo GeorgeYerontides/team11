@@ -22,14 +22,21 @@
         border-bottom-right-radius: 20px;
     }
 
-    .elder_name{
+    #elder_name {
         color:black;
-        background-color: white;
-        top: 70px;
-        font-size: 20px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+        background-color: #e8d2ef;
+        top:20px;
+        font-size:18px;
+        width:60%;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+        outline: none;
+        box-shadow: 0 4px #999;
+      }
+
 
     /* Vital Status and location divs */
     .location,.vital_status{
@@ -37,7 +44,7 @@
         margin-left: auto;
         margin-right: auto;
         height:70px;
-        color:black;
+        color:white;
         background-color: #5356b6;
         text-align: center;
         font-size: 17px;
@@ -96,6 +103,9 @@
     }
 
     .buttons_detailed_information{
+        position: relative;
+        margin-left: 10%;
+        margin-right: 10%;
         background-color: #e8d2ef;
         border: 1px solid #5356B6;
         border-radius: 10px;

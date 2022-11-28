@@ -1,1 +1,22 @@
+
+
+
 <div  class="myHeader" >{{patient.name}} {{patient.surname}}</div>
+<!-- 21:9 aspect ratio -->
+<div class="container video-container">
+    <iframe class="embed-responsive-item video-fluid"[src]="urlSafe" ></iframe>
+</div><br>
+<div>
+    <div class="row monitorStyle" >
+        <div>
+          <app-home-display-phone [typeMon] = "'Vital Status'">dsfdsfdsf</app-home-display-phone>
+        </div>
+        <div>
+            <app-home-display-phone [typeMon] = "'Location'">dfdsfdsfsd</app-home-display-phone>
+          </div>
+    </div>
+</div><br>
+
+<button type="button" class="btn btn-primary mybtn" (click)="navigateToPatient()">View patient information</button><br><br><br>
+
+

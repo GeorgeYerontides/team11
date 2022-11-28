@@ -24,7 +24,7 @@ export class MainDisplayPhoneComponent implements OnInit {
   }
 
   navigateToPatient(){
-    var path= "../"+ this.patient.name + ' '+ this.patient.surname + "/main";
+    var path= "/"+ this.patient.name + ' '+ this.patient.surname;
     console.log(path);
     this.router.navigate([path], {relativeTo: this.route});
   }
