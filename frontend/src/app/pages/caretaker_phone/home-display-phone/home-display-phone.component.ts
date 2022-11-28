@@ -21,10 +21,10 @@ export class HomeDisplayPhoneComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.patientService.getUsers().subscribe((result: PatientModel[]) => {
+   /* this.patientService.getUsers().subscribe((result: PatientModel[]) => {
       this.users = result;
       console.log("these are the users"+this.users);
-    });
+    }); */
   }
 
   navigateToPatient(){
