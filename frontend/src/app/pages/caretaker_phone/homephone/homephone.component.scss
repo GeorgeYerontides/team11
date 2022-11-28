@@ -96,11 +96,28 @@
     }
 
     .buttons_detailed_information{
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
         background-color: #e8d2ef;
         border: 1px solid #5356B6;
         border-radius: 10px;
         font-size:18px;
         width:80%;
+        cursor: pointer;
+        outline: none;
+        box-shadow: 0 4px #999;
+    }
+
+    .back_medication{
+        position: absolute;
+        margin-left: 10%;
+        margin-right: 10%;
+        background-color: #e8d2ef;
+        border: 1px solid #5356B6;
+        border-radius: 10px;
+        font-size:18px;
+        width:60%;
         cursor: pointer;
         outline: none;
         box-shadow: 0 4px #999;

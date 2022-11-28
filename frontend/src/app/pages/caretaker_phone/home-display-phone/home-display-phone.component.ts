@@ -1,15 +1,15 @@
-import { Component, Input,OnInit } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { SafeResourceUrl } from '@angular/platform-browser';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PatientModel } from 'src/app/global/models/patient/patient.model';
-import { MonitorDisplayComponent } from '../monitor-display/monitor-display.component';
 
 @Component({
-  selector: 'app-main-display',
-  templateUrl: './main-display.component.html',
-  styleUrls: ['./main-display.component.scss']
+  selector: 'app-home-display-phone',
+  templateUrl: './home-display-phone.component.html',
+  styleUrls: ['./home-display-phone.component.scss']
 })
-export class MainDisplayComponent implements OnInit {
+export class HomeDisplayPhoneComponent implements OnInit {
+
   @Input() patient!: PatientModel;
 
   urlSafe!: SafeResourceUrl;
@@ -28,8 +28,10 @@ export class MainDisplayComponent implements OnInit {
   }
 
   navigateToPatient(){
-    var path= "../"+ this.patient.name + ' '+ this.patient.surname + "/main";
+    var path = "/"+ this.patient.name + ' '+ this.patient.surname;
     console.log(path);
+    console.log(this.route);
     this.router.navigate([path], {relativeTo: this.route});
   }
+
 }
