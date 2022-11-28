@@ -8,7 +8,7 @@ export interface IRoutine extends Document {
   patient: string;
   title: string;
   startTime: Date;
-  endTime?: Date;
+  endTime: Date;
   reqiresCaretaker: boolean;
   type: string;
   description: string;

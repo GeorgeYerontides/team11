@@ -12,6 +12,10 @@ import { CaretakerModule } from '../modules/app-caretaker.module';
 import { CaretakerPhoneModule } from 'src/modules/app-caretaker-phone.module';
 import { MagicalControllerComponent } from './pages/magical-controller/magical-controller.component';
 import { ElderModule } from 'src/modules/app-elder.module';
+import { EventBoxComponent } from './pages/caretaker/main-display/event-overview/event-box/event-box.component';
+import { WallComponent } from './pages/secondary_screens/wall/wall.component';
+import { TvComponent } from './pages/secondary_screens/tv/tv.component';
+
 
 const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
 @NgModule({
@@ -21,9 +25,8 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     ItemShopComponent,
     ItemPreviewComponent,
     MagicalControllerComponent,
-    
-    
-    
+    WallComponent,
+    TvComponent,
 
 
   ],

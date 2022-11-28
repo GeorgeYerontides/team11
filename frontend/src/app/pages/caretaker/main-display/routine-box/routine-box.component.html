@@ -1,8 +1,8 @@
-<div class="medCont" >
+<div class="medCont"  [ngStyle]="{'opacity': self.completed === true? 0.7 : 1.0}">
     <!--ngStyle allows for conditional binding on to the background feauture based on the boolean value requires caretaker-->
     <div class="componentHeader" [ngStyle]="{background: self.reqiresCaretaker? '#8A53B6' : '#5356B6'}" >
         <div style="display:flex; width: 80%;">
-            <h4 class="componentHeaderTitle">{{self.title}}</h4>
+            <h5 class="componentHeaderTitle">{{self.title}}</h5>
 
         </div>
         <div style=" width: 20%; display: flex; justify-content: flex-end">
@@ -15,7 +15,14 @@
         </div>
     </div>
     <div class="contentRoutine">
-        <h6 style="margin-bottom:0%" > {{ self.startTime | date: 'shortTime'}} <span *ngIf = "self.endTime!=null"> - </span>  {{ self.endTime | date: 'shortTime'}}  </h6>
+        <div style="display:flex; margin:0%; padding:0%">
+            <h6>{{self.startTime |  date: 'shortTime'}}</h6>
+            <h6 style="margin-left: 10px; margin-bottom: 0%;" *ngIf="self.endTime !== self.startTime"> to </h6>
+            <h6 style="margin-left: 10px; margin-bottom: 0%;" *ngIf="self.endTime !== self.startTime "> {{self.endTime |  date: 'shortTime'}} </h6>
+ 
+        </div>
+      
+     
         <h6 style="margin-bottom:0%" *ngIf = 'self.reqiresCaretaker; else NotRequired'>Help required.</h6>
         <ng-template style="margin-bottom:0%" #NotRequired> <h6>No help required.</h6></ng-template>
         

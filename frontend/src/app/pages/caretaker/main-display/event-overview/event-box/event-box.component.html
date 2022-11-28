@@ -10,7 +10,7 @@
                 <p style="font-weight: 700;">Time:</p>
                 <p style="margin-left: 20px;">{{self.startTime |  date: 'shortTime'}}</p>
                 <p style="margin-left: 20px;"> to </p>
-                <p style="margin-left: 20px;" *ngIf="self.endTime != undefined else noTime"> {{self.endTime |  date: 'shortTime'}} </p>
+                <p style="margin-left: 20px;" *ngIf="self.endTime !== self.startTime else noTime"> {{self.endTime |  date: 'shortTime'}} </p>
                 <ng-template #noTime>  <p style="margin-left: 20px;"> - </p></ng-template>
         
             </div>
