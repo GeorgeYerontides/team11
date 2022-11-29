@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { result } from 'lodash';
 import { PatientModel } from 'src/app/global/models/patient/patient.model';
 import { RoutineModel } from 'src/app/global/models/routine/routine.model';
+import { ModalService } from 'src/app/global/services/modals/notification-modal.service';
 import { PatientService } from 'src/app/global/services/patient/patients.service';
 import { RoutineService } from 'src/app/global/services/routine/routine.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
@@ -14,13 +15,14 @@ import { SocketsService } from 'src/app/global/services/sockets/sockets.service'
   styleUrls: ['./event-overview.component.scss']
 })
 export class EventOverviewComponent implements OnInit {
+  public modal:boolean = false;
   public currUser!:PatientModel ;
   public name:string = "";
   public surname:string = "";
   protected routineEvents:RoutineModel[]=[];
   
   constructor(private patientService: PatientService, private route:ActivatedRoute,private routineService:RoutineService,
-    private socketService:SocketsService) { 
+    private socketService:SocketsService, private modalService:ModalService) { 
     let snapshot = this.route.snapshot;
     console.log("child ",snapshot.parent?.params['name']);
     console.log( snapshot.params['name']);
@@ -46,6 +48,11 @@ export class EventOverviewComponent implements OnInit {
     this.socketService.subscribe("routine_update", (data: any) => {
       this.getAllTasks();
     });
+
+    this.socketService.subscribe('routineModal',() =>{
+      console.log("received open")
+      this.modal = this.modalService.showAdd;
+    })
     //this.currUser = this.patientService.getUser(name);
   }
 
@@ -173,6 +180,12 @@ export class EventOverviewComponent implements OnInit {
     this.getAllTasks();
   }
 
+  addRoutine(){
+    console.log('add routine');
+    this.modalService.openRoutine();
+  
 
+
+  }
 
 }

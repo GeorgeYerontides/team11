@@ -19,6 +19,7 @@ import { MedicalHistoryComponent } from 'src/app/pages/caretaker/main-display/me
 import { ModalsComponent } from 'src/app/pages/caretaker/modals/modals.component';
 import { FormsModule } from '@angular/forms';
 import { EventBoxComponent } from 'src/app/pages/caretaker/main-display/event-overview/event-box/event-box.component';
+import { RoutineAddComponent } from 'src/app/pages/caretaker/modals/routine-add/routine-add.component';
 
 
 
@@ -38,6 +39,7 @@ import { EventBoxComponent } from 'src/app/pages/caretaker/main-display/event-ov
         EventOverviewComponent,
         ModalsComponent,
         EventBoxComponent,
+        RoutineAddComponent
     ],
     imports: [
         RouterModule,
@@ -62,6 +64,7 @@ import { EventBoxComponent } from 'src/app/pages/caretaker/main-display/event-ov
         EventOverviewComponent,
         ModalsComponent,
         EventBoxComponent,
+        RoutineAddComponent
     ]
   })
 

@@ -8,7 +8,7 @@
     width: 100%; ">
         <div class="col-3 filterBar">
             <div style="display: flex; justify-content:center; align-items:center; height: 15vh; ">
-                <button type="button" class="btn btn-primary my-style " style="    font-size: 1.2vw; padding: 0%; text-align: center;">Add Event</button>
+                <button type="button" class="btn btn-primary my-style " style="    font-size: 1.2vw; padding: 0%; text-align: center;" (click)='addRoutine()'>Add Event</button>
             </div>
             <div class="sidebar-header">
                 <h5 class="sidebar-text">Filters</h5>
@@ -94,5 +94,7 @@
             </div>
         </div>
     </div>
+    <app-routine-add *ngIf="modal"></app-routine-add>
+
 
 </div>
