@@ -11,12 +11,10 @@ import { ItemPreviewComponent } from './pages/item-shop/item-preview/item-previe
 import { CaretakerModule } from '../modules/app-caretaker.module';
 import { CaretakerPhoneModule } from 'src/modules/app-caretaker-phone.module';
 import { MagicalControllerComponent } from './pages/magical-controller/magical-controller.component';
-import { ElderPhoneComponent } from './pages/elder-phone/elder-phone.component';
 import { ElderModule } from 'src/modules/app-elder.module';
-import { EventBoxComponent } from './pages/caretaker/main-display/event-overview/event-box/event-box.component';
 import { WallComponent } from './pages/secondary_screens/wall/wall.component';
 import { TvComponent } from './pages/secondary_screens/tv/tv.component';
-import { MainDisplayPhoneComponent } from './pages/caretaker_phone/main-display-phone/main-display-phone.component';
+
 
 
 const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
@@ -29,7 +27,7 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     MagicalControllerComponent,
     
     WallComponent, 
-    TvComponent, 
+    TvComponent,  
      
 
 
