@@ -1,6 +1,7 @@
 import * as express from 'express';
 import { ExampleController } from './example/example.controller';
 import { ItemShopController } from './item-shop/item-shop.controller';
+import { LocationController } from './location/location.controler';
 import { NotificationController } from './notification/notification.controller';
 import { PatientController } from './patient/patient.controller';
 import { routineController } from './routine/routine.controller';
@@ -29,6 +30,10 @@ apiV1Router
   .use(
     '/notification',
     new NotificationController().applyRoutes()
+  )
+  .use(
+    '/location',
+    new LocationController().applyRoutes()
   )
   .use(
     '/routine',

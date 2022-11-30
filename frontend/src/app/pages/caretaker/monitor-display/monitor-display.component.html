@@ -7,5 +7,7 @@
         <p style="margin:0; font-size: 1.7vw; " class="d-none d-md-block d-lg-none"> {{typeMon}}</p>
     </div>
   
-    <div class="myStyle" style="width:50%; border-radius: 10px;"></div>
+    <div class="myStyle" style="width:50%; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
+        <p style="margin-bottom: 0%;" *ngIf = " typeMon === 'Location'">{{location}}</p>
+    </div>
 </div>

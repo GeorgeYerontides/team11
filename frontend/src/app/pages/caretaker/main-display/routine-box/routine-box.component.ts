@@ -22,9 +22,8 @@ export class RoutineBoxComponent implements OnInit {
   }
   async ngOnInit() {
    
-    console.log(this.self)
+
     // console.log('test ', this.self.createdAt.getHours());
-    console.log(this.self)
    /* if ( this.self.endTime != null)
     {
       this.end = this.self.endTime.getHours().toString().padStart(2, '0') + ":" + this.self.endTime.getMinutes().toString().padStart(2, '0');

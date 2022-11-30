@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PatientModel } from 'src/app/global/models/patient/patient.model';
 
 import { RoutineModel } from 'src/app/global/models/routine/routine.model';
+import { LocationService } from 'src/app/global/services/location/location.service';
 import { ModalService } from 'src/app/global/services/modals/notification-modal.service';
 import { PatientService } from 'src/app/global/services/patient/patients.service';
 import { RoutineService } from 'src/app/global/services/routine/routine.service';
@@ -37,7 +38,7 @@ export class PatientDashboardComponent implements OnInit {
   urlSafe!: SafeResourceUrl;
   constructor(private patientService: PatientService, private route:ActivatedRoute,
     private router:Router, private routineService:RoutineService,private socketService:SocketsService,
-    private sanitizer:DomSanitizer,private modalService:ModalService) { 
+    private sanitizer:DomSanitizer,private modalService:ModalService,private locationService:LocationService) { 
     //let snapshot = this.route.snapshot;
     //console.log("child ",snapshot.parent?.params['name']);
     //console.log( snapshot.params['name']);
@@ -66,6 +67,15 @@ export class PatientDashboardComponent implements OnInit {
     this.getAllTasks();
     this.socketService.subscribe("routine_update", (data: any) => {
       this.getAllTasks();
+    });
+
+    this.getAllTasks();
+
+  
+  
+    this.socketService.subscribe("locationChange", (data: any) => {
+    
+      this.getLocation();
     });
     
   }
@@ -97,12 +107,19 @@ export class PatientDashboardComponent implements OnInit {
       this.emergencyPhone = this.currUser.emergencyPhone;
       this.emergencyMail = this.currUser.emergencyEmail;
       this.medicalEvents = this.routineEvents .filter(data => data.type === "Medical");
-
+      this.getLocation();
      });
 
-    
+
   }
 
+  private async getLocation(){
+    console.log(' CALLED GET LOCCATION',this.currUser);
+    this.locationService.getUserLocation(this.currUser.name, this.currUser.surname).subscribe((result) => {
+      this.location = result[0].location;
+
+    });
+  }
   navigateMed(){
     this.router.navigate(["../medical_history"], {relativeTo: this.route});
   }
