@@ -1,9 +1,18 @@
 <div class="myModal">
     <div class="header">
-        <h3 style="margin-bottom: 0%;">{{title}}</h3>
-        <button id = "closeBtn"type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+        <div class="col-1"></div>
+        
+        <div class="col-10" style="display: flex; justify-content: center; align-items: center;">
+            <h3 style="margin-bottom: 0%;">{{title}}</h3>
+        </div>
+
+        <div class="col-1" style=" display: flex; justify-content: center; align-items: center; padding: 0%;">
+            <button class="myCloseBtn" (click)="close()"> <i class="fa fa-window-close fa-2x" style="color: red;" aria-hidden="true"></i></button>
+        
+        </div>
+      
     </div>
-    <div class="content">
+    <div class="content" >
         <h5> {{desc}}  {{ timeSent | date: 'shortTime'}}</h5>
     </div>
     <div class="buttonArea">

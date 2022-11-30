@@ -14,8 +14,8 @@
 }
 
 .myModal{
-    height: 50vh; 
-    width: 40vw; 
+    height: 60vh; 
+    width: 50vw; 
     background-color:white; 
     box-shadow:5px 5px 6px black;
     border-radius: 10px;
@@ -35,14 +35,131 @@
     align-items: center;
     color:white;
     border-radius: 10px 10px 0px 0px;
-    padding: 0% 2% 0% 2%;
   
   }
   
   
-  .header h3{
-    flex-grow:1;       /* take up rest of line */
-    text-align:center; /* centre text in p */
+  h5{
+    margin-right: 20px;
+    margin-bottom: 0%;
+  }
+
+  .myRow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 45vw;
+    margin-bottom: 2%;
+
+  }
+  .mySubRow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width:50%;
   
   }
-  
+
+  .timeBox{
+    display: flex; align-items: center;
+    height:100%;
+}
+
+
+.timeInput{
+  width: 80%; 
+  text-align: center; 
+  border-bottom: 1px solid black !important; 
+  border-top: 0px solid black !important; 
+  border-left: 0px solid black !important; 
+  border-right: 0px solid black !important; 
+  background-color: #EEDFF2;
+  height:100%;
+
+}
+
+.inputStyle{    
+    background-color: #EEDFF2;
+    color:black;
+    border-bottom: 2px solid #999BD4;
+    border-left: 0px solid #999BD4;
+    border-right: 0px solid #999BD4;
+    border-top: 0px solid #999BD4;
+    height:100%;
+}
+
+.inputStyleDesc{    
+  background-color: #EEDFF2;
+  color:black;
+  border: 2px solid #999BD4;
+  border-radius: 10px;
+  padding: 2%;
+  height:100%;
+
+}
+
+.myRowDesc{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  width: 45vw;
+  height: 60%;
+  margin-bottom: 2%;
+
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+.myCloseBtn{
+  margin: 0px;
+  padding: 0px;
+  background-color: #5356B6;
+  border: 0px;
+  height:90%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-lg .custom-control-label::before, 
+.checkbox-lg .custom-control-label::after {
+  top: .8rem;
+  width: 1.55rem;
+  height: 1.55rem;
+}
+
+.checkbox-lg .custom-control-label {
+  padding-top: 13px;
+  padding-left: 6px;
+}
+
+
+.checkbox-xl .custom-control-label::before, 
+.checkbox-xl .custom-control-label::after {
+  top: 1.2rem;
+  width: 1.85rem;
+  height: 1.85rem;
+}
+
+.form-check-input:checked {
+    background-color: green;
+}
+
+.my-style{
+  width: 30%; 
+  height: 5vh;
+
+
+  color:black;
+
+  border: 2px solid #999BD4;
+  border-radius: 12px;
+  text-align: center;
+  vertical-align: middle;
+}

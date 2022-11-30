@@ -181,7 +181,6 @@ export class EventOverviewComponent implements OnInit {
   }
 
   addRoutine(){
-    console.log('add routine');
     this.modalService.openRoutine();
   
 

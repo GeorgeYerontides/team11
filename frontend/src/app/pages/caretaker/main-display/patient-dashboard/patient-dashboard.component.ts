@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PatientModel } from 'src/app/global/models/patient/patient.model';
 
 import { RoutineModel } from 'src/app/global/models/routine/routine.model';
+import { ModalService } from 'src/app/global/services/modals/notification-modal.service';
 import { PatientService } from 'src/app/global/services/patient/patients.service';
 import { RoutineService } from 'src/app/global/services/routine/routine.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
@@ -36,7 +37,7 @@ export class PatientDashboardComponent implements OnInit {
   urlSafe!: SafeResourceUrl;
   constructor(private patientService: PatientService, private route:ActivatedRoute,
     private router:Router, private routineService:RoutineService,private socketService:SocketsService,
-    private sanitizer:DomSanitizer) { 
+    private sanitizer:DomSanitizer,private modalService:ModalService) { 
     //let snapshot = this.route.snapshot;
     //console.log("child ",snapshot.parent?.params['name']);
     //console.log( snapshot.params['name']);
@@ -109,6 +110,12 @@ export class PatientDashboardComponent implements OnInit {
   navigateToRoutine(){
     console.log("test");
     this.router.navigate(["../routine_planner"] , {relativeTo: this.route});
+  }
+
+  navigateToRoutineOpen(){
+    console.log("test");
+    this.router.navigate(["../routine_planner"] , {relativeTo: this.route});
+    this.modalService.openRoutine();
   }
 
 }

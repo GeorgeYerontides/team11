@@ -1,7 +1,100 @@
 <div class="myModal">
     <div class="header">
-        <h3 style="margin-bottom: 0%;">Add Event</h3>
-        <button id = "closeBtn"type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
-    </div>
+        <div class="col-1"></div>
+        
+        <div class="col-10" style="display: flex; justify-content: center; align-items: center;">
+            <h3 style="margin-bottom: 0%;">Add Event</h3>
+        </div>
 
+        <div class="col-1" style=" display: flex; justify-content: center; align-items: center; padding: 0%;">
+            <button class="myCloseBtn" (click)="close(f)"> <i class="fa fa-window-close fa-2x" style="color: red;" aria-hidden="true"></i></button>
+        
+        </div>
+      
+    </div>
+    <div style="height: 53vh; background-color:white; border-radius: 0px 0px 10px 10px; display: flex; padding: 5%;">
+        
+        <form #f = 'ngForm' style="width: 45vw;">
+            <div class="myRow" style="height:10%">
+                <div class="mySubRow" style="margin-right: 30px; height:100%"> 
+                    <h5 >Time:</h5>
+                    <input 
+                        class="inputStyle"
+                        type="text" 
+                        id="title" 
+                        name="title" 
+                        required minlength="1" 
+                        maxlength="30"  
+                        style="width: 90% !important;"
+                        required
+                        ngModel
+                        >
+                </div>
+                <div class="mySubRow" style=" height:100%; justify-content:space-between !important"> 
+                    <div class="timeBox" style="margin-right: 20px;">
+                        <h5 style="width:40%; margin-bottom: 0%; ">From:</h5>
+                        <input 
+                            type="time" 
+                            id = "fromTime"
+                            class="timeInput form-control " 
+                            value="10:00"
+                            ngModel 
+                            required
+                            name="fromTime">
+                    </div>
+
+                    <div class="timeBox">
+                        <h5 style="width:40%; margin-bottom: 0%;">To:</h5>
+                        <input 
+                            type="time" 
+                            id = "toTime"
+                            class="timeInput form-control " 
+                            value="10:00"
+                            ngModel 
+                            name="toTime">
+                    </div>
+                </div>
+                    
+            </div> 
+            <div class="myRow" style="height:10%">
+                <div class="mySubRow" style="margin-right: 30px; height:100%; "> 
+                    <h5 >Type:</h5>
+                    <select id="type" name="type" class="inputStyle"   style="width: 90% !important;" required ngModel>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Medical">Medical</option>
+                        <option value="Relaxation">Relaxation</option>
+                      </select>
+                
+                
+                </div>
+                <div class="mySubRow" style=" height:100%; justify-content: space-between !important;"> 
+                    <h5 >Requires caretaker:</h5>
+
+                    <div class="form-check" style="height: 100%; margin-left: 20px;display:flex; justify-content: flex-end; align-items: center">
+                        <input class="form-check-input" type="checkbox"  name ="requiresCaretaker" id="flexCheckDefault" style="height:3vh; width:3vh; margin:0; padding:0% " ngModel >
+                    </div>
+                </div>
+            </div>
+            <div class="myRowDesc">
+                <h5 style="margin-bottom: 2%;">Description</h5>
+                <textarea 
+                class="inputStyleDesc"
+                id="description" 
+                name="description" 
+                style="width: 100% !important;"
+                required
+                ngDefaultControl 
+                ngModel
+                ></textarea>
+            </div>
+            
+
+
+            <div style="display: flex; justify-content: space-evenly; ">
+                <button class="my-style" style="background-color: #db3535;" (click)="close(f)">Cancel</button>
+                <button class="my-style" style="background-color: #3adb35;" (click)="getForm(f)">Submit</button>
+            </div>
+        </form>
+      
+    </div>
 </div>
