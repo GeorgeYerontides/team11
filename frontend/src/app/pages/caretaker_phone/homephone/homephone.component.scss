@@ -12,7 +12,6 @@
     
     /* Top Bar with elder Name */
     .top_bar{
-        z-index:1;
         top: 0;
         overflow-y: hidden;
         position: fixed;
@@ -257,22 +256,22 @@
         position: fixed;
         display: block;
         background-color: #5356B6;
-        color:white;
     }
 
     #navbar-menu{
-        background-color: #5356B6;
-        width:100%;
-        height:3.5rem;
+        background-color: #ffffff;
+        width: 100%;
+        height: 4rem;
+        border: 2px solid #5356B6;
+        padding: 8px;
     }
 
     .notifactions_top_bar{
         top: 0;
-        overflow-y: hidden;
         position: fixed;
         height: 70px;
         width:100%;
-        background-color: #5356b6;
+        background-color: #5356B6;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
         text-align: center;
@@ -297,10 +296,11 @@
     }
 
     #elder_picture{
-        width:45px;
-        height:45px;
+        width:35px;
+        height:35px;
         border-radius: 50px;
         display: inline;
+
     }
 
     #notification_from{
@@ -319,7 +319,7 @@
 
 
     #New_notification{
-        margin-left: 5%;
+        margin-left: 10px;
         width:80%;
         height:auto;
     }
@@ -357,13 +357,15 @@
         top:80px;
         background-color: white;
         height:800px;
+
     }
 
     .New_Message{
         height:auto;
-        width: auto;
+        width: 80%;
         background-color: #e8d2ef;
         border-radius: 10px;
+        margin-left:10px;
     }
 
     #elder_picture,#message_from,#message_time{
@@ -598,8 +600,53 @@
       }
       
 
-    #Notifications_page:focus,#Messages_page:focus,#Alerts_page:focus,#Video_Call_page:focus{
-        background-color: #e8d2ef;
+    .User_Icon{
+        float:right;
+        margin-top: 5px;
+        margin-right: 15px;
+        width:22px;
+        height:22px;
     }
 
+    .message_icon{
+        height:35px;
+        width:35px;
+        background-color: white;
+    }
+
+    .notifi{
+        position: relative;
+    }
+
+    .notification_icon{
+        background-color: white;
+        height:35px;
+        width:35px;
+        display: inline;
+    }
+
+    #missed_notifications{
+        position:absolute;
+        margin-top:0px;
+        margin:-5px;
+        background-color: red;
+        color:white;
+        border-radius: 50%;
+        border: 1px solid black;
+        width:25px;
+        height:25px;
+        font-size:15px;
+    }
+
+    .alert_icon{
+        background-color: white;
+        height:35px;
+        width:35px;
+    }
+
+    .video-icon{
+        background-color: white;
+        height:35px;
+        width:35px;
+    }
 }

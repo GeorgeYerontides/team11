@@ -24,6 +24,11 @@ export class HomephoneComponent implements OnInit {
   notifications_div:boolean = false;
   top_bar_of_notifications:boolean = false;
   vital_status_div:boolean = true;
+  top_bar_general:boolean = true;
+  readed_flag_1:boolean = true;
+  readed_flag_2:boolean = true;
+  missed_notifications:number = 2;
+  check_if_0_notifications:boolean = true;
 
 
   Information_btn(){
@@ -71,8 +76,10 @@ export class HomephoneComponent implements OnInit {
     this.top_bar_of_messages = false;
     this.events_div = true;
     this.vital_status_div = true;
+    this.top_bar_general = true;
     this.notifications_div = false;
     this.top_bar_of_notifications = false;
+    this.information_div_btn = true;
   }
 
   show_notification_section(){
@@ -80,7 +87,25 @@ export class HomephoneComponent implements OnInit {
     this.top_bar_of_notifications = true;
     this.events_div = false;
     this.vital_status_div = false;
+    this.top_bar_general = false;
+    this.information_div_btn = false;
   
+  }
+
+  hide_message(){
+    this.readed_flag_1 = false;
+    this.missed_notifications = this.missed_notifications - 1;
+    if(this.missed_notifications === 0){
+      this.check_if_0_notifications = false;
+    }
+  }
+
+  hide_message_2(){
+    this.readed_flag_2 = false;
+    this.missed_notifications = this.missed_notifications - 1;
+    if(this.missed_notifications === 0){
+      this.check_if_0_notifications = false;
+    }
   }
 
 }

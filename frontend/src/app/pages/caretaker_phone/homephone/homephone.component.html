@@ -1,6 +1,6 @@
 
 
-<div class="container top_bar text-center">
+<div class="container top_bar text-center" *ngIf="top_bar_general">
     <select id="elder_name" name="elder_name">
         <option value="1_option">Kostas Lamprou</option>
         <option value="2_option">Dimitra Papa</option>
@@ -172,16 +172,16 @@
     <p id="Notifications_p">Notifications</p>
 </div>
 
-<div class="container notifications_list" *ngIf="notifications_div">
-    <div class="alert alert-danger" role="alert" id="New_notification">
-        <img id="elder_picture" src="../assets/lala.jpg" alt="Elder Picture">
+<div class="container notifications_list" *ngIf="notifications_div" >
+    <div class="alert alert-danger" role="alert" id="New_notification" *ngIf="readed_flag_1" (click)="hide_message()">
+        <i class="fa-solid fa-person-cane" id="elder_picture"></i>
         <p id="notification_from">Kostas Lamprou</p><br>
         <p id="type_of_notification">New message</p>
         <p id="notification_time">  9:10 AM</p>
-    </div><br><br>
+    </div><br>
 
-    <div class="alert alert-danger" role="alert" id="New_notification">
-        <img id="elder_picture" src="../homephone/assets/lala.jpg" alt="Elder Picture">
+    <div class="alert alert-danger" role="alert" id="New_notification" *ngIf="readed_flag_2" (click)="hide_message_2()">
+        <i class="fa-solid fa-person-cane" id="elder_picture"></i>
         <p id="notification_from">Kostas Lamprou</p><br>
         <p id="type_of_notification">New Missed Call</p>
         <p id="notification_time">  9:18 AM</p>
@@ -197,11 +197,11 @@
     <p id="messages_p">Messages</p>
 </div>
 
-<div class="container Messages_list" *ngIf="message_div">
+<div class="container Messages_list" *ngIf="message_div"><br>
     <div class="container New_Message">
-        <img id="elder_picture" src="../assets/lala.jpg" alt="Elder Picture">
+        <i class="fa-solid fa-person-cane" id="elder_picture"></i>
         <p id="message_from">Kostas Lamprou</p>
-        <p id="message_time">  9:18 AM</p>
+        <p id="message_time">  9:10 AM</p>
         <p id="message_content">I would like to go for a walk</p>
     </div>
 </div>
@@ -253,6 +253,7 @@
         <div class="container title_of_event">
             <label id="event_name">Take Insuline Shot</label>
             <input id="event_checkbox" type="checkbox">
+            <i class="fas fa-user User_Icon"></i>
         </div>
         <p id="event_time">9:00 AM</p>
         <p id="event_help">Help required</p>
@@ -312,10 +313,19 @@
 
 
 <nav class="navbar navbar-light bg-light">
-    <div class="container-fluid"  id="navbar-menu">
-      <a class="navbar-brand" id="Messages_page" (click)="show_message_section()">💬</a>
-      <a class="navbar-brand" id="Notifications_page" (click)="show_notification_section()">🔔</a>
-      <a class="navbar-brand" id="Alerts_page">⚠️</a>
-      <a class="navbar-brand" id="Video_Call_page">🎥</a>
+    <div class="container-fluid" id="navbar-menu">
+        <button class="navbar-brand" (click)="show_message_section()">
+            <i class="fa-solid fa-message message_icon"></i>
+        </button>
+        <button class="navbar-brand notifi" (click)="show_notification_section()">
+            <p id="missed_notifications" *ngIf="check_if_0_notifications">{{missed_notifications}}</p>
+            <i class="fa-solid fa-bell notification_icon"></i>
+        </button>
+        <button class="navbar-brand">
+            <i class="fa-solid fa-triangle-exclamation alert_icon"></i>
+        </button>
+        <button class="navbar-brand">
+            <i class="fa-solid fa-video video-icon"></i>
+        </button>
     </div>
 </nav>
