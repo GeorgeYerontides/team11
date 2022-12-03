@@ -1,0 +1,65 @@
+<div class="myModal">
+    <div class="header">
+        <div class="col-1"></div>
+        
+        <div class="col-10" style="display: flex; justify-content: center; align-items: center;">
+            <h3 style="margin-bottom: 0%;">Emergency Mode</h3>
+        </div>
+
+        <div class="col-1" style=" display: flex; justify-content: center; align-items: center; padding: 0%;">
+            <button class="myCloseBtn" (click)="close()"> <i class="fa fa-window-close fa-2x" style="color: red;" aria-hidden="true"></i></button>
+        
+        </div>
+      
+    </div>
+    <div style=" width: 100%; height:100%; padding: 1%; border-radius: 10px">
+        <div class="myRow" style="height: 10%; margin-top: 2vh;">
+            <div class="col-6 subRow"  >
+                <p style="font-weight: 700;">Patient:</p>
+                <p style="margin-left: 20px;">{{patientName}} {{patientSurname}}</p>
+             
+            </div>
+            <div class="col-6 subRow">
+                <p style="font-weight: 700;">Date:</p>
+                <p style="margin-left: 20px;">{{date | date: 'short'}}</p>
+            
+            </div>
+        </div>
+        <div class="myRow" style="height: 10%; margin-top: 2vh;">
+            <div class="col-6 subRow" >
+                <p style="font-weight: 700;">Cause:</p>
+                <p style="margin-left: 20px;">{{cause}}</p>
+
+            </div>
+            <div class="col-6 subRow" >
+                <p style="font-weight: 700;">Location:</p>
+                <p style="margin-left: 20px;">{{room}}</p>
+              
+            </div>
+     
+        </div>
+        <form #f = 'ngForm' style="height: 40%; margin-top: 2vh;">
+            <div class="myRow col-12" style="height: 40%; margin-top: 2vh;">
+                <div class="myRowDesc">
+                    <h5 style="margin-bottom: 2%;">Description</h5>
+                    <textarea 
+                    class="inputStyleDesc"
+                    id="description" 
+                    name="description" 
+                    style="width: 100% !important;"
+                    required
+                    ngDefaultControl 
+                    ngModel
+                    ></textarea>
+                </div>
+            </div>
+        </form>
+        
+
+
+        <div style="display: flex; justify-content: space-evenly; margin-top: 5%;">
+            <button class="my-style" style="background-color: #db3535;" (click)="close()">Cancel</button>
+            <button class="my-style" style="background-color: #3adb35;" (click)="updateReport(f)">Submit</button>
+        </div>
+    </div>
+</div>

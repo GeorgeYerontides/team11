@@ -3,10 +3,12 @@ import { Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Alert } from 'src/app/global/models/alert/alert.model';
 import { Message } from 'src/app/global/models/messages/message.model';
 import { NotificationModel } from 'src/app/global/models/messages/notification.model';
-import { ModalService } from 'src/app/global/services/modals/notification-modal.service';
+import { CaretakerService } from 'src/app/global/services/caretaker/caretaker.service';
+import { ModalService } from 'src/app/global/services/modals/modal.service';
 import { NotificationService } from 'src/app/global/services/notifications/notification.service';
 import { alertService } from 'src/app/global/services/patient/alert.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
+import { VitalsService } from 'src/app/global/services/vitals/vitals.service';
 
 
 @Component({
@@ -23,10 +25,11 @@ export class HomeCaretakerComponent implements OnInit {
   public alertPatientName:string = '';
   public isClicked:boolean = true;
   public modal:boolean = false;
+  public emergency:boolean = false;
   public currentAlert:number = -1;
   constructor(private router: Router, private alertService:alertService, 
     private socketService: SocketsService,private notificationService:NotificationService,
-    private modalService:ModalService) { 
+    private modalService:ModalService,private vitalsService:VitalsService, private caretakerService:CaretakerService) { 
   
     this.subroute = this.router.url; 
     this.router.events.subscribe((event:Event) =>
@@ -56,6 +59,11 @@ export class HomeCaretakerComponent implements OnInit {
     this.alertService.getValue().subscribe((value) => {
       this.alert = value;
     });
+
+    this.socketService.subscribe("emergencyMode", (data:any) => {
+
+      this.emergency = data.value;
+    });
     /*
     * Event Hierarchy
     *
@@ -68,6 +76,7 @@ export class HomeCaretakerComponent implements OnInit {
       if(this.currentAlert === 1)
       {
         let firstName = this.alertPatientName.split(" ",2)[0];
+        
         this.notificationService.addNewNotification(firstName,"test",4);
       
         this.isClicked = false;
@@ -79,7 +88,17 @@ export class HomeCaretakerComponent implements OnInit {
         let firstName = this.alertPatientName.split(" ",2)[0];
         this.notificationService.addNewNotification(firstName,"test",4);
       }
-      this.alert = true;
+
+      this.caretakerService.getCaretakers().subscribe((result)=>{
+        let currCaretaker = result.filter( data => (data.name === "Kostas") && (data.surname === "Kosta"))[0] ;
+        
+        if(!currCaretaker.status)
+        {
+          this.alert = true;
+          console.log('emergnce is true');
+        }
+      });
+
 
 
 

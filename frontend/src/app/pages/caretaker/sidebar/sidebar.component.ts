@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { NotificationModel } from 'src/app/global/models/messages/notification.model';
 import { PatientModel } from 'src/app/global/models/patient/patient.model';
-import { ModalService } from 'src/app/global/services/modals/notification-modal.service';
+import { ModalService } from 'src/app/global/services/modals/modal.service';
 import { NotificationService } from 'src/app/global/services/notifications/notification.service';
 import { PatientService } from 'src/app/global/services/patient/patients.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';

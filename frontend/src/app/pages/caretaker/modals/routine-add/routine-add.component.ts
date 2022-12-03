@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PatientModel } from 'src/app/global/models/patient/patient.model';
 import { RoutineModel } from 'src/app/global/models/routine/routine.model';
-import { ModalService } from 'src/app/global/services/modals/notification-modal.service';
+import { ModalService } from 'src/app/global/services/modals/modal.service';
 import { RoutineService } from 'src/app/global/services/routine/routine.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 

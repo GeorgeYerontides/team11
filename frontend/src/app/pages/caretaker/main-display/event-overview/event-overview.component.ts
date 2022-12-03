@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { result } from 'lodash';
 import { PatientModel } from 'src/app/global/models/patient/patient.model';
 import { RoutineModel } from 'src/app/global/models/routine/routine.model';
-import { ModalService } from 'src/app/global/services/modals/notification-modal.service';
+import { ModalService } from 'src/app/global/services/modals/modal.service';
 import { PatientService } from 'src/app/global/services/patient/patients.service';
 import { RoutineService } from 'src/app/global/services/routine/routine.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
@@ -123,7 +123,7 @@ export class EventOverviewComponent implements OnInit {
     }
     console.log('tempFrom ' + tempFrom);
     console.log('tempTo ' + tempTo);
-    if((tempFrom > tempTo) && (flagFrom!=0))
+    if((tempFrom > tempTo) && (flagFrom!=0) && (flagTo!=0))
     {
       console.log("test");
       alert('Start time must be smalller than end time');

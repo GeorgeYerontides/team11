@@ -14,7 +14,7 @@ import { MagicalControllerComponent } from './pages/magical-controller/magical-c
 import { ElderModule } from 'src/modules/app-elder.module';
 import { WallComponent } from './pages/secondary_screens/wall/wall.component';
 import { TvComponent } from './pages/secondary_screens/tv/tv.component';
-
+import { MedEveAddComponent } from './pages/caretaker/modals/med-eve-add/med-eve-add.component';
 
 const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
 @NgModule({
@@ -25,7 +25,9 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     ItemPreviewComponent,
     MagicalControllerComponent,
     WallComponent, 
-    TvComponent,   
+    TvComponent, 
+
+
      
 
 

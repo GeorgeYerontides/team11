@@ -1,5 +1,5 @@
 
-<div class="row myStyle" style=" width: 100%; background-color: #DFE0F2; border-radius: 10px;     border: 3px solid #5356B6;  " >
+<div class="row myStyle" style=" width: 100%;  border-radius: 10px;     border: 3px solid #5356B6;  "  [ngStyle] = "{'background-color': vitalStatus=== 'Normal' ? '#DFE0F2' : 'red' ,'color': vitalStatus=== 'Normal' ? 'black' : 'white'}" >
     <div class="myStyle leftCont">
         
         <p style="margin:0 10% 0 0; font-size: 1.1vw; " class="d-none d-lg-block d-xl-block "> {{ typeMon }}</p>
@@ -9,5 +9,7 @@
   
     <div class="myStyle" style="width:50%; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
         <p style="margin-bottom: 0%;" *ngIf = " typeMon === 'Location'">{{location}}</p>
+        <p style="margin-bottom: 0%;" *ngIf = " typeMon === 'Vital Status'">{{vitalStatus}}</p>
+
     </div>
 </div>
