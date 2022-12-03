@@ -238,6 +238,7 @@
         text-align: center;
     }
 
+
     .cancel_event_btn,.save_event_btn{
         width:34%;
         font-size: 27px;
@@ -406,15 +407,23 @@
         bottom: 0;
         overflow-y: hidden;
         position: fixed;
-        display: block;
-        background-color: #5356B6;
-        color:white;
+        display: flex;
+        flex-wrap: inherit;
+        align-items: center;
+        justify-content: space-around;
+
+
     }
 
     #navbar-menu{
         height:50px;
-        background-color: #5356B6;
+        background-color: #ffffff;
         width:100%;
+        display: flex;
+        flex-wrap: inherit;
+        align-items: center;
+        justify-content: space-around;
+        border: 2px solid #5356B6;
     }
 
     .notifactions_top_bar{
@@ -455,7 +464,24 @@
     }
  
 
-    #Notifications_page:focus,#Messages_page:focus,#Alerts_page:focus,#Video_Call_page:focus{
-        background-color: #e8d2ef;
+    .message_icon{
+        height:35px;
+        width:35px;
+        background-color: white;
     }
+
+
+    .notification_icon{
+        background-color: white;
+        height:35px;
+        width:35px;
+        display: inline;
+    }
+
+    .video-icon{
+        background-color: white;
+        height:40px;
+        width:40px;
+    }
+
 }

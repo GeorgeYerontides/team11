@@ -251,11 +251,17 @@
 </div>
 
 
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-light bg-light display-flex">
     <div class="container-fluid"  id="navbar-menu">
-      <a class="navbar-brand" id="Messages_page" (click)="open_messages_func()">💬</a>
-      <a class="navbar-brand" id="Notifications_page" href="#">🔔</a>
-      <a class="navbar-brand" id="Video_Call_page" href="#">🎥</a>
+        <button class="navbar-brand" (click)="open_messages_func()">
+            <i class="fa-solid fa-message message_icon"></i>
+        </button>  
+        <button class="navbar-brand notifi">
+            <i class="fa-solid fa-bell notification_icon"></i>
+        </button>
+        <button class="navbar-brand">
+            <i class="fa-solid fa-video video-icon"></i>
+        </button>
     </div>
 </nav>
         

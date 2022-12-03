@@ -29,6 +29,7 @@ export class HomephoneComponent implements OnInit {
   readed_flag_2:boolean = true;
   missed_notifications:number = 2;
   check_if_0_notifications:boolean = true;
+  video_call_live:boolean = false;
 
 
   Information_btn(){
@@ -65,10 +66,13 @@ export class HomephoneComponent implements OnInit {
   }
 
   show_message_section(){
+    this.notifications_div = false;
+    this.top_bar_of_notifications = false;
     this.message_div = true;
     this.top_bar_of_messages = true;
     this.vital_status_div = false;
     this.events_div = false;
+    this.video_call_live = false;
   }
 
   back_to_HS(){
@@ -80,15 +84,19 @@ export class HomephoneComponent implements OnInit {
     this.notifications_div = false;
     this.top_bar_of_notifications = false;
     this.information_div_btn = true;
+    this.video_call_live = false;
   }
 
   show_notification_section(){
+    this.message_div = false;
+    this.top_bar_of_messages = false;
     this.notifications_div = true;
     this.top_bar_of_notifications = true;
     this.events_div = false;
     this.vital_status_div = false;
     this.top_bar_general = false;
     this.information_div_btn = false;
+    this.video_call_live = false;
   
   }
 
@@ -106,6 +114,21 @@ export class HomephoneComponent implements OnInit {
     if(this.missed_notifications === 0){
       this.check_if_0_notifications = false;
     }
+  }
+
+  open_video_call(){
+    this.top_bar_of_messages = false;
+    this.top_bar_of_notifications= false;
+    this.video_call_live = true;
+    this.top_bar_general = true;
+    this.events_div = false;
+  }
+
+  end_video_call(){
+    this.video_call_live = false;
+    this.events_div = true;
+    this.top_bar_of_messages = false;
+    this.top_bar_of_notifications= false;
   }
 
 }

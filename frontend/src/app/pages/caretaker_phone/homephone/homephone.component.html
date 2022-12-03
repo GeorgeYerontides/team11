@@ -216,7 +216,7 @@
 
 <div class="container incoming_call" style="display:none;">
     <p id="type_of_call">Incoming Call</p>
-    <img id="elder_call_picture" src="../assets/lala.jpg" alt="Elder Picture">
+    <img id="elder_call_picture" src="../../../../assets/caretaker_call/lala.jpg" alt="Elder Picture">
     <p id="call_from">Kostas Lamprou</p>
     <button id="decline_call_btn">Decline</button>&nbsp;&nbsp;&nbsp;
     <button id="answer_call_btn">Answer</button>
@@ -224,11 +224,11 @@
 
 
 <!-- Live Video call -->
-
-<img id="live_call_elder" src="../assets/video_call_resized.jpg" alt="Elder Picture" style="display:none;">
-<button id="done_call_btn" style="display:none;">📞</button>
-<img id="live_call_caretaker" src="../assets/caretaker_image_resized.jpg" alt="Carataker Picture" style="display:none;">
-
+<div id="live_video_call" *ngIf="video_call_live"> 
+<img id="live_call_elder" src="../../../../assets/caretaker_call/video_call_resized.jpg" alt="Elder Picture" >
+<button id="done_call_btn" (click)="end_video_call()">📞</button>
+<img id="live_call_caretaker" src="../../../../assets/caretaker_call/caretaker_image_resized.jpg" alt="Carataker Picture" >
+</div>
 
 
 <!-- List of Routine Events -->
@@ -324,7 +324,7 @@
         <button class="navbar-brand">
             <i class="fa-solid fa-triangle-exclamation alert_icon"></i>
         </button>
-        <button class="navbar-brand">
+        <button class="navbar-brand" (click)="open_video_call()">
             <i class="fa-solid fa-video video-icon"></i>
         </button>
     </div>
