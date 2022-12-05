@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Alert } from 'src/app/global/models/alert/alert.model';
 import { CaretakerModel } from 'src/app/global/models/caretaker/caretaker.model';
+import { ChatModel } from 'src/app/global/models/chat/chat.model';
 import { LocationModel } from 'src/app/global/models/location/location.model';
 import { medicalEventModel } from 'src/app/global/models/medicalEvents/medeve.model';
 import { VitalsModel } from 'src/app/global/models/vitals/vitals.model';
 import { CaretakerService } from 'src/app/global/services/caretaker/caretaker.service';
+import { ChatService } from 'src/app/global/services/chat/chat.service';
 import { LocationService } from 'src/app/global/services/location/location.service';
 import { MedicalEventService } from 'src/app/global/services/medicalEvents/medeve.service';
 import { alertService } from 'src/app/global/services/patient/alert.service';
@@ -20,8 +23,9 @@ export class MagicalControllerComponent implements OnInit {
   locations:LocationModel[] =[];
   vitals:VitalsModel[] =[];
   careakers:CaretakerModel[] =[];
+  chatMessages:ChatModel[] =[];
   constructor(private alert:alertService, private socketService: SocketsService, private locationService:LocationService,private vitalsService:VitalsService,
-    private caretakerService:CaretakerService,private medeveService:MedicalEventService) { 
+    private caretakerService:CaretakerService,private medeveService:MedicalEventService, private chatService:ChatService) { 
 
     
   }
@@ -40,6 +44,30 @@ export class MagicalControllerComponent implements OnInit {
 
     this.caretakerService.getCaretakers().subscribe((result)=>{
       this.careakers = result;
+    });
+    this.getChatMessages();
+
+    this.socketService.subscribe('chat_update',(data: any) =>{
+      this.getChatMessages();
+    })
+    
+  }
+
+  getChatMessages(){
+    this.chatService.getNotifications().subscribe((result)=>{
+      result.sort((objA,objB) => { 
+        if (objA.time < objB.time)
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        return 0;
+      }
+      )
+      this.chatMessages = result;
     });
   }
   createAlertYellow(){
@@ -144,5 +172,23 @@ export class MagicalControllerComponent implements OnInit {
     this.caretakerService.update(currCaretaker).subscribe((result)=>{
       this.socketService.publish("emergencyMode",{value:false});
     });
+  }
+
+  chat(form:NgForm){
+    console.log(form);
+
+    let chatMessage = new ChatModel();
+    chatMessage.receiverName =  'Kostas';
+    chatMessage.receiverSurame= 'Kosta';
+    chatMessage.senderName = 'Kostas';
+    chatMessage.senderSurname = 'Lamprou';
+    chatMessage.time = new Date();
+    chatMessage.message = form.form.value['chat'];
+
+    this.chatService.create(chatMessage).subscribe((result) => {
+     
+      this.socketService.publish("chat_update", {});
+    });
+    //form.controls['chat'].setValue('');
   }
 }

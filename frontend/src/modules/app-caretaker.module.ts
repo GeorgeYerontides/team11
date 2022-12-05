@@ -23,6 +23,7 @@ import { RoutineAddComponent } from 'src/app/pages/caretaker/modals/routine-add/
 import { EmergencyComponent } from 'src/app/pages/caretaker/modals/emergency/emergency.component';
 import { MedicalEventBoxComponent } from 'src/app/pages/caretaker/main-display/medical-history/medical-event-box/medical-event-box.component';
 import { MedEveAddComponent } from 'src/app/pages/caretaker/modals/med-eve-add/med-eve-add.component';
+import { ChatComponent } from 'src/app/pages/caretaker/sidebar/chat/chat.component';
 
 
 
@@ -45,7 +46,8 @@ import { MedEveAddComponent } from 'src/app/pages/caretaker/modals/med-eve-add/m
         RoutineAddComponent,
         EmergencyComponent,
         MedicalEventBoxComponent,
-        MedEveAddComponent
+        MedEveAddComponent,
+        ChatComponent
     ],
     imports: [
         RouterModule,
@@ -72,7 +74,9 @@ import { MedEveAddComponent } from 'src/app/pages/caretaker/modals/med-eve-add/m
         EventBoxComponent,
         RoutineAddComponent,
         EmergencyComponent,
-        MedicalEventBoxComponent,MedEveAddComponent
+        MedicalEventBoxComponent,
+        MedEveAddComponent,
+        ChatComponent
     ]
   })
 

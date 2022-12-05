@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { ChatModel } from 'src/app/global/models/chat/chat.model';
 import { NotificationModel } from 'src/app/global/models/messages/notification.model';
 import { PatientModel } from 'src/app/global/models/patient/patient.model';
+import { ChatService } from 'src/app/global/services/chat/chat.service';
 import { ModalService } from 'src/app/global/services/modals/modal.service';
 import { NotificationService } from 'src/app/global/services/notifications/notification.service';
 import { PatientService } from 'src/app/global/services/patient/patients.service';
@@ -13,15 +16,19 @@ import { SocketsService } from 'src/app/global/services/sockets/sockets.service'
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+  @ViewChild('scrollBottom') scrollBottom:any;
   public subroute:string = "";
   public route: string = "/observe/users"
   public patients: PatientModel[] = [];
   public notifications:NotificationModel[] =[];
-
-
+  public chatMessages:ChatModel[]=[];
+  public chat:boolean = false;
+  selectedOption!: string;
+  currChatName: string = 'Andreas';
+  currChatSurname: string = 'Mixahl';
 
   constructor(private router: Router, private patientService: PatientService,private notificationService:NotificationService, 
-    private socketService:SocketsService, public modalService:ModalService) { 
+    private socketService:SocketsService, public modalService:ModalService, private chatService:ChatService) { 
 /*    this.socketService.subscribe('newNotification',(data:any) => {
       this.notifications = this.notificationService.getNotifications();
     })
@@ -54,14 +61,74 @@ export class SidebarComponent implements OnInit {
       this.getNotifications()
   
     });
-  
+    this.getChatMessages();
+    this.socketService.subscribe('chat_update',(data: any) =>{
+      this.getChatMessages();
 
+    });
+    
+    
+ 
+   
+  }
+  scrolTolBottom(){
+    this.scrollBottom.nativeElement.scrollTop= this.scrollBottom.nativeElement.scrollHeight;
+  }
+  getChatMessages(){
+    this.chatService.getNotifications().subscribe((result)=>{
+      result.sort((objA,objB) => { 
+        if (objA.time > objB.time)
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        return 0;
+      }
+      )
+
+      
+      
+      this.chatMessages = result.filter
+      (data => ((data.senderName === this.currChatName) && (data.senderSurname === this.currChatSurname) && (data.receiverName === "Kostas") && (data.receiverSurame === "Kosta")) 
+      ||       ((data.receiverName === this.currChatName) && (data.receiverSurame === this.currChatSurname) && (data.senderName === "Kostas") && (data.senderSurname === "Kosta"))
+      );
+    
+    });
+
+    setTimeout( () => {this.scrolTolBottom()} ,1000);  
+
+  }
+
+  chatSend(form:NgForm){
+
+    if(form.valid === false)
+    {
+      return;
+    }
+    console.log(form);
+
+    let chatMessage = new ChatModel();
+    chatMessage.receiverName = this.currChatName;
+    chatMessage.receiverSurame= this.currChatSurname;
+    chatMessage.senderName = 'Kostas';
+    chatMessage.senderSurname = 'Kosta';
+    chatMessage.time = new Date();
+    chatMessage.message = form.form.value['chat'];
+
+    this.chatService.create(chatMessage).subscribe((result) => {
+     
+      this.socketService.publish("chat_update", {});
+    });
+    form.controls['chat'].setValue('');
   }
 
   private getNotifications(): void {
     this.notificationService.getNotifications().subscribe((result) => {
       result.sort((objA,objB) => { 
-        if (objA.timeSent < objB.timeSent)
+        if (objA.timeSent > objB.timeSent)
         {
           return 1;
         }
@@ -75,10 +142,18 @@ export class SidebarComponent implements OnInit {
       this.notifications = result;
     });
   }
-
-
+  updateChatUser(user:string) {
+    this.currChatName = user.split(' ',2)[0].replace(/\s/g, "");
+    this.currChatSurname = user.split(' ',2)[1].replace(/\s/g, "");
+    this.socketService.publish("chat_update", {});
+  }
   chatOpen(){
       console.log("chat open");
+      this.chat = true;
+  }
+
+  chatClose(){
+    this.chat = false;
   }
 
   // this is kind of a temp fix until i find a better way to do this 

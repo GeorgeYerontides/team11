@@ -1,0 +1,16 @@
+<div style="width: 98%; height:auto; display: flex; margin: 5% 2% 5% 2%; padding: 0%; " [ngStyle] ="{'justify-content': (userName === self.senderName) && (userSurname === self.senderSurname)? 'flex-end'  :'flex-start'}">
+    <div style=" display: flex;flex-direction: column; height:auto; min-width:50%; margin: 0%; padding: 0%;" >
+        <div style="width:auto; height:auto; display: flex;" *ngIf ="(userName === self.senderName) && (userSurname === self.senderSurname); else sender">
+            <p>You</p>
+        </div>
+        <ng-template #sender>
+            <p style="width:auto">{{self.senderName}} {{self.senderSurname}}</p>
+
+          </ng-template>
+        <div style="height:100%; width:90%; background-color: aquamarine; padding: 20px; border-radius: 10px; word-wrap: break-word; white-space: pre-wrap; word-break: break-word;" >
+            <p> {{self.message}}</p>
+        </div>
+    
+    </div>
+    
+</div>

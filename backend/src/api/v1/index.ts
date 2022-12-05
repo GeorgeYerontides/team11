@@ -1,5 +1,6 @@
 import * as express from 'express';
 import { CaretakerController } from './caretaker/caretaker.controler';
+import { ChatController } from './chat/chat.controller';
 import { ExampleController } from './example/example.controller';
 import { ItemShopController } from './item-shop/item-shop.controller';
 import { LocationController } from './location/location.controler';
@@ -49,6 +50,10 @@ apiV1Router
   .use(
     '/medicalEvents',
     new MedEveController().applyRoutes()
+  )
+  .use(
+    '/chat',
+    new ChatController().applyRoutes()
   )
   .use(
     '/routine',
