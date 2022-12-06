@@ -7,6 +7,7 @@ import { SocketsService } from '../sockets/sockets.service';
 })
 export class ModalService {
     showAdd = false;
+    showFill = false;
     showDialog = false;
     name:string = '';
     desc:string = "";
@@ -36,5 +37,15 @@ export class ModalService {
     closeRoutine(){
         this.showAdd = false;
         this.socketService.publish('routineModal',{});
+    }
+
+    openFill(id:string){
+        this.showFill = true;
+        this.socketService.publish('fillModal',{id:id});
+    }
+
+    closeFill(){
+        this.showFill = false;
+        this.socketService.publish('fillModal',{});
     }
 }

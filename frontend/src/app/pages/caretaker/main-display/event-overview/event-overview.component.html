@@ -11,16 +11,16 @@
                 <button type="button" class="btn btn-primary my-style " style="    font-size: 1.2vw; padding: 0%; text-align: center;" (click)='addRoutine()'>Add Event</button>
             </div>
             <div class="sidebar-header">
-                <h5 class="sidebar-text">Filters</h5>
+                <h4 class="sidebar-text">Filters</h4>
              </div>
              <div style="padding: 5%;">
                 <div>
                    
                     <form  #f ="ngForm">
-                        <h5>Time:</h5>
+                        <h4>Time:</h4>
                         <div style="padding: 5% 10% 5% 10%;">
                             <div class="timeBox">
-                                <h6 style="width:40%; margin-bottom: 0%;" >From:</h6>
+                                <h5 style="width:40%; margin-bottom: 0%;" >From:</h5>
                                 <input 
                                     type="time" 
                                     id = "fromTime"
@@ -30,7 +30,7 @@
                                     name="fromTime">
                             </div>
                             <div class="timeBox">
-                                <h6 style="width:40%; margin-bottom: 0%;">To:</h6>
+                                <h5 style="width:40%; margin-bottom: 0%;">To:</h5>
                                 <input 
                                     type="time" 
                                     id = "toTime"
@@ -43,7 +43,7 @@
                         </div>
     
                       
-                        <h5>Type:</h5>
+                        <h4>Type:</h4>
                         <div style="padding: 5% 10% 5% 10%;">
                             <div class="form-check" style="padding: 0%;">
                                 <label class="form-check-label" for="exampleRadios1"  id = " Radios1" style="width: 95%; margin-left:5%;  font-weight: 500;" >
@@ -94,7 +94,7 @@
             </div>
         </div>
     </div>
-    <app-routine-add *ngIf="modal"></app-routine-add>
+    <app-routine-add *ngIf="modal" [user] = 'currUser'></app-routine-add>
 
 
 </div>

@@ -1,2 +1,101 @@
-<p>medical-history works!</p>
+<div style="margin:0%; padding:0%; width:100%; height:88vh;">
+    <div class="myheader">
+        <h3>
+            Patient Information for {{name}} {{surname}}
+        </h3>
+    </div>
+    <div style="display: flex; flex-direction: row;  height:100%;
+    width: 100%; ">
+        <div class="col-3 filterBar">
+            <div class="sidebar-header">
+                <h4 class="sidebar-text">Filters</h4>
+             </div>
+             <div style="padding: 5%;">
+                <div>
+                   
+                    <form  #f ="ngForm">
+                        <h4>Date:</h4>
+                        <div style="padding: 5% 10% 5% 10%; width: 100%;" >
+                            <div class="timeBox" >
+                                <h5 style="width:40%; margin-bottom: 0%;" >From:</h5>
+                                <input 
+                                    type="date" 
+                                    id = "dateEvent"
+                                    class="dateInput form-control " 
+                                    ngModel 
+                                    name="dateEvent">
+                            </div>
+             
+                      
+                        </div>
+                        <h4>Time:</h4>
+                        <div style="padding: 5% 10% 5% 10%;">
+                            <div class="timeBox">
+                                <h5 style="width:40%; margin-bottom: 0%;" >From:</h5>
+                                <input 
+                                    type="time" 
+                                    id = "fromTime"
+                                    class="timeInput form-control " 
+                                    value="10:00"
+                                    ngModel 
+                                    name="fromTime">
+                            </div>
+                            <div class="timeBox">
+                                <h5 style="width:40%; margin-bottom: 0%;">To:</h5>
+                                <input 
+                                    type="time" 
+                                    id = "toTime"
+                                    class="timeInput form-control " 
+                                    value="10:00"
+                                    ngModel 
+                                    name="toTime">
+                            </div>
+                      
+                        </div>
+                        <div style="display: flex; align-items:center; width:100%; justify-content: space-betwee; padding: 5% 10% 5% 0%;">
+                            <h4 style="width: 90%;">Filled:</h4>
+                            <div class="form-check" style="height: 100%; width:100%; display:flex; justify-content: flex-end; width: 10%; padding-right: 3%;">
+                                <input 
+                                class="form-check-input" 
+                                type="checkbox" 
+                                id="flexCheckDefault" 
+                                name="flexCheckDefault"
+                                ngModel
+                                style="height:3vh; width:3vh; margin:0;" >
+                            </div>
+                           
+                        </div>
+                     
+      
 
+                        <div style="display: flex; justify-content: space-evenly">
+                            <button class="btn btn-primary my-style "  style="width: 45%;" (click)="resetFilters(f)" >Reset filters</button>
+                            <button class="btn btn-primary my-style "  style="width: 45%;" (click)="onSubmit(f)" >Apply Filters</button>    
+                        </div>
+                        
+                       
+                    </form>
+        
+                </div>
+                    
+                
+             </div>    
+    
+        </div>
+        <div class="col-9" style="width:100%; height:88vh; margin: 0%;padding: 0%; max-height: 88vh; overflow-y: auto;">
+            <div class="routineContent" *ngIf="medicalEvents.length!=0">
+    
+              <app-medical-event-box
+                *ngFor ="let medEve of medicalEvents"
+                [self] = 'medEve'
+                ></app-medical-event-box> 
+                
+    
+    
+            </div>
+        </div>
+    </div>
+    <app-med-eve-add *ngIf="modal" [eventID] = 'eventID'></app-med-eve-add>
+
+
+</div>

@@ -1,0 +1,50 @@
+<div style="display: flex;  width:90%; margin:2vh 5% 2vh 5% ; border-radius: 10px; border: 2px solid black; flex-direction: column " [ngStyle]="{height: self.filled? '50vh;' : '35vh'}">
+    <div class="componentHeader" *ngIf="!self.filled">
+        <div style="display:flex; align-items: center; justify-content: center; width: 100%;">
+            <h5 class="componentHeaderTitle" style="color: white;">Incomplete report </h5>
+        </div>
+    </div>
+    <div style=" width: 100%; height:100%; padding: 1%; border-radius: 10px">
+        <div class="myRow" style="height: 10%; margin-top: 2vh;">
+            <div class="col-6 subRow"  >
+                <p style="font-weight: 700;">Patient:</p>
+                <p style="margin-left: 20px;">{{self.patientName}} {{self.patientSurname}}</p>
+             
+            </div>
+            <div class="col-6 subRow">
+                <p style="font-weight: 700;">Date:</p>
+                <p style="margin-left: 20px;">{{self.date |  date: 'short'}}</p>
+            </div>
+        </div>
+        <div class="myRow" style="height: 10%; margin-top: 2vh;">
+            <div class="col-6 subRow" >
+                <p style="font-weight: 700;">Cause:</p>
+                <p style="margin-left: 20px;"> {{self.cause}} </p>
+            </div>
+            <div class="col-6 subRow" >
+                <p style="font-weight: 700;">Location:</p>
+                <p style="margin-left: 20px;"> {{self.room}} </p>
+            </div>
+     
+        </div>
+        <div class="myRow" style="height: 45%;margin-top: 2vh;" *ngIf = 'self.filled'>
+            <div class="col-12" style="background-color: white;">
+                <p style="font-weight: 700;">Report:</p>
+
+                <p>{{self.report}}</p>
+            </div>
+        </div>
+        <div class="myRow" style="height: 10%; margin-top: 2vh;" *ngIf = '!self.filled'>
+            <div class="col-12" style="background-color: white;">
+                <p style="font-weight: 700;">Report:</p>
+
+                <p>Report not filled.</p>
+            </div>
+        </div>
+        <div class="myRow" style="height: 10vh; margin-top: 2vh ;display: flex; justify-content: flex-start;align-items: center; padding: 1%;">
+            <button type="button" class="btn btn-primary my-style " style="    font-size: 1.2vw; padding: 0%; text-align: center;" (click)="fillReport()">Fill report</button>
+        </div>
+    </div>
+
+
+</div>

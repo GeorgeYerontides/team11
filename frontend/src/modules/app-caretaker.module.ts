@@ -20,6 +20,10 @@ import { ModalsComponent } from 'src/app/pages/caretaker/modals/modals.component
 import { FormsModule } from '@angular/forms';
 import { EventBoxComponent } from 'src/app/pages/caretaker/main-display/event-overview/event-box/event-box.component';
 import { RoutineAddComponent } from 'src/app/pages/caretaker/modals/routine-add/routine-add.component';
+import { EmergencyComponent } from 'src/app/pages/caretaker/modals/emergency/emergency.component';
+import { MedicalEventBoxComponent } from 'src/app/pages/caretaker/main-display/medical-history/medical-event-box/medical-event-box.component';
+import { MedEveAddComponent } from 'src/app/pages/caretaker/modals/med-eve-add/med-eve-add.component';
+import { ChatComponent } from 'src/app/pages/caretaker/sidebar/chat/chat.component';
 
 
 
@@ -39,7 +43,11 @@ import { RoutineAddComponent } from 'src/app/pages/caretaker/modals/routine-add/
         EventOverviewComponent,
         ModalsComponent,
         EventBoxComponent,
-        RoutineAddComponent
+        RoutineAddComponent,
+        EmergencyComponent,
+        MedicalEventBoxComponent,
+        MedEveAddComponent,
+        ChatComponent
     ],
     imports: [
         RouterModule,
@@ -64,7 +72,11 @@ import { RoutineAddComponent } from 'src/app/pages/caretaker/modals/routine-add/
         EventOverviewComponent,
         ModalsComponent,
         EventBoxComponent,
-        RoutineAddComponent
+        RoutineAddComponent,
+        EmergencyComponent,
+        MedicalEventBoxComponent,
+        MedEveAddComponent,
+        ChatComponent
     ]
   })
 

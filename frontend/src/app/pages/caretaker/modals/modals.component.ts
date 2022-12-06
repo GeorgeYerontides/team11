@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalService } from 'src/app/global/services/modals/notification-modal.service';
+import { ModalService } from 'src/app/global/services/modals/modal.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 @Component({
   selector: 'app-modals',

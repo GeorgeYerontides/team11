@@ -4,9 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PatientModel } from 'src/app/global/models/patient/patient.model';
 
 import { RoutineModel } from 'src/app/global/models/routine/routine.model';
+import { LocationService } from 'src/app/global/services/location/location.service';
+import { ModalService } from 'src/app/global/services/modals/modal.service';
 import { PatientService } from 'src/app/global/services/patient/patients.service';
 import { RoutineService } from 'src/app/global/services/routine/routine.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
+import { VitalsService } from 'src/app/global/services/vitals/vitals.service';
 
 @Component({
   selector: 'app-patient-dashboard',
@@ -17,10 +20,11 @@ export class PatientDashboardComponent implements OnInit {
   public name: string ='';
   public surname: string ='';
 
-  heartRate:string = '98';
+  heartRate:string = '90';
   SpO2:string = '98';
   stress:string ='Normal';
   location:string = 'Living Room';
+  status: string = "Normal";
   public age: string = '';
   public weight: string = '';
   public height: string = '';
@@ -36,7 +40,8 @@ export class PatientDashboardComponent implements OnInit {
   urlSafe!: SafeResourceUrl;
   constructor(private patientService: PatientService, private route:ActivatedRoute,
     private router:Router, private routineService:RoutineService,private socketService:SocketsService,
-    private sanitizer:DomSanitizer) { 
+    private sanitizer:DomSanitizer,private modalService:ModalService,private locationService:LocationService,
+    private vitalsService:VitalsService) { 
     //let snapshot = this.route.snapshot;
     //console.log("child ",snapshot.parent?.params['name']);
     //console.log( snapshot.params['name']);
@@ -66,11 +71,23 @@ export class PatientDashboardComponent implements OnInit {
     this.socketService.subscribe("routine_update", (data: any) => {
       this.getAllTasks();
     });
+
+    this.getAllTasks();
+  
+  
+    this.socketService.subscribe("locationChange", (data: any) => {
+    
+      this.getLocation();
+    });
+    this.socketService.subscribe("vitalChange", (data: any) => {
+    
+      this.getVitals();
+    });
     
   }
 
   private async getAllTasks(){
-     this.routineService.getAll().subscribe((result) => {
+     await this.routineService.getAll().subscribe((result) => {
       result.sort((objA,objB) => { 
         if (objA.startTime > objB.startTime)
         {
@@ -83,6 +100,7 @@ export class PatientDashboardComponent implements OnInit {
         return 0;
       }
       )
+      
       let username = this.currUser.name + " "+ this.currUser.surname;
       this.routineEvents = result.filter(data => data.patient === username);
       console.log( this.routineEvents);
@@ -96,12 +114,32 @@ export class PatientDashboardComponent implements OnInit {
       this.emergencyPhone = this.currUser.emergencyPhone;
       this.emergencyMail = this.currUser.emergencyEmail;
       this.medicalEvents = this.routineEvents .filter(data => data.type === "Medical");
+      this.getLocation();
+      this.getVitals();
 
      });
 
-    
+
   }
 
+  private async getLocation(){
+    console.log(' CALLED GET LOCCATION',this.currUser);
+    this.locationService.getUserLocation(this.currUser.name, this.currUser.surname).subscribe((result) => {
+      this.location = result[0].location;
+
+    });
+  }
+
+  private async getVitals(){
+    console.log(' CALLED GET VITALS',this.currUser);
+    this.vitalsService.getUserVitals(this.currUser.name, this.currUser.surname).subscribe((result) => {
+      this.stress = result[0].stress;
+      this.SpO2 = result[0].spo2.toString();
+      this.heartRate = result[0].heartRate.toString();
+      this.status = result[0].status;
+
+    });
+  }
   navigateMed(){
     this.router.navigate(["../medical_history"], {relativeTo: this.route});
   }
@@ -109,6 +147,12 @@ export class PatientDashboardComponent implements OnInit {
   navigateToRoutine(){
     console.log("test");
     this.router.navigate(["../routine_planner"] , {relativeTo: this.route});
+  }
+
+  navigateToRoutineOpen(){
+    console.log("test");
+    this.router.navigate(["../routine_planner"] , {relativeTo: this.route});
+    this.modalService.openRoutine();
   }
 
 }

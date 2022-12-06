@@ -1,0 +1,80 @@
+.myRow{
+    display: flex;
+    flex-direction: row;
+}
+
+.halfrow{
+    width:50%;
+   
+}
+p{
+    margin-bottom: 0%;
+    font-size: larger;
+}
+.subRow{
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+}
+
+.checkbox-lg .custom-control-label::before, 
+.checkbox-lg .custom-control-label::after {
+  top: .8rem;
+  width: 1.55rem;
+  height: 1.55rem;
+}
+
+.checkbox-lg .custom-control-label {
+  padding-top: 13px;
+  padding-left: 6px;
+}
+
+
+.checkbox-xl .custom-control-label::before, 
+.checkbox-xl .custom-control-label::after {
+  top: 1.2rem;
+  width: 1.85rem;
+  height: 1.85rem;
+}
+
+.form-check-input:checked {
+    background-color: green;
+}
+
+.my-style{
+    width: 100%; 
+    height: 50%;
+
+
+    background-color: #EEDFF2;
+    color:black;
+
+    border: 2px solid #999BD4;
+ 
+    text-align: center;
+    vertical-align: middle;
+}
+.componentHeader{
+    width:100%; 
+    height:7vh; 
+    background-color: #9e1a1a; 
+    border-radius: 10px 10px 0px 0px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0% 5% 0% 5%;
+}
+
+.my-style{
+    width: 20%; 
+    height: 5vh;
+
+
+    background-color: #EEDFF2;
+    color:black;
+
+    border: 2px solid #999BD4;
+    border-radius: 10px;
+    text-align: center;
+    vertical-align: middle;
+}

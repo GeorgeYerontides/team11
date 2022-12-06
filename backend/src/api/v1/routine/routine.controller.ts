@@ -20,7 +20,7 @@ export class routineController extends ResourceController<IRoutine>{
             .get('/initializeKostas', this.initializeRoutineKostas)
             .get('/initialize', this.initializeRoutine)
   //          .get('/:id', this.getRoutine)
-//            .post('/', this.postTask)
+            .post('/', this.postRoutine)
             .put('/:id', this.updateEvent)
             .delete('/:id', this.deleteTask);
 
@@ -57,7 +57,15 @@ export class routineController extends ResourceController<IRoutine>{
             .status(StatusCodes.OK)
             .json(task);
     }
- 
+    postRoutine = async (req: Request, res: Response) => {
+        this.logger.debug('postTask request');
+        // you can pre-process the request here before passing it to the super class method
+        const task = await this.create(req, res);
+        // you can process the data retrieved here before returning it to the client
+        return res
+            .status(StatusCodes.OK)
+            .json(task);
+    }
     deleteTask = async (req: Request, res: Response) => {
         this.logger.debug('deleteTask request');
         // you can pre-process the request here before passing it to the super class method
