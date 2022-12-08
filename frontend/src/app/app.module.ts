@@ -16,8 +16,6 @@ import { WallComponent } from './pages/secondary_screens/wall/wall.component';
 import { TvComponent } from './pages/secondary_screens/tv/tv.component';
 import { MedEveAddComponent } from './pages/caretaker/modals/med-eve-add/med-eve-add.component';
 import { FormsModule } from '@angular/forms';
-import { ChatComponent } from './pages/caretaker/sidebar/chat/chat.component';
-
 const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
 @NgModule({
   declarations: [
@@ -27,7 +25,7 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     ItemPreviewComponent,
     MagicalControllerComponent,
     WallComponent, 
-    TvComponent,  
+    TvComponent,
 
 
      

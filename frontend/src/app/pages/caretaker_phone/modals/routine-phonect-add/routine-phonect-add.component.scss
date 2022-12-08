@@ -1,0 +1,162 @@
+:host{
+    display: block;
+    position: relative;
+    margin-left:auto;
+    margin-right: auto;
+    width:90%;
+    height:100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+
+}
+
+.myModal{
+    display: block;
+    position: relative;
+    margin-left:auto;
+    margin-right: auto;
+    width:90%;
+    height:600px;
+    background-color:white; 
+    box-shadow:1px 1px 2px rgb(170, 170, 170);
+    border-radius: 10px;
+    z-index: 100;
+    padding: 0%;
+    flex-direction: column
+  }
+  
+  .header{
+    background-color: #5356B6;
+    height:7vh;
+    width:100%;
+    display: flex;
+    flex-wrap:nowrap;
+    align-items: center;
+    color:white;
+    border-radius: 10px 10px 0px 0px;
+  }
+  
+  
+  h5{
+    margin-right: 20px;
+    margin-bottom: 0%;
+  }
+
+  .myRow{
+    position: relative;
+    align-items: center;
+    width: 100%;
+  }
+
+  .mySubRow{
+    position:relative;
+    align-items: center;
+    width:100%;
+  }
+
+  .timeBox{
+    display: flex; align-items: center;
+    height:100%;
+  }
+
+
+.timeInput{
+  width: 80%; 
+  text-align: center; 
+  border-bottom: 1px solid black !important; 
+  border-top: 0px solid black !important; 
+  border-left: 0px solid black !important; 
+  border-right: 0px solid black !important; 
+  background-color: #EEDFF2;
+  height:100%;
+
+}
+
+.inputStyle{    
+    background-color: #EEDFF2;
+    color:black;
+    border-bottom: 2px solid #999BD4;
+    border-left: 0px solid #999BD4;
+    border-right: 0px solid #999BD4;
+    border-top: 0px solid #999BD4;
+    height:100%;
+    width:250px;
+}
+
+.inputStyleDesc{    
+  background-color: #EEDFF2;
+  color:black;
+  border: 2px solid #999BD4;
+  border-radius: 10px;
+  padding: 2%;
+  height:100%;
+
+}
+
+.myRowDesc{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  width: 45vw;
+  height: 60%;
+  margin-bottom: 2%;
+
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+.myCloseBtn{
+  margin: 0px;
+  padding: 0px;
+  background-color: #5356B6;
+  border: 0px;
+  height:90%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-lg .custom-control-label::before, 
+.checkbox-lg .custom-control-label::after {
+  top: .8rem;
+  width: 1.55rem;
+  height: 1.55rem;
+}
+
+.checkbox-lg .custom-control-label {
+  padding-top: 13px;
+  padding-left: 6px;
+}
+
+
+.checkbox-xl .custom-control-label::before, 
+.checkbox-xl .custom-control-label::after {
+  top: 1.2rem;
+  width: 1.85rem;
+  height: 1.85rem;
+}
+
+.form-check-input:checked {
+    background-color: green;
+}
+
+.my-style{
+  width: 120px; 
+  height: 6vh;
+  font-size: 22px;
+
+
+  color:black;
+
+  border: 2px solid #999BD4;
+  border-radius: 12px;
+  text-align: center;
+  vertical-align: middle;
+}

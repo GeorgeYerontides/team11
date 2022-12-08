@@ -1,0 +1,31 @@
+<div class="medCont"  [ngStyle]="{'opacity': self.completed === true? 0.7 : 1.0}">
+    <!--ngStyle allows for conditional binding on to the background feauture based on the boolean value requires caretaker-->
+    <div class="componentHeader" [ngStyle]="{background: self.reqiresCaretaker? '#8A53B6' : '#5356B6'}" >
+        
+        <div style="display:flex; width: 80%; margin-left:10px;">
+            <h5 class="componentHeaderTitle">{{self.title}}</h5>
+        </div>
+
+        <div style=" width: 20%; display: flex; justify-content: flex-end; float: right; margin-top: -30px;">
+           
+            <i class="fa-solid fa-user" style="font-size: 3vh; margin: 0% 2vh 0% 0%; padding: 0%;color:white;" *ngIf="self.reqiresCaretaker"></i>
+
+            <div class="form-check" style="height: 100%; width:100%; display:flex; justify-content: flex-end; width: 10%;">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="height:3vh; width:3vh; margin:0; padding:0%" [checked]="self.completed" (click)="changeCompleted()">
+              </div>
+        </div>
+    </div>
+    <div class="contentRoutine">
+        <div style="display:flex; margin:0%; padding:0%">
+            <h6>{{self.startTime |  date: 'shortTime'}}</h6>
+            <h6 style="margin-left: 10px; margin-bottom: 0%;" *ngIf="self.endTime !== self.startTime"> to </h6>
+            <h6 style="margin-left: 10px; margin-bottom: 0%;" *ngIf="self.endTime !== self.startTime "> {{self.endTime |  date: 'shortTime'}} </h6>
+        </div>
+      
+     
+        <h6 style="margin-bottom:0%" *ngIf = 'self.reqiresCaretaker; else NotRequired'>Help required.</h6>
+        <ng-template style="margin-bottom:0%" #NotRequired> <h6>No help required.</h6></ng-template>
+        
+    </div>
+</div>
+

@@ -2,20 +2,28 @@
 
 <div class="container top_bar text-center" *ngIf="top_bar_general">
     <select id="elder_name" name="elder_name">
-        <option value="1_option">Kostas Lamprou</option>
-        <option value="2_option">Dimitra Papa</option>
-        <option value="3_option">Giorgos Lamprou</option>
+        <option value="1_option">Giorgos Lamprou</option>
+        <option value="2_option">Andreas Mixahl</option>
+        <option value="3_option">Giorgos Trifonos</option>
+        <option value="4_option">Dimitra Papa</option>
+        
     </select>
 </div><br><br><br><br>
+
+
+<h5 style="color:white; background-color:#5356B6; text-align: center; width: 80%; height:60px; margin-left: auto; margin-right: auto; border-radius: 10px;">
+    Patient Information for<br>{{name}} {{surname}}
+</h5>
+<br>
 
 <!-- Alert types for caretaker -->
 
 <div class="alert alert-danger" role="alert" id="new_alert_medium" style="display:none;">
-    <p id="alert_type"> New Alert : Kostas Lamprou require assistant</p>
+    <p id="alert_type"> New Alert : Giorgos Lamprou require assistant</p>
 </div>
 
 <div class="alert alert-danger" role="alert" id="new_alert_high" style="display:none;">
-    <p id="alert_type"> Danger : Kostas Lamprou medical emergency</p>
+    <p id="alert_type"> Danger : Giorgos Lamprou medical emergency</p>
 </div>
 
 <div class="container emergency_contacts" style="display:none;">
@@ -175,14 +183,14 @@
 <div class="container notifications_list" *ngIf="notifications_div" >
     <div class="alert alert-danger" role="alert" id="New_notification" *ngIf="readed_flag_1" (click)="hide_message()">
         <i class="fa-solid fa-person-cane" id="elder_picture"></i>
-        <p id="notification_from">Kostas Lamprou</p><br>
+        <p id="notification_from">Giorgos Lamprou</p><br>
         <p id="type_of_notification">New message</p>
         <p id="notification_time">  9:10 AM</p>
     </div><br>
 
     <div class="alert alert-danger" role="alert" id="New_notification" *ngIf="readed_flag_2" (click)="hide_message_2()">
         <i class="fa-solid fa-person-cane" id="elder_picture"></i>
-        <p id="notification_from">Kostas Lamprou</p><br>
+        <p id="notification_from">Giorgos Lamprou</p><br>
         <p id="type_of_notification">New Missed Call</p>
         <p id="notification_time">  9:18 AM</p>
     </div>
@@ -199,17 +207,45 @@
 
 <div class="container Messages_list" *ngIf="message_div"><br>
     <div class="container New_Message">
-        <i class="fa-solid fa-person-cane" id="elder_picture"></i>
-        <p id="message_from">Kostas Lamprou</p>
-        <p id="message_time">  9:10 AM</p>
         <p id="message_content">I would like to go for a walk</p>
+    </div>
+    <div style="width:auto; height:auto; display: flex; float:left;margin-top:-60px; margin-left:30px;">
+        <p>Giorgos Lamprou</p>
+    </div>
+    
+    <div  *ngIf="close_chat">
+        <app-chat-phone *ngFor = "let chat of chatMessages" [self]="chat" [userName]="'Kostas'" [userSurname]="'Kosta'"></app-chat-phone>
+    </div>
+    
+    <div>
+        <form #f = 'ngForm' style="width: 100%; position:absolute; bottom: 60px;">
+            <div style="height:8vh; background-color:rgb(156, 156, 156); width:100%; display: flex; flex-direction: row; width: 100%; margin: 0%; padding: 2%; justify-content: center; align-items: center; ">
+               
+    
+                
+                    <div  style = "width:80%; height:80%;">
+       
+                        <textarea 
+                        class="inputStyleDesc"
+                        id="chat" 
+                        name="chat" 
+                        style="width: 100% !important;"
+                        required
+                        ngDefaultControl 
+                        ngModel
+                        ></textarea>
+                      
+                </div>
+                <div style=" margin-left:1%;width:19%; display:flex; justify-content: center; align-items: center;  height:80%; margin: 0%; padding: 0%;" >
+                    <button class="btn btn-primary" style="width: 50px ; height:50px; margin: 0%; padding: 0%; border-radius: 50%; background-color: #5356B6;" (click)="chatSend(f)"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                </div>
+    
+            </div>
+        </form>   
     </div>
 </div>
 
-<div class="container input_text_area" style="display:none;">
-    <input type="text" class="form-control" id="write_message" placeholder="Write here...">
-    <button id="send_message_btn">Send</button>
-</div>
+
 
 
 <!--  Income Call Div -->
@@ -217,7 +253,7 @@
 <div class="container incoming_call" style="display:none;">
     <p id="type_of_call">Incoming Call</p>
     <img id="elder_call_picture" src="../../../../assets/caretaker_call/lala.jpg" alt="Elder Picture">
-    <p id="call_from">Kostas Lamprou</p>
+    <p id="call_from">Giorgos Lamprou</p>
     <button id="decline_call_btn">Decline</button>&nbsp;&nbsp;&nbsp;
     <button id="answer_call_btn">Answer</button>
 </div>
@@ -231,14 +267,27 @@
 </div>
 
 
+<br>
+<div id="comp-render" *ngIf="app_routine_phonect_add">
+    <app-routine-phonect-add [user]="currUser"></app-routine-phonect-add>
+ </div>
+
+
 <!-- List of Routine Events -->
 
 <br>
 <div class="container events_list" *ngIf="events_div">
     <p id="title_routine">Routine</p>
     <p id="completed_events">Routine Completed : 0/8</p>
-
+    <div class="container edit_buttons">
+        <button class="btn-primary add_event_btn" (click)="open_add_event()">Add Event</button>
+        <button class="btn-primary edit_event_btn">Edit Event</button>
+    </div>
     <br>
+
+    <app-routine-box  style="width: 100%;" *ngFor ="let routine of routineEvents" [self] = 'routine'></app-routine-box> 
+
+    <!--
     <div class="container event_box">
         <div class="container title_of_event">
             <label id="event_name">Morning Walk</label>
@@ -307,7 +356,8 @@
         </div>
         <p id="event_time">13:30 PM - 15:30 PM</p>
         <p id="event_help">No help required</p>
-    </div><br>
+    </div>-->
+    <br>
 </div>
 <br><br><br>
 

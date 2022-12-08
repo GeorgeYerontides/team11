@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, SelectMultipleControlValueAccessor } from '@angular/forms';
 import { PatientModel } from 'src/app/global/models/patient/patient.model';
 import { RoutineModel } from 'src/app/global/models/routine_phonect/routine_phonect.model';
 import { ModalService } from 'src/app/global/services/modals/modal.service';
@@ -7,18 +7,23 @@ import { RoutineService } from 'src/app/global/services/routine_phonect/routine_
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 
 @Component({
-  selector: 'app-routine-add',
-  templateUrl: './routine-add.component.html',
-  styleUrls: ['./routine-add.component.scss']
+  selector: 'app-routine-phonect-add',
+  templateUrl: './routine-phonect-add.component.html',
+  styleUrls: ['./routine-phonect-add.component.scss']
 })
-export class RoutineAddComponent implements OnInit {
+export class RoutinePhonectAddComponent implements OnInit {
   @Input() user!: PatientModel;
-  constructor(private modalService:ModalService,private routineService:RoutineService, private socketService:SocketsService) { }
+  constructor(private modalService:ModalService,private routineService:RoutineService, 
+  private socketService:SocketsService) { }
+ 
+
+  form_status:boolean = true;
 
   ngOnInit(): void {
   }
-  close(form:NgForm){
-    this.modalService.closeRoutine();
+
+  close_form(){
+    this.form_status = false;
   }
 
   getForm(form:NgForm){
@@ -72,7 +77,4 @@ export class RoutineAddComponent implements OnInit {
    
     
   }
-
-  
-
 }
