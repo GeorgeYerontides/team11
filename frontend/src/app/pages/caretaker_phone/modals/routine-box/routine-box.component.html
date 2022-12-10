@@ -1,12 +1,12 @@
-<div class="medCont"  [ngStyle]="{'opacity': self.completed === true? 0.7 : 1.0}">
+<div class="medCont"  [ngStyle]="{'opacity': self.completed === true? 0.7 : 1.0}" style="width:90%;position:relative; margin-left:auto; margin-right:auto; border: 1px solid black; border-radius: 10px;">
     <!--ngStyle allows for conditional binding on to the background feauture based on the boolean value requires caretaker-->
-    <div class="componentHeader" [ngStyle]="{background: self.reqiresCaretaker? '#8A53B6' : '#5356B6'}" >
+    <div class="componentHeader" [ngStyle]="{background: self.reqiresCaretaker? '#8A53B6' : '#5356B6'}" style="border-top-left-radius:10px;border-top-right-radius:10px;" >
         
         <div style="display:flex; width: 80%; margin-left:10px;">
             <h5 class="componentHeaderTitle">{{self.title}}</h5>
         </div>
 
-        <div style=" width: 20%; display: flex; justify-content: flex-end; float: right; margin-top: -30px;">
+        <div style=" width: 20%; display: flex; justify-content: flex-end; float: right; margin-top: -30px; margin-right:5px;">
            
             <i class="fa-solid fa-user" style="font-size: 3vh; margin: 0% 2vh 0% 0%; padding: 0%;color:white;" *ngIf="self.reqiresCaretaker"></i>
 
@@ -15,7 +15,7 @@
               </div>
         </div>
     </div>
-    <div class="contentRoutine">
+    <div class="contentRoutine" style="margin-left:10px;">
         <div style="display:flex; margin:0%; padding:0%">
             <h6>{{self.startTime |  date: 'shortTime'}}</h6>
             <h6 style="margin-left: 10px; margin-bottom: 0%;" *ngIf="self.endTime !== self.startTime"> to </h6>
@@ -27,5 +27,5 @@
         <ng-template style="margin-bottom:0%" #NotRequired> <h6>No help required.</h6></ng-template>
         
     </div>
-</div>
+</div><br>
 

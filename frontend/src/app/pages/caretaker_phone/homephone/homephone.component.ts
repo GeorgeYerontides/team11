@@ -42,18 +42,13 @@ export class HomephoneComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.getChatMessages();
-    this.socketService.subscribe('chat_update',(data: any) =>{
-      this.getChatMessages();
-
-    });
+   ngOnInit(): void {
 /*
     let snapshot = this.route.snapshot;
     let nameTemp = snapshot.params['name'];
     let usernameTemp = nameTemp.split(" ",2);
 */
-  let usernameTemp = '';  
+    let usernameTemp = '';  
     
     usernameTemp = this.route.snapshot.params['name'].split(" ",2);
     console.log(usernameTemp);
@@ -74,6 +69,15 @@ export class HomephoneComponent implements OnInit {
     });
 
     this.getAllTasks();
+
+    
+    this.socketService.subscribe('chat_update',(data: any) =>{
+      console.log("lalalalaa");
+      this.getChatMessages();
+
+    });
+
+    this.getChatMessages();
 
   }
 
@@ -108,6 +112,7 @@ export class HomephoneComponent implements OnInit {
 
 
   getChatMessages(){
+    console.log("lalalalala");
     this.chatService.getNotifications().subscribe((result)=>{
       result.sort((objA,objB) => { 
         if (objA.time > objB.time)
@@ -164,6 +169,7 @@ export class HomephoneComponent implements OnInit {
     this.currChatSurname = user.split(' ',2)[1].replace(/\s/g, "");
     this.socketService.publish("chat_update", {});
   }
+
   chatOpen(){
       console.log("chat open");
       this.chat = true;
@@ -238,7 +244,7 @@ export class HomephoneComponent implements OnInit {
     this.events_div = false;
     this.video_call_live = false;
     this.medication_div = false;
-    this.close_chat = false;
+    this.close_chat = true;
   }
 
   back_to_HS(){
@@ -302,6 +308,11 @@ export class HomephoneComponent implements OnInit {
 
   open_add_event(){
     this.app_routine_phonect_add = true;
+  }
+
+
+  navigateHome(){
+    this.router.navigate(["/phonect"],);
   }
 
 }
