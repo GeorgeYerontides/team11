@@ -20,6 +20,7 @@ export class EventOverviewComponent implements OnInit {
   public name:string = "";
   public surname:string = "";
   protected routineEvents:RoutineModel[]=[];
+  public dataEdit!:RoutineModel;
   
   constructor(private patientService: PatientService, private route:ActivatedRoute,private routineService:RoutineService,
     private socketService:SocketsService, private modalService:ModalService) { 
@@ -32,6 +33,9 @@ export class EventOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     let snapshot = this.route.snapshot;
+
+
+
     let name = snapshot.parent?.params['name'];
     console.log(name);
     this.patientService.getUser(name.split(' ',2)[0],name.split(' ',2)[1]).subscribe((result) => {
@@ -49,7 +53,17 @@ export class EventOverviewComponent implements OnInit {
       this.getAllTasks();
     });
 
-    this.socketService.subscribe('routineModal',() =>{
+    this.socketService.subscribe('routineModal',(data:any) =>{
+
+      if(data.data != null)
+      {
+        this.dataEdit = data.data;
+        console.log('is not empty ',data);
+      }
+      else
+      {
+        console.log('is empty');
+      }
       console.log("received open")
       this.modal = this.modalService.showAdd;
     })
@@ -70,9 +84,12 @@ export class EventOverviewComponent implements OnInit {
        return 0;
      }
      )
-     let username = this.currUser.name + " "+ this.currUser.surname;
-     this.routineEvents = result.filter(data => data.patient === username);
-     console.log('what is routine events: ',this.routineEvents);
+     setTimeout(() => {
+      let username = this.currUser.name + " "+ this.currUser.surname;
+      this.routineEvents = result.filter(data => data.patient === username);
+      console.log('what is routine events: ',this.routineEvents);
+    }, 1000);
+   
 
     });
 
@@ -182,7 +199,7 @@ export class EventOverviewComponent implements OnInit {
 
   addRoutine(){
     this.modalService.openRoutine();
-  
+    
 
 
   }

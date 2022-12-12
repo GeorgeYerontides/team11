@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RoutineModel } from 'src/app/global/models/routine/routine.model';
+import { ModalService } from 'src/app/global/services/modals/modal.service';
 import { RoutineService } from 'src/app/global/services/routine/routine.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 
@@ -10,10 +11,18 @@ import { SocketsService } from 'src/app/global/services/sockets/sockets.service'
 })
 export class EventBoxComponent implements OnInit {
   @Input() self!:RoutineModel;
-  constructor(private routineService:RoutineService,private socketService:SocketsService) { }
+  constructor(private routineService:RoutineService,private socketService:SocketsService,private modalService:ModalService) { }
 
   ngOnInit(): void {
   }
+
+  addRoutineEdit(){
+    this.modalService.openRoutineEdit(this.self);
+    
+
+
+  }
+
 
   public deleteRoutine(): void {
     const response = confirm("Are you sure you want to delete this task?");

@@ -7,17 +7,17 @@
         </div>
 
         <div class="col-1" style=" display: flex; justify-content: center; align-items: center; padding: 0%;">
-            <button class="myCloseBtn" (click)="close(f)"> <i class="fa fa-window-close fa-2x" style="color: red;" aria-hidden="true"></i></button>
+            <button class="myCloseBtn" (click)="close(myform)"> <i class="fa fa-window-close fa-2x" style="color: red;" aria-hidden="true"></i></button>
         
         </div>
       
     </div>
     <div style="height: 53vh; background-color:white; border-radius: 0px 0px 10px 10px; display: flex; padding: 5%;">
         
-        <form #f = 'ngForm' style="width: 45vw;">
+        <form #myform = 'ngForm'  style="width: 45vw;">
             <div class="myRow" style="height:10%">
                 <div class="mySubRow" style="margin-right: 30px; height:100%"> 
-                    <h5 >Time:</h5>
+                    <h5 >Title:</h5>
                     <input 
                         class="inputStyle"
                         type="text" 
@@ -91,8 +91,8 @@
 
 
             <div style="display: flex; justify-content: space-evenly; ">
-                <button class="my-style" style="background-color: #db3535;" (click)="close(f)">Cancel</button>
-                <button class="my-style" style="background-color: #3adb35;" (click)="getForm(f)">Submit</button>
+                <button class="my-style" style="background-color: #db3535;" (click)="close(myform)">Cancel</button>
+                <button class="my-style" style="background-color: #3adb35;" (click)="getForm(myform)">Submit</button>
             </div>
         </form>
       

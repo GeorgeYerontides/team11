@@ -5,11 +5,13 @@ import { CaretakerModel } from 'src/app/global/models/caretaker/caretaker.model'
 import { ChatModel } from 'src/app/global/models/chat/chat.model';
 import { LocationModel } from 'src/app/global/models/location/location.model';
 import { medicalEventModel } from 'src/app/global/models/medicalEvents/medeve.model';
+import { RoutineModel } from 'src/app/global/models/routine/routine.model';
 import { VitalsModel } from 'src/app/global/models/vitals/vitals.model';
 import { CaretakerService } from 'src/app/global/services/caretaker/caretaker.service';
 import { ChatService } from 'src/app/global/services/chat/chat.service';
 import { LocationService } from 'src/app/global/services/location/location.service';
 import { MedicalEventService } from 'src/app/global/services/medicalEvents/medeve.service';
+import { NotificationService } from 'src/app/global/services/notifications/notification.service';
 import { alertService } from 'src/app/global/services/patient/alert.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 import { VitalsService } from 'src/app/global/services/vitals/vitals.service';
@@ -25,7 +27,8 @@ export class MagicalControllerComponent implements OnInit {
   careakers:CaretakerModel[] =[];
   chatMessages:ChatModel[] =[];
   constructor(private alert:alertService, private socketService: SocketsService, private locationService:LocationService,private vitalsService:VitalsService,
-    private caretakerService:CaretakerService,private medeveService:MedicalEventService, private chatService:ChatService) { 
+    private caretakerService:CaretakerService,private medeveService:MedicalEventService, private chatService:ChatService,
+    private notificationService:NotificationService) { 
 
     
   }
@@ -152,6 +155,7 @@ export class MagicalControllerComponent implements OnInit {
       });
       this.socketService.publish("medicalEvent2", {data: newMedEve})} ,1000);  
 
+      this.socketService.publish('speakerEvent',{message: 'Kostas Lamprou is in danger'});
     
 
   }
@@ -190,5 +194,15 @@ export class MagicalControllerComponent implements OnInit {
       this.socketService.publish("chat_update", {});
     });
     //form.controls['chat'].setValue('');
+  }
+
+  openWall(){
+    let tempRoutine = new RoutineModel();
+    tempRoutine.title = 'Hello';
+    this.notificationService.openWall(tempRoutine);
+  }
+  closeWall(){
+
+    this.notificationService.closeWall();
   }
 }
