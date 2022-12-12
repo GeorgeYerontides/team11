@@ -128,7 +128,7 @@ export class SidebarComponent implements OnInit {
   private getNotifications(): void {
     this.notificationService.getNotifications().subscribe((result) => {
       result.sort((objA,objB) => { 
-        if (objA.timeSent > objB.timeSent)
+        if (objA.timeSent < objB.timeSent)
         {
           return 1;
         }

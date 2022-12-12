@@ -31,7 +31,14 @@ export class ModalService {
 
     openRoutine(){
         this.showAdd = true;
-        this.socketService.publish('routineModal',{});
+        this.socketService.publish('routineModal',{data: null});
+    }
+
+    openRoutineEdit(routine: RoutineModel){
+        this.showAdd = true;
+        this.socketService.publish('routineModal',{data: routine});
+
+        this.socketService.publish('routineModalEdit',{data: routine});
     }
 
     closeRoutine(){

@@ -7,6 +7,7 @@ import { CaretakerService } from 'src/app/global/services/caretaker/caretaker.se
 import { ModalService } from 'src/app/global/services/modals/modal.service';
 import { NotificationService } from 'src/app/global/services/notifications/notification.service';
 import { alertService } from 'src/app/global/services/patient/alert.service';
+import { SmartSpeakerService } from 'src/app/global/services/smart-speaker/smart-speaker.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 import { VitalsService } from 'src/app/global/services/vitals/vitals.service';
 
@@ -29,7 +30,8 @@ export class HomeCaretakerComponent implements OnInit {
   public currentAlert:number = -1;
   constructor(private router: Router, private alertService:alertService, 
     private socketService: SocketsService,private notificationService:NotificationService,
-    private modalService:ModalService,private vitalsService:VitalsService, private caretakerService:CaretakerService) { 
+    private modalService:ModalService,private vitalsService:VitalsService, private caretakerService:CaretakerService,
+    private speakerService:SmartSpeakerService) { 
   
     this.subroute = this.router.url; 
     this.router.events.subscribe((event:Event) =>
@@ -77,7 +79,7 @@ export class HomeCaretakerComponent implements OnInit {
       {
         let firstName = this.alertPatientName.split(" ",2)[0];
         
-        this.notificationService.addNewNotification(firstName,"test",4);
+       // this.notificationService.addNewNotification(firstName,"test",4);
       
         this.isClicked = false;
         return;
@@ -86,7 +88,7 @@ export class HomeCaretakerComponent implements OnInit {
       if (this.isClicked === false)
       {
         let firstName = this.alertPatientName.split(" ",2)[0];
-        this.notificationService.addNewNotification(firstName,"test",4);
+        //this.notificationService.addNewNotification(firstName,"test",4);
       }
 
       this.caretakerService.getCaretakers().subscribe((result)=>{
@@ -111,6 +113,7 @@ export class HomeCaretakerComponent implements OnInit {
       {
         this.currentAlert = 1;
         this.alertMessage = "Danger: " +   data.patient  + " has medical emergency!";
+    
       }
       if (data.level === "orange")
       {
@@ -137,6 +140,14 @@ export class HomeCaretakerComponent implements OnInit {
 
 
     });
+    this.socketService.subscribe('speakerEvent', (data:any)=>{
+      this.speakerService.speak(data.message, ()=>{
+        console.log('speech ended');
+      })
+    });
+
+    this.speakerService.initialize();
+    this.speakerService.start();
   }
 
 
