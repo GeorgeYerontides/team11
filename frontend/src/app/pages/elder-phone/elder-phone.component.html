@@ -1,22 +1,18 @@
 
 
-<div class="top_bar text-center"*ngIf="welcome_message_div">
-    <p id="Welcome_message">Hello Kostas<br>Everything is good!</p>
+<div class="top_bar text-center">
+    <p id="Welcome_message" *ngIf="welcome_message_div">Hello Kostas<br>Everything is good!</p>
 </div><br><br><br><br><br><br>
 
 <!-- Alerts in Main Screen -->
 
-<div id="container alerts" style="display:none;">
+<div id="container alerts" *ngIf="red_alert">
     <p id="orange_alert">Reminder:<br>Check blood pressure<br>Caretaker is on his way!</p>
 </div><br>
 
 
-<div id="container alerts" style="display:none;">
-    <p id="green_alert">Reminder:<br>Evening nap</p>
-</div>
-
-<div id="container alerts" style="display:none;">
-    <p id="yellow_alert">Reminder:<br>Walk in the park</p>
+<div id="container alerts" *ngIf="yellow_alert">
+    <p id="yellow_alert">Reminder:<br>{{message}}</p>
 </div>
 
 
