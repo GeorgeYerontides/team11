@@ -12,9 +12,24 @@ export class WallComponent implements OnInit {
   public status: boolean = false;
   public title: string = '';
   public description: string = '';
+  public danger:boolean = false;
+
+
   ngOnInit(): void {
     this.socketService.subscribe("wallNotification", (data: any) => {
-      if( data.status === true){
+      if( data.status){
+
+        this.status = data.status;
+        this.title = data.routine.title;
+      }
+      else
+      {
+        this.status = data.status;
+      }
+    });
+
+    this.socketService.subscribe("medicalEvent", (data: any) => {
+      if( data.status){
 
         this.status = data.status;
         this.title = data.routine.title;
@@ -25,5 +40,8 @@ export class WallComponent implements OnInit {
       }
     });
   }
+  
+
+  
 
 }
