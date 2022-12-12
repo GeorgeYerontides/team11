@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Alert } from 'src/app/global/models/alert/alert.model';
 import { RoutineModel } from 'src/app/global/models/routine/routine.model';
 import { RoutineService } from 'src/app/global/services/routine/routine.service';
+import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 
 @Component({
   selector: 'app-elder-phone',
@@ -9,9 +11,26 @@ import { RoutineService } from 'src/app/global/services/routine/routine.service'
 })
 export class ElderPhoneComponent implements OnInit {
   @Input() self!:RoutineModel;
-  constructor() { }
+  constructor(private socketService:SocketsService) { }
+
+  yellow_alert:boolean = false;
+  red_alert:boolean = false;
+  message:string = "";
 
   ngOnInit(): void {
+
+    this.socketService.subscribe("alert_event",(data:any)=>{
+      console.log(data);
+      if(data.level === "yellow"){
+        this.welcome_message_div = false;
+        this.yellow_alert = true;
+        this.message = data.message + " " + data.time;
+      }
+    })
+
+    
+
+
   }
 
   activity_suggestions:boolean = true;
