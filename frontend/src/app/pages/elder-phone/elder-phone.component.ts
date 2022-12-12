@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Alert } from 'src/app/global/models/alert/alert.model';
 import { RoutineModel } from 'src/app/global/models/routine/routine.model';
 import { RoutineService } from 'src/app/global/services/routine/routine.service';
+import { SmartSpeakerService } from 'src/app/global/services/smart-speaker/smart-speaker.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { SocketsService } from 'src/app/global/services/sockets/sockets.service'
 })
 export class ElderPhoneComponent implements OnInit {
   @Input() self!:RoutineModel;
-  constructor(private socketService:SocketsService) { }
+  constructor(private socketService:SocketsService,private smartSpeaker:SmartSpeakerService) { }
 
   yellow_alert:boolean = false;
   red_alert:boolean = false;
@@ -28,9 +29,14 @@ export class ElderPhoneComponent implements OnInit {
       }
     })
 
+    this.smartSpeaker.addCommand(['close','complete','finish','done','close reminder'],()=>{
+      this.yellow_alert = false;
+      this.welcome_message_div = true;
+    });
+
+    this.smartSpeaker.initialize();
+    this.smartSpeaker.start();
     
-
-
   }
 
   activity_suggestions:boolean = true;

@@ -24,4 +24,25 @@
       in risus vel ipsum pharetra fringilla at et eros. Ut id egestas nibh.
     </h4>
   </div>
+
+  <div
+    style="
+      height: 50%;
+      width: 50%;
+      border-radius: 10px;
+      border: 2px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 5%; ;
+    "
+    *ngIf="yellow_status"
+    [ngStyle] = "{'background-color': yellow_status ? 'yellow' : 'white' }"
+  >
+    <h3>Reminder</h3>
+    <h4>
+      {{yellow_description}}
+    </h4>
+  </div>
 </div>
