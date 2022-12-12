@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgForm, SelectMultipleControlValueAccessor } from '@angular/forms';
 import { PatientModel } from 'src/app/global/models/patient/patient.model';
 import { RoutineModel } from 'src/app/global/models/routine_phonect/routine_phonect.model';
 import { ModalService } from 'src/app/global/services/modals/modal.service';
@@ -7,71 +7,26 @@ import { RoutineService } from 'src/app/global/services/routine_phonect/routine_
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 
 @Component({
-  selector: 'app-routine-add',
-  templateUrl: './routine-add.component.html',
-  styleUrls: ['./routine-add.component.scss']
+  selector: 'app-routine-phonect-add',
+  templateUrl: './routine-phonect-add.component.html',
+  styleUrls: ['./routine-phonect-add.component.scss']
 })
-export class RoutineAddComponent implements OnInit {
+export class RoutinePhonectAddComponent implements OnInit {
   @Input() user!: PatientModel;
-  @Input() routineEdit!:RoutineModel;
-  
+  constructor(private modalService:ModalService,private routineService:RoutineService, 
+  private socketService:SocketsService) { }
+ 
 
-  @ViewChild('myform')  myNewForm!:NgForm ;
-  
-  constructor(private modalService:ModalService,private routineService:RoutineService, private socketService:SocketsService) { }
+  form_status:boolean = true;
 
   ngOnInit(): void {
-    console.log('ngoninit',this.myNewForm);
-
-    
-    this.socketService.subscribe('routineModalEdit',(data:any) =>{
-      console.log('ooooo');
-      if(data.data != null)
-      {
-        this.fillForm();
-      }
-      else
-      {
-        console.log('is empty');
-      }
-
-    })
-
   }
- 
-  fillForm()
-  {
 
-    this.myNewForm.controls['title'].setValue('aaaaaaaaaaaa');
-
-   /*
-    this.myNewForm.controls['title'].setValue(this.routineEdit.title);
-    let test =  this.routineEdit.startTime.toString();
-    let test2 = test.split('T',2 )[1]
-    let startHoursT = Number(test2.split(':',3)[0]) +2;
-    let startMinutesT = (test2.split(':',3)[1]);
-    console.log( 'time ',startHoursT);
-    console.log( 'time ',startMinutesT);
-    
-    
-    this.myNewForm.controls['fromTime'].setValue("07:00");
-
-    console.log( 'aaaaaaaaaaaaaaaaaaaaaaaaaaa ',this.myNewForm.form);
-    */
-
-  }
-  close(form:NgForm){
-    this.modalService.closeRoutine();
+  close_form(){
+    this.form_status = false;
   }
 
   getForm(form:NgForm){
-    this.myNewForm.controls['title'].setValue('aaaaaaaaaaaa');
-
-    console.log( 'aaaaaaaaaaaaaaaaaaaaaaaaaaa ',this.myNewForm.form);
-  
-    console.log( 'aaaaaaaaaaaaaaaaaaaaaaaaaaa ',this.myNewForm.form);
-    
-    console.log( 'BBBBBBBBBBBBBBBBBBBBBBBBBBBB ');
     console.log(form);
     console.log(this.user);
     if (form.valid === false)
@@ -122,7 +77,4 @@ export class RoutineAddComponent implements OnInit {
    
     
   }
-
-  
-
 }

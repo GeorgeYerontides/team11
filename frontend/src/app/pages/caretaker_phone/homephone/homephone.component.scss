@@ -34,7 +34,18 @@
         cursor: pointer;
         outline: none;
         box-shadow: 0 4px #999;
-      }
+    }
+
+
+
+    #home_icon{
+        position: relative;
+        float:left;
+        margin-top: -40px;
+        margin-left: 5px;
+        width: 40px;
+        height: 40px;
+    } 
 
 
     /* Vital Status and location divs */
@@ -197,11 +208,12 @@
 
     #completed_events{
         background-color: #5356B6;
-        color:black;
+        color:white;
         text-align: center;
         width:100%;
         height:40px;
         margin-top:-1px;
+        font-size:18px;
     }
       
 
@@ -291,7 +303,7 @@
 
     .notifications_list{
         position: absolute;
-        top:100px;
+        top:70px;
         background-color: white;
     }
 
@@ -363,9 +375,11 @@
     .New_Message{
         height:auto;
         width: 80%;
+        top:10px;
         background-color: #e8d2ef;
         border-radius: 10px;
-        margin-left:10px;
+        float: left;
+        margin-left:30px;
     }
 
     #elder_picture,#message_from,#message_time{
@@ -386,7 +400,7 @@
         display: inline-block;
         font-size: 19px;
         position:absolute;
-        bottom:80px;
+        bottom:60px;
         width:80%;
         height:35px;
         left:0;
@@ -398,7 +412,7 @@
         display: inline-block;
         position: absolute;
         font-size: 19px;
-        bottom:80px;
+        bottom:60px;
         width:20%;
         height:35px;
         right:0;
@@ -651,4 +665,39 @@
         height:35px;
         width:35px;
     }
+
+
+    .edit_buttons{
+        width:100%;
+        display: flex;
+        margin-top:5px;
+    }
+
+    .add_event_btn{
+        width:50%;
+        float:left;
+        display: block;
+        font-size: 18px;
+        background-color: #e8d2ef;
+        color:black;
+        border-radius: 10px;
+        cursor: pointer;
+        outline: none;
+        box-shadow: 0 4px #999;
+    }
+
+    .edit_event_btn{
+        width:50%;
+        float:right;
+        display: block;
+        font-size: 18px;
+        background-color: #e8d2ef;
+        color:black;
+        border-radius: 10px;
+        cursor: pointer;
+        outline: none;
+        box-shadow: 0 4px #999;
+    }
+
+
 }

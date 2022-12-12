@@ -118,8 +118,6 @@ export class PatientDashboardComponent implements OnInit {
       this.getVitals();
 
      });
-
-
   }
 
   private async getLocation(){
