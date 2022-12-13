@@ -198,11 +198,24 @@ export class MagicalControllerComponent implements OnInit {
 
   openWall(){
     let tempRoutine = new RoutineModel();
-    tempRoutine.title = 'Hello';
+    tempRoutine.title = 'Take insulin shot.';
+    tempRoutine.description = 'If you need any help please contact your caretaker.'
     this.notificationService.openWall(tempRoutine);
   }
   closeWall(){
 
     this.notificationService.closeWall();
+  }
+
+  
+  openTV(){
+    let tempRoutine = new RoutineModel();
+    tempRoutine.title = 'Check blood pressure.';
+    tempRoutine.description = 'Your caretaker will be with you shortly to take your blood pressure.'
+    this.notificationService.openTV(tempRoutine);
+  }
+  closeTV(){
+
+    this.notificationService.closeTV();
   }
 }

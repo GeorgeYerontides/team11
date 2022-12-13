@@ -17,6 +17,7 @@ export class NotificationService {
   private hostURl: string;
 
   private wallNotification: boolean = false;
+  private tvNotification: boolean = false;
   constructor(private http: HttpClient,private socketService:SocketsService) {
       this.hostURl = environment.host;
       // remove comment to delete all items
@@ -37,14 +38,27 @@ export class NotificationService {
       public openWall(routine:RoutineModel){
         console.log('open');
         this.wallNotification = true;
-        this.socketService.publish('wallNotification',{ status: this.wallNotification, routine: routine});
+        this.socketService.publish('wallNotification',{ status: this.tvNotification, routine: routine});
       }
 
       public closeWall(){
         console.log('close');
 
         this.wallNotification = false;
-        this.socketService.publish('wallNotification',{ status: this.wallNotification });
+        this.socketService.publish('wallNotification',{ status: this.tvNotification });
+      }
+
+      public openTV(routine:RoutineModel){
+        console.log('open');
+        this.wallNotification = true;
+        this.socketService.publish('tvNotification',{ status: this.wallNotification, routine: routine});
+      }
+
+      public closeTV(){
+        console.log('close');
+
+        this.wallNotification = false;
+        this.socketService.publish('tvNotification',{ status: this.wallNotification });
       }
 
       public create(resource: NotificationModel): Observable<NotificationModel> {

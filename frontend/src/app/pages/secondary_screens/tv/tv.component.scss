@@ -16,3 +16,27 @@
     justify-content: center;
  
 }
+
+.hand{
+        margin-top: 300px;
+        margin: 0%;
+        display: flex;
+        width:250px;
+        height: 300px;
+        background-image: url('../../../../assets/wall/hand.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        align-items: center;
+        justify-content: center;
+        margin-left: 50px;
+        position: relative;
+        animation-name: example;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+}
+
+@keyframes example {
+    0%   {left:0px;}
+    100% {left:25vw;}
+  }

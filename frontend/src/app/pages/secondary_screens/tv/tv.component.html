@@ -1,13 +1,19 @@
 <div style="    margin: 0% !important; padding:0%; height:100vh; display: flex;     flex-direction: row-reverse;">
-    <div class="alarmMessage">
-        <h5>Upcoming alarm</h5>
-        <h6>Alarm message hello hello hello</h6>
-
+    <div class="alarmMessage" *ngIf="status">
+        <h3>{{title}}</h3>
+        <h4>{{description}}</h4>
+        <div style="display: flex; width:100%; flex-direction: column; ">
+      
+            <div class="hand"></div>
+            <div style="margin-top: 100px; display: flex; align-items: center; justify-content: center;">
+                <h4>Swipe right to close.</h4>
+            </div>
+        </div>
     </div>
     <div class="embed-responsive embed-responsive-1by1 video-container "  >
        
         <iframe class="embed-responsive-item video-fluid" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" style="z-index: 1000; position: absolute;"> </iframe>
     
     </div>
-    
+
 </div>
