@@ -1,7 +1,7 @@
 <div class="container top_bar text-center" *ngIf="top_bar_general">
     <select id="elder_name" name="elder_name">
-        <option value="1_option">Giorgos Lamprou</option>
-        <option value="2_option">Andreas Mixahl</option>
+        <option value="1_option">Andreas Mixahl</option>
+        <option value="2_option">Giorgos Lamprou</option>
         <option value="3_option">Giorgos Trifonos</option>
         <option value="4_option">Dimitra Papa</option>
     </select>
@@ -12,7 +12,7 @@
 </div><br><br><br><br>
 
 
-<h5 style="color:white; background-color:#5356B6; text-align: center; width: 80%; height:60px; margin-left: auto; margin-right: auto; border-radius: 10px;">
+<h5 style="color:white; background-color:#5356B6; text-align: center; width: 80%; height:60px; margin-left: auto; margin-right: auto; border-radius: 10px;" *ngIf="patient_name">
     Patient Information for<br>{{name}} {{surname}}
 </h5>
 <br>
@@ -184,14 +184,14 @@
 <div class="container notifications_list" *ngIf="notifications_div" >
     <div class="alert alert-danger" role="alert" id="New_notification" *ngIf="readed_flag_1" (click)="hide_message()">
         <i class="fa-solid fa-person-cane" id="elder_picture"></i>
-        <p id="notification_from">Giorgos Lamprou</p><br>
+        <p id="notification_from">{{elder_name}}</p><br>
         <p id="type_of_notification">New message</p>
         <p id="notification_time">  9:10 AM</p>
     </div><br>
 
     <div class="alert alert-danger" role="alert" id="New_notification" *ngIf="readed_flag_2" (click)="hide_message_2()">
         <i class="fa-solid fa-person-cane" id="elder_picture"></i>
-        <p id="notification_from">Giorgos Lamprou</p><br>
+        <p id="notification_from">{{elder_name}}</p><br>
         <p id="type_of_notification">New Missed Call</p>
         <p id="notification_time">  9:18 AM</p>
     </div>
@@ -211,7 +211,7 @@
         <p id="message_content">I would like to go for a walk</p>
     </div>
     <div style="width:auto; height:auto; display: flex; float:left;margin-top:-60px; margin-left:30px;">
-        <p>Giorgos Lamprou</p>
+        <p>{{elder_name}}</p>
     </div>
     
     <div  *ngIf="close_chat">

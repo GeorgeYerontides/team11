@@ -42,6 +42,34 @@ export class HomephoneComponent implements OnInit {
     });
   }
 
+
+
+  information_div_btn:boolean = true;
+  expand_details_div:boolean = false;
+  detailed_vitals_div:boolean = false;
+  back_to_menu_btn:boolean = true;
+  elder_personal_information_div:boolean = false;
+  medication_div:boolean = false;
+  message_div:boolean = false;
+  events_div:boolean = true;
+  top_bar_of_messages:boolean = false;
+  notifications_div:boolean = false;
+  top_bar_of_notifications:boolean = false;
+  vital_status_div:boolean = true;
+  top_bar_general:boolean = true;
+  readed_flag_1:boolean = true;
+  readed_flag_2:boolean = true;
+  missed_notifications:number = 2;
+  check_if_0_notifications:boolean = true;
+  video_call_live:boolean = false;
+  app_routine_phonect_add:boolean = false;
+  close_chat:boolean = true;
+  patient_name:boolean = true;
+  public elder_name:string = "";
+
+
+
+
    ngOnInit(): void {
 /*
     let snapshot = this.route.snapshot;
@@ -61,6 +89,8 @@ export class HomephoneComponent implements OnInit {
       console.log('the user is ' , this.currUser,this.currUser.name);
       this.name = this.currUser.name;
       this.surname = this.currUser.surname;
+
+      this.elder_name = this.currUser.name + " " + this.currUser.surname;
     });
 
     this.getAllTasks();
@@ -180,27 +210,6 @@ export class HomephoneComponent implements OnInit {
   }
 
 
-  information_div_btn:boolean = true;
-  expand_details_div:boolean = false;
-  detailed_vitals_div:boolean = false;
-  back_to_menu_btn:boolean = true;
-  elder_personal_information_div:boolean = false;
-  medication_div:boolean = false;
-  message_div:boolean = false;
-  events_div:boolean = true;
-  top_bar_of_messages:boolean = false;
-  notifications_div:boolean = false;
-  top_bar_of_notifications:boolean = false;
-  vital_status_div:boolean = true;
-  top_bar_general:boolean = true;
-  readed_flag_1:boolean = true;
-  readed_flag_2:boolean = true;
-  missed_notifications:number = 2;
-  check_if_0_notifications:boolean = true;
-  video_call_live:boolean = false;
-  app_routine_phonect_add:boolean = false;
-  close_chat:boolean = true;
-
 
   Information_btn(){
     this.information_div_btn = false;
@@ -257,6 +266,7 @@ export class HomephoneComponent implements OnInit {
     this.top_bar_of_notifications = false;
     this.information_div_btn = true;
     this.video_call_live = false;
+    this.patient_name = true;
   }
 
   show_notification_section(){
@@ -270,6 +280,7 @@ export class HomephoneComponent implements OnInit {
     this.information_div_btn = false;
     this.video_call_live = false;
     this.medication_div = false;
+    this.patient_name = false;
   
   }
 
@@ -300,6 +311,9 @@ export class HomephoneComponent implements OnInit {
   end_video_call(){
     this.video_call_live = false;
     this.events_div = true;
+    this.patient_name = true;
+    this.information_div_btn = true;
+    this.vital_status_div = true;
     this.top_bar_of_messages = false;
     this.top_bar_of_notifications= false;
     this.medication_div = false;
