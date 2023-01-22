@@ -28,7 +28,7 @@
 
 <div class="container expand_detailed_information" *ngIf="expand_activity_suggestions">
     <button id="title_information_in_expand" (click)="back_to_main()">Activity Suggestions</button><br><br>
-    <button class="buttons_detailed_information" (click)="visit_neighboor_func()">Visit Neighboor</button><br><br>
+    <button class="buttons_detailed_information" (click)="visit_neighboor_func()">Trip to mall</button><br><br>
     <button class="buttons_detailed_information" (click)="go_for_walk_func()">Go for a Walk</button><br><br>
     <button class="buttons_detailed_information" (click)="other_activity_func()">Other Activity</button><br><br>
     <button class="buttons_detailed_information" (click)="back_to_home()">Back</button><br><br>
@@ -38,7 +38,7 @@
 <!-- Visit neighboor suggestion div -->
 
 <div class="container visit_neighboor_event" *ngIf="visit_neighboor_div">
-    <button class="container visit_information_btn text-center">Visit Neighboor</button><br><br>
+    <button class="container visit_information_btn text-center">Trip to mall</button><br><br>
     <label id="date_label">Date</label><br>
     <input type="date" id="event_date" name="event_date"value="2022-11-29" min="2022-11-20" max="2023-01-31"><br>
     <label id="from_label">From</label><br>
@@ -61,7 +61,7 @@
     </select><br><br><br>
     <div class="btn-group action_event_buttons">
       <button class="cancel_event_btn" (click)="back_to_main()">Cancel</button>&nbsp;&nbsp;&nbsp;
-      <button class="save_event_btn">Save</button>
+      <button class="save_event_btn" (click)="createEvent()">Save</button>
     </div>
 </div>
 

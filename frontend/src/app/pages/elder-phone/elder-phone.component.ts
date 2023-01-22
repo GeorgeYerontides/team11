@@ -38,7 +38,7 @@ export class ElderPhoneComponent implements OnInit {
   done_events:boolean = true;
 
 
-  constructor(private socketService:SocketsService,private smartSpeaker:SmartSpeakerService,private chatService:ChatService
+  constructor(private socketService:SocketsService,private smartSpeaker:SmartSpeakerService,private chatService:ChatService, private routineService:RoutineService
     ,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -71,6 +71,62 @@ export class ElderPhoneComponent implements OnInit {
     this.smartSpeaker.initialize();
     this.smartSpeaker.start();
     
+  }
+  private async delTask(){
+    await this.routineService.getAll().subscribe((result) => {
+     result.sort((objA,objB) => { 
+       if (objA.startTime > objB.startTime)
+       {
+         return 1;
+       }
+       else
+       {
+         return -1;
+       }
+       return 0;
+     }
+     )
+     
+     
+     let routineEvents:RoutineModel[] = result.filter(data => data.title === 'Afternoon Nap');
+     this.routineService.delete(routineEvents[0]._id).subscribe(() => {
+      this.socketService.publish("routine_update", {});
+    });
+
+    });
+ }
+  createEvent(){
+
+    const newRoutine = new RoutineModel();
+    newRoutine.patient = 'Kostas Lamprou';
+    newRoutine.title = 'Trip to the mall';
+    newRoutine.startTime = new Date();
+    newRoutine.startTime.setHours(16);
+    newRoutine.startTime.setMinutes(0);
+    newRoutine.startTime.setMonth(10);
+    newRoutine.startTime.setFullYear(2022);
+    newRoutine.startTime.setDate(24);
+    newRoutine.type = 'Entertainment';
+
+    newRoutine.endTime = new Date();
+    newRoutine.endTime.setHours(17);
+    newRoutine.endTime.setMinutes(0);
+    newRoutine.endTime.setMonth(10);
+    newRoutine.endTime.setFullYear(2022);
+    newRoutine.startTime.setDate(24);
+    newRoutine.completed = false;
+    newRoutine.description = 'Trip to the mall';
+
+    newRoutine.reqiresCaretaker = false;
+    this.routineService.create(newRoutine).subscribe((result) => {
+     
+      this.socketService.publish("routine_update", {});
+      this.back_to_main();
+      this.delTask();
+    });
+    
+
+  
   }
 
   getChatMessages(){
