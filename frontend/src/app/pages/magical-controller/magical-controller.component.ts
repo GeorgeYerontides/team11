@@ -220,6 +220,14 @@ export class MagicalControllerComponent implements OnInit {
     tempRoutine.description = 'Your caretaker will be with you shortly to take your blood pressure.'
     this.notificationService.openTV(tempRoutine);
   }
+
+  openTV2(){
+    let tempRoutine = new RoutineModel();
+    tempRoutine.title = 'Routine approved.';
+    tempRoutine.description = 'Your caretaker approved your trip to the mall.'
+    this.notificationService.openTV(tempRoutine);
+  }
+
   closeTV(){
 
     this.notificationService.closeTV();

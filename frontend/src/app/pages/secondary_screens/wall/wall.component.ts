@@ -62,11 +62,15 @@ export class WallComponent implements OnInit {
     });
 
     this.smartSpeaker.addCommand(['close','complete','finish','done'],()=>{
+      console.log('hello 2');
       this.yellow_status = false;
     });
+    console.log('hello');
 
     this.smartSpeaker.initialize();
     this.smartSpeaker.start();
+    console.log('hello');
+
   }
   
 

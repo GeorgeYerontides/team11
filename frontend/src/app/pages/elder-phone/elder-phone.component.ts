@@ -3,8 +3,10 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Alert } from 'src/app/global/models/alert/alert.model';
 import { ChatModel } from 'src/app/global/models/chat/chat.model';
+import { NotificationModel } from 'src/app/global/models/messages/notification.model';
 import { RoutineModel } from 'src/app/global/models/routine/routine.model';
 import { ChatService } from 'src/app/global/services/chat/chat.service';
+import { NotificationService } from 'src/app/global/services/notifications/notification.service';
 import { RoutineService } from 'src/app/global/services/routine/routine.service';
 import { SmartSpeakerService } from 'src/app/global/services/smart-speaker/smart-speaker.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
@@ -39,7 +41,7 @@ export class ElderPhoneComponent implements OnInit {
 
 
   constructor(private socketService:SocketsService,private smartSpeaker:SmartSpeakerService,private chatService:ChatService, private routineService:RoutineService
-    ,private route: ActivatedRoute) { }
+    ,private route: ActivatedRoute, private notificationService:NotificationService) { }
 
   ngOnInit(): void {
     this.route.queryParams
@@ -234,7 +236,16 @@ export class ElderPhoneComponent implements OnInit {
     chatMessage.message = form.form.value['chat'];
 
     this.chatService.create(chatMessage).subscribe((result) => {
-     
+      const newNotification = new NotificationModel();
+      newNotification.senderName = 'Kostas';
+      newNotification.senderSurname = 'Lamprou';
+      newNotification.timeSent = new Date();
+      newNotification.typeNotification = 4;
+      newNotification.title = "Missed Notification";
+      this.notificationService.create(newNotification).subscribe((result) => {
+       
+        this.socketService.publish("notificationUpdate", newNotification);
+      });
       this.socketService.publish("chat_update", {});
     });
     form.controls['chat'].setValue('');
