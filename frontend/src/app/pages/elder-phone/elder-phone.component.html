@@ -236,13 +236,35 @@
 </div>
 
 <div class="container Messages_list" *ngIf="messages_div"><br><br>
-    <div class="New_Message"><br>
-        <p id="message_content">I would like to go for a walk</p>
-        <p id="message_time">  9:18 AM</p>
+    <div #scrollBottom style="height:90%; overflow-y:auto">
+        <app-chat-phone *ngFor = "let chat of chatMessages" [self]="chat" [userName]="'Kostas'" [userSurname]="'Lamprou'"></app-chat-phone>
+
     </div>
-    <div class="input_text_area" style=>
-        <input type="text" class="form-control" id="write_message" placeholder="Write here...">
-        <button id="send_message_btn">Send</button>
+    <div>
+        <form #f = 'ngForm' style="width: 100%;">
+            <div style="height:8vh; background-color:whitesmoke; width:100%; display: flex; flex-direction: row; width: 100%; margin: 0%; padding: 2%; justify-content: center; align-items: center; ">
+               
+    
+                
+                    <div  style = "width:80%; height:80%;">
+       
+                        <textarea 
+                        class="inputStyleDesc"
+                        id="chat" 
+                        name="chat" 
+                        style="width: 100% !important;"
+                        required
+                        ngDefaultControl 
+                        ngModel
+                        ></textarea>
+                      
+                </div>
+                <div style=" margin-left:1%;width:19%; display:flex; justify-content: center; align-items: center;  height:80%; margin: 0%; padding: 0%;" >
+                    <button class="btn btn-primary" style="width: 80% ; height:80%; margin: 0%; padding: 0%; border-radius: 50%;" (click)="chatSend(f)"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                </div>
+    
+            </div>
+        </form>   
     </div>
 </div>
 

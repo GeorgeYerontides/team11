@@ -5,6 +5,7 @@ import { ItemShopComponent } from './pages/item-shop/item-shop.component';
 import { MagicalControllerComponent } from './pages/magical-controller/magical-controller.component';
 import { TvComponent } from './pages/secondary_screens/tv/tv.component';
 import { WallComponent } from './pages/secondary_screens/wall/wall.component';
+import { VirtualComponent } from './pages/virtual/virtual.component'; 
 
 const routes: Routes = [
   // { path: 'socket-events', loadChildren: () => import('./pages/socket-events/socket-events.module').then(m => m.SocketEventsModule) },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'controller', component: MagicalControllerComponent},
   { path: 'wall', component: WallComponent},
   { path: 'tv', component: TvComponent},
+  { path: 'leap', component: VirtualComponent}
 ];
 
 @NgModule({

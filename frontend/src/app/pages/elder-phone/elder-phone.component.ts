@@ -1,6 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Alert } from 'src/app/global/models/alert/alert.model';
+import { ChatModel } from 'src/app/global/models/chat/chat.model';
 import { RoutineModel } from 'src/app/global/models/routine/routine.model';
+import { ChatService } from 'src/app/global/services/chat/chat.service';
 import { RoutineService } from 'src/app/global/services/routine/routine.service';
 import { SmartSpeakerService } from 'src/app/global/services/smart-speaker/smart-speaker.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
@@ -11,33 +15,15 @@ import { SocketsService } from 'src/app/global/services/sockets/sockets.service'
   styleUrls: ['./elder-phone.component.scss']
 })
 export class ElderPhoneComponent implements OnInit {
+  @ViewChild('scrollBottom') scrollBottom:any;
   @Input() self!:RoutineModel;
-  constructor(private socketService:SocketsService,private smartSpeaker:SmartSpeakerService) { }
+  currChatName: string = 'Kostas';
+  currChatSurname: string = 'Kosta';
 
+  public chatMessages:ChatModel[]=[];
   yellow_alert:boolean = false;
   red_alert:boolean = false;
   message:string = "";
-
-  ngOnInit(): void {
-
-    this.socketService.subscribe("alert_event",(data:any)=>{
-      console.log(data);
-      if(data.level === "yellow"){
-        this.welcome_message_div = false;
-        this.yellow_alert = true;
-        this.message = data.message + " " + data.time;
-      }
-    })
-
-    this.smartSpeaker.addCommand(['close','complete','finish','done','close reminder'],()=>{
-      this.yellow_alert = false;
-      this.welcome_message_div = true;
-    });
-
-    this.smartSpeaker.initialize();
-    this.smartSpeaker.start();
-    
-  }
 
   activity_suggestions:boolean = true;
   expand_activity_suggestions:boolean = false;
@@ -50,8 +36,75 @@ export class ElderPhoneComponent implements OnInit {
   to_do_events_div:boolean = true;
   done_events_div:boolean = false;
   done_events:boolean = true;
-  
 
+
+  constructor(private socketService:SocketsService,private smartSpeaker:SmartSpeakerService,private chatService:ChatService
+    ,private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.route.queryParams
+    .subscribe(params => {
+      console.log("aaaaaaaaa",params); // { orderby: "price" }
+
+    }
+  );
+
+    this.socketService.subscribe("alert_event",(data:any)=>{
+      console.log(data);
+      if(data.level === "yellow"){
+        this.welcome_message_div = false;
+        this.yellow_alert = true;
+        this.message = data.message + " " + data.time;
+      }
+    })
+    this.getChatMessages();
+    this.socketService.subscribe('chat_update',(data: any) =>{
+      this.getChatMessages();
+
+    });
+    
+    this.smartSpeaker.addCommand(['close','complete','finish','done','close reminder'],()=>{
+      this.yellow_alert = false;
+      this.welcome_message_div = true;
+    });
+
+    this.smartSpeaker.initialize();
+    this.smartSpeaker.start();
+    
+  }
+
+  getChatMessages(){
+    this.chatService.getNotifications().subscribe((result)=>{
+      result.sort((objA,objB) => { 
+        if (objA.time > objB.time)
+        {
+          return 1;
+        }
+        else
+        {
+          return -1;
+        }
+        return 0;
+      }
+      )
+
+      
+      
+      this.chatMessages = result.filter
+      (data => ((data.senderName === this.currChatName) && (data.senderSurname === this.currChatSurname) && (data.receiverName === "Kostas") && (data.receiverSurame === "Lamprou")) 
+      ||       ((data.receiverName === this.currChatName) && (data.receiverSurame === this.currChatSurname) && (data.senderName === "Kostas") && (data.senderSurname === "Lamprou"))
+      );
+      setTimeout( () => {this.scrolTolBottom()} ,1000);  
+    
+    });
+
+    
+
+  }
+
+  scrolTolBottom(){
+    this.scrollBottom.nativeElement.scrollTop= this.scrollBottom.nativeElement.scrollHeight;
+  }
   open_suggest_activities(){
     this.expand_activity_suggestions = true;
     this.activity_suggestions = false;
@@ -91,11 +144,11 @@ export class ElderPhoneComponent implements OnInit {
   }
 
   open_messages_func(){
-    this.messages_div = true;
-    this.messages_top_bar_div = true;
-    this.welcome_message_div = false;
-    this.to_do_events_div = false;
-    this.done_events_div = false;
+    this.messages_div =  !this.messages_div;
+    this.messages_top_bar_div = !this.messages_top_bar_div;
+    this.welcome_message_div = !this.welcome_message_div;
+    this.to_do_events_div = !this.to_do_events_div ;
+    this.done_events_div = !this.done_events_div;
   }
 
   to_do_events_func(){
@@ -108,5 +161,26 @@ export class ElderPhoneComponent implements OnInit {
     this.done_events_div = true;
   }
 
-  
+  chatSend(form:NgForm){
+
+    if(form.valid === false)
+    {
+      return;
+    }
+    console.log(form);
+
+    let chatMessage = new ChatModel();
+    chatMessage.receiverName = this.currChatName;
+    chatMessage.receiverSurame= this.currChatSurname;
+    chatMessage.senderName = 'Kostas';
+    chatMessage.senderSurname = 'Lamprou';
+    chatMessage.time = new Date();
+    chatMessage.message = form.form.value['chat'];
+
+    this.chatService.create(chatMessage).subscribe((result) => {
+     
+      this.socketService.publish("chat_update", {});
+    });
+    form.controls['chat'].setValue('');
+  }
 }

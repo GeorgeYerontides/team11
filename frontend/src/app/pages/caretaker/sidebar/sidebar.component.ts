@@ -95,10 +95,11 @@ export class SidebarComponent implements OnInit {
       (data => ((data.senderName === this.currChatName) && (data.senderSurname === this.currChatSurname) && (data.receiverName === "Kostas") && (data.receiverSurame === "Kosta")) 
       ||       ((data.receiverName === this.currChatName) && (data.receiverSurame === this.currChatSurname) && (data.senderName === "Kostas") && (data.senderSurname === "Kosta"))
       );
+      setTimeout( () => {this.scrolTolBottom()} ,1000);  
     
     });
 
-    setTimeout( () => {this.scrolTolBottom()} ,1000);  
+    
 
   }
 

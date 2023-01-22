@@ -38,27 +38,27 @@ export class NotificationService {
       public openWall(routine:RoutineModel){
         console.log('open');
         this.wallNotification = true;
-        this.socketService.publish('wallNotification',{ status: this.tvNotification, routine: routine});
+        this.socketService.publish('wallNotification',{ status: true, routine: routine});
       }
 
       public closeWall(){
         console.log('close');
 
         this.wallNotification = false;
-        this.socketService.publish('wallNotification',{ status: this.tvNotification });
+        this.socketService.publish('wallNotification',{ status: false });
       }
 
       public openTV(routine:RoutineModel){
         console.log('open');
         this.wallNotification = true;
-        this.socketService.publish('tvNotification',{ status: this.wallNotification, routine: routine});
+        this.socketService.publish('tvNotification',{ status: true, routine: routine});
       }
 
       public closeTV(){
         console.log('close');
 
         this.wallNotification = false;
-        this.socketService.publish('tvNotification',{ status: this.wallNotification });
+        this.socketService.publish('tvNotification',{ status: false });
       }
 
       public create(resource: NotificationModel): Observable<NotificationModel> {

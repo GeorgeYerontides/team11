@@ -134,6 +134,11 @@ export class MagicalControllerComponent implements OnInit {
       this.socketService.publish("emergencyMode",{value:true});
     });
 
+    let tempRoutine = new RoutineModel();
+    tempRoutine.title = 'Danger.';
+    tempRoutine.description = 'Your caretaker is coming to help you.'
+    this.notificationService.openTV(tempRoutine);
+
     let newMedEve = new medicalEventModel();
     newMedEve.patientName = "Kostas";
     newMedEve.patientSurname = "Lamprou";
@@ -201,6 +206,7 @@ export class MagicalControllerComponent implements OnInit {
     tempRoutine.title = 'Take insulin shot.';
     tempRoutine.description = 'If you need any help please contact your caretaker.'
     this.notificationService.openWall(tempRoutine);
+    console.log('hello');
   }
   closeWall(){
 

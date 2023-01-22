@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SmartSpeakerService } from 'src/app/global/services/smart-speaker/smart-speaker.service';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
+import { NotificationService } from 'src/app/global/services/notifications/notification.service';
 
 @Component({
   selector: 'app-wall',
@@ -9,7 +10,7 @@ import { SocketsService } from 'src/app/global/services/sockets/sockets.service'
 })
 export class WallComponent implements OnInit {
 
-  constructor(private socketService:SocketsService, private smartSpeaker:SmartSpeakerService) { }
+  constructor(private socketService:SocketsService, private smartSpeaker:SmartSpeakerService,private notificationService:NotificationService) { }
   public status: boolean = false;
   public title: string = '';
   public description: string = '';
@@ -22,8 +23,10 @@ export class WallComponent implements OnInit {
 
   ngOnInit(): void {
     this.socketService.subscribe("wallNotification", (data: any) => {
+      console.log('wall triggered');
+      console.log(data);
       if( data.status){
-
+        console.log('wall triggered');
         this.status = data.status;
         this.title = data.routine.title;
       }
@@ -32,6 +35,7 @@ export class WallComponent implements OnInit {
         this.status = data.status;
       }
     });
+
 
     this.socketService.subscribe("medicalEvent", (data: any) => {
       if( data.status){

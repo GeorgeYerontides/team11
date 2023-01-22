@@ -14,8 +14,10 @@ import { MagicalControllerComponent } from './pages/magical-controller/magical-c
 import { ElderModule } from 'src/modules/app-elder.module';
 import { WallComponent } from './pages/secondary_screens/wall/wall.component';
 import { TvComponent } from './pages/secondary_screens/tv/tv.component';
-import { MedEveAddComponent } from './pages/caretaker/modals/med-eve-add/med-eve-add.component';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { VirtualComponent } from './pages/virtual/virtual.component';
+
 const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     MagicalControllerComponent,
     WallComponent, 
     TvComponent,
-
+    VirtualComponent
 
      
 
@@ -35,6 +37,7 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
   imports: [
     SocketIoModule.forRoot(socketIoConfig),
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     CaretakerModule,
